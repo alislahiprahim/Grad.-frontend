@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Doctourism';
+
+  constructor(private myelementRef: ElementRef) { }
+
+  ngAfterViewInit(): void {
+   this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor='#f3f7f3' 
+  }
 }
