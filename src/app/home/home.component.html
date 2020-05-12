@@ -17,17 +17,15 @@
         <div class=" col-md-10 col-sm-11">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 py-2 mx-4" *ngFor="let i of arr">
-                        <div class="card mx-5" style="width: 18rem;">
-                            <img src="../../assets//images/1070305_Russel_04_0136.jpg" class="card-img-top" alt="...">
+                    <div class="col-lg-3 col-md-4 col-sm-6 py-2 mx-4" *ngFor="let i of DataArr | paginate: config">
+                        <div class=" card mx-5" style="width: 18rem;">
+                            <img src="{{i.imageUrl}}" class="card-img-top" alt="{{i.filename}}">
                             <div class="card-body">
-                                <h5 class="card-title">{{i}}</h5>
-                                <p class="card-text">Some quick example text to build on the card title and
-                                    make up the
-                                    bulk of the
-                                    card's
-                                    content.</p>
-                                <a class="btn btn-primary"  [routerLink]="[ '/Dprofile']">Visit Doctor</a>
+                                <h5 class="card-title">{{i.name}}</h5>
+                                <h5>price: {{i.price}}</h5>
+                                <p class="card-text">{{i.description}}</p>
+                                <a class="btn btn-primary" href='{{i.imageCredit.link}}'
+                                    target="_blank">{{i.imageCredit.artist}}</a>
                             </div>
                         </div>
                     </div>
@@ -35,4 +33,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container text-center" >
+    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
 </div>

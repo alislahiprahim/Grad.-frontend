@@ -13,7 +13,8 @@ import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './home/home.component'
 import { MatButtonModule } from '@angular/material/button';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination' 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
   { path: 'home', component: HomeComponent },
@@ -40,6 +41,8 @@ const routes: Routes = [
     WavesModule,
     ButtonsModule,
     MatButtonModule,
+    HttpClientModule,
+    NgxPaginationModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [],
