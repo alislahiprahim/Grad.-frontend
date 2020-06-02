@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { WelecomeComponent } from './welecome/welecome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -13,12 +14,25 @@ import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './home/home.component'
 import { MatButtonModule } from '@angular/material/button';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
-import { HttpClientModule } from '@angular/common/http';
-import {NgxPaginationModule} from 'ngx-pagination' 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule } from '@angular/forms';
+import { tokenInterceptor } from './services/token-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { DoctorService } from './services/doctor.service';
+import { MatMenuModule } from '@angular/material/menu';
+
+
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'Dprofile', component: DoctorProfileComponent },
+  { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -42,11 +56,26 @@ const routes: Routes = [
     ButtonsModule,
     MatButtonModule,
     HttpClientModule,
+    FormsModule,
     NgxPaginationModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatMenuModule
   ],
-  schemas: [NO_ERRORS_SCHEMA],
+
+  
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
-  providers: [],
+  providers: [AuthService, DoctorService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: tokenInterceptor,
+    multi: true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

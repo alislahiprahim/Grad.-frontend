@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router'
+import { DoctorService } from '../services/doctor.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,9 +10,11 @@ import { Router, ActivatedRoute } from '@angular/router'
 export class HomeComponent implements OnInit {
 
   DataArr: any = [];
+  filteredArray: any[];
   config: any;
+  searchText: any = ''
 
-  constructor(private myHttpClient: HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(private myHttpClient: HttpClient, private route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 9,
@@ -23,14 +26,22 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getItems()
+    this.getDoctors()
   }
 
 
-  getItems() {
-    this.myHttpClient.get('https://raw.githubusercontent.com/stockholmux/ecommerce-sample-set/master/items.json').subscribe((resp: any) => {
-      this.DataArr = resp
+  getDoctors() {
+    this.myDoctorService.getDoctors().subscribe((resp: any) => {
+      this.DataArr = resp.data
+      this.filteredArray = [...this.DataArr]
+
     })
+  }
+
+  handleFilter(event) {
+    const value = event.target.value
+    this.filteredArray = this.DataArr.filter((val, ind) =>
+      val.username.includes(value))
   }
 
   pageChange(newPage: number) {

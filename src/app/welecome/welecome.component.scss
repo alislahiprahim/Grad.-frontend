@@ -1,41 +1,148 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.crossfade > figure {
+    animation: imageAnimation 30s linear infinite 0s;
+    backface-visibility: hidden;
+    background-size: cover;
+    background-position: center center;
+    color: transparent;
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 9.1%;
+    width: 100%;
+    z-index: 0;
+}
+.crossfade > figure:nth-child(1) {
+    background-image: url("../../assets/images/581649-doctor-wallpaper-1920x1285-hd.jpg");
+}
+
+.crossfade > figure:nth-child(2) {
+    animation-delay: 6s;
+    background-image: url("../../assets/images/7899.png");
+}
+
+.crossfade > figure:nth-child(3) {
+    animation-delay: 12s;
+    background-image: url("../../assets/images/581649-doctor-wallpaper-1920x1285-hd.jpg");
+}
+
+.crossfade > figure:nth-child(4) {
+    animation-delay: 18s;
+    background-image: url("../../assets/images/7899.png");
+}
+
+.crossfade > figure:nth-child(5) {
+    animation-delay: 24s;
+    background-image: url("../../assets/images/581649-doctor-wallpaper-1920x1285-hd.jpg");
+}
+
+@keyframes imageAnimation {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    8% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+    17% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 .Searchbar {
     position: absolute;
-    top: 72%;
+    top: 70%;
     left: 8%;
     margin: auto;
     text-align: center;
-    height: 100px;
-    background-color: #09c;
-    box-shadow: 5px 10px 8px 10px #fff;
+    height: 20vh;
+    background-color: #fff;
+    box-shadow: 1px 1px 11px 1px #000;
     z-index: 12;
-}
-.Searchbar input {
-    position: relative;
-    margin-top: 30px;
-    width: 75%;
-    padding: 20px;
-    border: 0;
-    border-radius: 6px;
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    display: inline;
-    margin: 0;
+    border-radius: 25px;
 }
 
-.Searchbar button {
+.Searchbar ul {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 20vh;
     padding: 20px;
-    padding-right: 30px;
-    border: 0px;
-    border-radius: 6px;
-    margin: 0px;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    color: #cbf6ff;
+    
 }
+
+.dropDown li {
+    list-style: none;
+    width: 100%;
+    height: 12vh;
+    border: 1px solid #aaa;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.dropDown .li-1 {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.dropDown .li-2 {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color:rgb(239, 15, 15);
+    color: #fff;
+}
+
+.dropDown button {
+    width: 100%;
+    padding: 15px;
+    background-color: #fff;
+    border: 0;
+}
+
+.mySpan {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.mySpan2 {
+    position: absolute;
+    top: 25px;
+    left: 100px;
+}
+
+.myIcon {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+}
+.myIcon2 {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+}
+
+.myInput{
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    border:0;
+
+}
+
 .imageCard img {
     padding-top: 10px;
     padding-left: 20px;
