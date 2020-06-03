@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import { NotificationsService } from './services/notifications.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ export class AppComponent {
   constructor(private myelementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
-   this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor='#f3f7f3' 
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f3f7f3'
   }
+
+
 }

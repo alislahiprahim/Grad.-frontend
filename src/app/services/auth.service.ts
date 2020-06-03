@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  backendURL = 'http://localhost:8080/patient/';
+  backendURL = 'http://localhost:8085/patient/';
 
   constructor(private myHttpClient: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class AuthService {
 
 
   login(data) {
-    return this.myHttpClient.post('http://localhost:8080/login/', data)
+    return this.myHttpClient.post('http://localhost:8085/login/', data)
   }
 
   isLoggedin() {

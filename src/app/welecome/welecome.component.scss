@@ -80,7 +80,6 @@
     display: flex;
     height: 20vh;
     padding: 20px;
-    
 }
 
 .dropDown li {
@@ -101,7 +100,7 @@
 .dropDown .li-2 {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color:rgb(239, 15, 15);
+    background-color: rgb(239, 15, 15);
     color: #fff;
 }
 
@@ -120,27 +119,29 @@
 
 .mySpan2 {
     position: absolute;
-    top: 25px;
+    top: 30px;
     left: 100px;
+    color: #0070cd;
+
 }
 
 .myIcon {
     position: absolute;
-    top: 35px;
+    top: 30px;
     left: 20px;
+    color: #0070cd;
+    font-size: 20px;
 }
-.myIcon2 {
+.myInput {
     position: absolute;
     top: 30px;
-    right: 60px;
+    left: 100px;    
+    border: 0 solid transparent;
+    color: #0070cd;
+    cursor: pointer;
 }
-
-.myInput{
-    position: absolute;
-    top: 30px;
-    left: 70px;
-    border:0;
-
+::placeholder {
+    color: #0070cd;
 }
 
 .imageCard img {
@@ -197,7 +198,7 @@
     font-size: 14px;
     text-align: right;
     padding-top: 10px;
-    color: #45abff;
+    color: #0070cd;
 }
 .icons2 i {
     padding: 35px;
@@ -206,6 +207,16 @@
     font-size: 28px;
     font-weight: 600;
     color: #45abff;
+}
+
+::ng-deep .myMenu1 {
+    max-width: none !important;
+    width: 800px;
+    height: auto;
+    background-color: #fff;
+}
+
+::ng-deep .myMenu2 {
 }
 
 @media (max-width: 600px) {

@@ -27,6 +27,8 @@ import { tokenInterceptor } from './services/token-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { DoctorService } from './services/doctor.service';
 import { MatMenuModule } from '@angular/material/menu';
+import { NotificationsService } from './services/notifications.service';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const routes: Routes = [
@@ -43,7 +45,7 @@ const routes: Routes = [
     NavComponent,
     HomeComponent,
     DoctorProfileComponent,
-
+    WelecomeComponent
 
   ],
   imports: [
@@ -56,6 +58,7 @@ const routes: Routes = [
     ButtonsModule,
     MatButtonModule,
     HttpClientModule,
+    MatSelectModule,
     FormsModule,
     NgxPaginationModule,
     MatGridListModule,
@@ -67,10 +70,10 @@ const routes: Routes = [
     MatMenuModule
   ],
 
-  
-  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
+
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
-  providers: [AuthService, DoctorService, {
+  providers: [AuthService, NotificationsService, DoctorService, {
     provide: HTTP_INTERCEPTORS,
     useClass: tokenInterceptor,
     multi: true

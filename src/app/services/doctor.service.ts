@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class DoctorService {
 
-    backendURL = 'http://localhost:8080/doctor/'
+    backendURL = 'http://localhost:8085/doctor/'
 
     constructor(private myHttpClient: HttpClient) { }
 

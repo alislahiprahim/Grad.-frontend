@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../services/doctor.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -11,8 +12,9 @@ export class DoctorProfileComponent implements OnInit {
 
   Did = this.myActivatedRoute.snapshot.paramMap.get('id')
   DData: any;
+  apiData: any;
 
-  constructor(private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
+  constructor(private myHttpClient: HttpClient, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
 
   ngOnInit() {
     this.getDoctorProfile()
@@ -23,10 +25,11 @@ export class DoctorProfileComponent implements OnInit {
 
     this.myDoctorService.getDoctorProfile({ Did }).subscribe((resp: any) => {
       this.DData = resp.DData
-  
+
     })
 
   }
+
 
 
 }
