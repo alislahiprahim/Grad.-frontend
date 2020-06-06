@@ -1,170 +1,205 @@
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary" [containerInside]="false">
+<header class="header">
+    <a class="logo" [routerLink]="[ '/' ]">DocTourism</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li>
+            <button class="my-btn" [routerLink]="[ '/home']">Home</button>
+        </li>
+        <li *ngIf="!myAuthService.isLoggedin()">
+            <button class="my-btn" data-toggle="modal" (click)="frame2.show()">Sign Up
+            </button>
+        </li>
+        <li *ngIf="!myAuthService.isLoggedin()">
+        <button class="my-btn" style="background-color: #fff;color:#068efe;" data-toggle="modal"
+                (click)="frame.show()">Login</button>
+        </li>
 
-    <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/' ]">DocTourism</a></mdb-navbar-brand>
-
-    <!-- Collapsible content -->
-    <links>
-
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" [routerLink]="['/home']">Home</a>
-            </li>
-        </ul>
-        <!-- Links -->
-
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item my-2"  *ngIf="myAuthService.isLoggedin()">
-                <a class="nav-link">
-                    <mdb-icon fab icon="twitter"></mdb-icon>
-                </a>
-            </li>
-            <li class="nav-item my-2">
-                <a class="nav-link"  *ngIf="myAuthService.isLoggedin()">
-                    <mdb-icon fab icon="google-plus"></mdb-icon>
-                </a>
-            </li>
+        <li *ngIf="myAuthService.isLoggedin()">
+            <button class="my-btn" style="background-color: #fff;color:#068efe"
+                [matMenuTriggerFor]="menu">Profile</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>My account</button>
+                <button mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</button>
+            </mat-menu>
+        </li>
 
 
-            <li class="nav-item" *ngIf="!myAuthService.isLoggedin()">
-                <a class="nav-link">
-                    <!-- required bootstrap js -->
-                    <button type="submit" name="commit" class="btn btn-inline-primary btn-sm" data-toggle="modal"
-                        data-target="#login">
-                        Login/Signup
-                    </button>
-                    <div class="modal fade" id="login" role="dialog">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Login</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fa fa-envelope"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Email" [(ngModel)]="email">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fa fa-lock"></i>
-                                            </span>
-                                        </div>
-                                        <input type="password" class="form-control" placeholder="Password"
-                                            [(ngModel)]="password">
-                                    </div>
-                                    <button type="submit" name="commit" class="btn btn-primary btn-lg btn-block"
-                                        (click)="login()">
-                                        <span>Login <i class="fa fa-sign-in"></i></span>
-                                    </button>
-                                    <div class="text-center">
-                                        <a class="" href="" data-dismiss="modal" data-toggle="modal"
-                                            data-target="#signup">Signup</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="signup" role="dialog">
-                        <div class="modal-dialog modal-md">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Signup</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
+    </ul>
+</header>
 
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="UserName"
-                                            [(ngModel)]="username">
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fa fa-envelope"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Email" [(ngModel)]="email">
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fa fa-lock"></i>
-                                            </span>
-                                        </div>
-                                        <input type="password" class="form-control" placeholder="Password"
-                                            [(ngModel)]="password">
-                                    </div>
-
-
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fas fa-venus-mars"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="gender"
-                                            [(ngModel)]="gender">
-                                    </div>
-
-
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroup-sizing-sm">
-                                                <i class="fas fa-phone"></i>
-                                            </span>
-                                        </div>
-                                        <input type="number" class="form-control" placeholder="phone"
-                                            [(ngModel)]="phone">
-                                    </div>
-
-
-                                    <button type="submit" name="commit" class="btn btn-primary btn-lg btn-block"
-                                        (click)="register()">
-                                        <span>Signup <i class="fa fa-sign-in"></i></span>
-                                    </button>
-                                    <div class="text-center">
-                                        <a class="" href="" data-dismiss="modal" data-toggle="modal"
-                                            data-target="#login">Login</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item dropdown py-2" dropdown *ngIf="myAuthService.isLoggedin()">
-                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
-                    mdbWavesEffect>
-                    <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
-                </a>
-                <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                    <a class="dropdown-item waves-light" mdbWavesEffect >My account</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect (click)="myAuthService.logout()" [routerLink]="['/']">Log out</a>
+<!-- sign up -->
+<div mdbModal #frame2="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-2">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="orangeForm-name" class="form-control" [formControl]="signupFormModalName"
+                        mdbInput mdbValidate>
+                    <label for="orangeForm-name">Your name</label>
+                    <mdb-error
+                        *ngIf="signupFormModalName.invalid && (signupFormModalName.dirty || signupFormModalName.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalName.valid && (signupFormModalName.dirty || signupFormModalName.touched)">
+                        Input valid
+                    </mdb-success>
                 </div>
-            </li>
+                <div class="md-form mb-3">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="email" id="orangeForm-email" class="form-control" [formControl]="signupFormModalEmail"
+                        mdbInput mdbValidate>
+                    <label for="orangeForm-email">Your email</label>
+                    <mdb-error
+                        *ngIf="signupFormModalEmail.invalid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalEmail.valid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">
+                        Input
+                        valid
+                    </mdb-success>
+                </div>
+
+                <div class="md-form mb-3">
+                    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+                    <input type="password" id="orangeForm-pass" class="form-control"
+                        [formControl]="signupFormModalPassword" mdbInput mdbValidate>
+                    <label for="orangeForm-pass">Your password</label>
+                    <mdb-error
+                        *ngIf="signupFormModalPassword.invalid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalPassword.valid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
+                        Input valid
+                    </mdb-success>
+                </div>
+                <div class="md-form mb-3">
+                    <i class="fas fa-venus-mars prefix grey-text"></i>
+                    <input type="text" id="orangeForm-gender" class="form-control" [formControl]="signupFormModalGender"
+                        mdbInput mdbValidate>
+                    <label for="orangeForm-Gender">male or female</label>
+                    <mdb-error
+                        *ngIf="signupFormModalGender.invalid && (signupFormModalGender.dirty || signupFormModalGender.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalGender.valid && (signupFormModalGender.dirty || signupFormModalGender.touched)">
+                        Input
+                        valid
+                    </mdb-success>
+                </div>
+
+                <div class="md-form mb-3">
+                    <mdb-icon fas icon="phone-alt" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="orangeForm-phone" class="form-control" [formControl]="signupFormModalPhone"
+                        mdbInput mdbValidate>
+                    <label for="orangeForm-phone">Your Phone</label>
+                    <mdb-error
+                        *ngIf="signupFormModalPhone.invalid && (signupFormModalPhone.dirty || signupFormModalPhone.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalPhone.valid && (signupFormModalPhone.dirty || signupFormModalPhone.touched)">
+                        Input
+                        valid
+                    </mdb-success>
+                </div>
+
+                <div class="md-form mb-3">
+
+                    <mdb-icon far icon="calendar-check" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="orangeForm-age" class="form-control" [formControl]="signupFormModalAge"
+                        mdbInput mdbValidate>
+                    <label for="orangeForm-age">Your Age</label>
+                    <mdb-error
+                        *ngIf="signupFormModalAge.invalid && (signupFormModalAge.dirty || signupFormModalAge.touched)">
+                        Input
+                        invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="signupFormModalAge.valid && (signupFormModalAge.dirty || signupFormModalAge.touched)">
+                        Input
+                        valid
+                    </mdb-success>
+                </div>
 
 
 
-        </ul>
-    </links>
-    <!-- Collapsible content -->
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button mdbBtn color="primary" class="waves-light" mdbWavesEffect (click)="[register(),frame.hide()]">Sign
+                    up</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-</mdb-navbar>
-<!--/.Navbar-->
+<!-- /sign up -->
+
+
+<!-- login -->
+
+<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="email" id="defaultForm-email" [formControl]="loginFormModalEmail" class="form-control"
+                        mdbInput mdbValidate>
+                    <label for="defaultForm-email">Your email</label>
+                    <mdb-error
+                        *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="loginFormModalEmail.valid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
+                        Input
+                        valid
+                    </mdb-success>
+                </div>
+
+                <div class="md-form mb-4">
+                    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+                    <input type="password" id="defaultForm-pass" [formControl]="loginFormModalPassword"
+                        class="form-control" mdbInput mdbValidate>
+                    <label for="defaultForm-pass">Your password</label>
+                    <mdb-error
+                        *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="loginFormModalPassword.valid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
+                        Input valid
+                    </mdb-success>
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="[login(),frame.hide()]">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /login -->

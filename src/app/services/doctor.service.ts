@@ -15,8 +15,8 @@ export class DoctorService {
         return this.myHttpClient.get(this.backendURL + 'listAll')
     }
 
-    getDoctorProfile(id) {
-        return this.myHttpClient.post(this.backendURL + 'account', id)
+    getDoctorProfile(Did) {
+        return this.myHttpClient.post(this.backendURL + 'account', Did)
     }
 
 }

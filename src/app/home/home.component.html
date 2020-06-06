@@ -1,17 +1,18 @@
-<div class="container-fluid mx-auto my-3 py-3">
+<div class="container py-5 my-5">
     <div class="row">
-        <div class="col-md-2 col-sm-1 py-2 px-2 ">
+        <div class="col-lg-2 col-md-12 col-sm-12 ">
             <div class="searchbar text-center">
                 <div class="md-form">
-                    <input mdbInput type="text"  class="form-control" [matAutocomplete]="auto" (keyup)='handleFilter($event)'>
+                    <input mdbInput type="text" class="form-control" [matAutocomplete]="auto"
+                        (keyup)='handleFilter($event)'>
                     <label class="">Doctor name</label>
                 </div>
                 <div class="md-form">
                     <input mdbInput type="text" class="form-control">
                     <label class="">Location</label>
                 </div>
-                <button mdbBtn style="border-radius: 25px;" type="button" color="primary" rounded="true"
-                    mdbWavesEffect>Primary</button>
+                <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
+                    mdbWavesEffect>filter</button>
 
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredArray" [value]="option">
@@ -20,25 +21,56 @@
                 </mat-autocomplete>
             </div>
         </div>
-        <div class=" col-md-10 col-sm-11">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 py-2 mx-4" *ngFor="let i of filteredArray | paginate: config">
-                        <div class=" card mx-5" style="width: 18rem;">
-                            <img src="{{i.profileIMG}}" class="card-img-top" alt="{{i.username}}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{i.username}}</h5>
-                                <h5>price: {{i.title}}</h5>
-                                <p class="card-text">{{i.driefSummery}}</p>
-                                <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}} profile</a>
+        <div class="col-lg-10 col-md-12 col-sm-12">
+
+            <div class="py-4 px-0">
+                <div class="row py-2 px-0">
+                    <div class="col-md-6 col-lg-4 col-sm-12 px-0" *ngFor="let i of filteredArray | paginate: config">
+
+                        <div class="DIVCARD">
+                            <!------------------- HEADER OF THE CARD -------------------->
+                            <div class="divHEADER">
+                                <img class="img-fluid" src="{{i.profileIMG}}">
                             </div>
+                            <!------------------- BODY OF THE CARD -------------------->
+                            <div class="mainBODY">
+                                <div class="bodyHeader" style="width: 100%;">
+                                    <div class="bannerBODY bg-primary" >Archeology</div>
+                                    <h1>{{i.username}}</h1>
+                                    <!--TITRE -->
+                                    <p class="bodySentence">
+                                        Using Satellite Imagery
+                                    </p>
+                                </div>
+                            </div>
+                            <!-------- HIDDEN Description of the article------>
+                            <p class="BodyDescription">
+                                Two archaeologists, who recently published their findings in the American Schools of
+                                Research, used
+                                {{i.driefSummery}}
+                                <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}} profile</a>
+                            </p>
+
+                            <!------------------- FOOTER OF THE CARD ------------------>
+                            <div class="divFOOTER">
+                                <i class="icon icon-time"></i> 2min. read
+                                <i class="icon icon-comment"></i> 2139 comments
+                            </div>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
+
+
+
 <div class=" container text-center">
     <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
     </pagination-controls>

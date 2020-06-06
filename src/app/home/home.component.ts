@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router'
 import { DoctorService } from '../services/doctor.service';
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   config: any;
   searchText: any = ''
 
-  constructor(private myHttpClient: HttpClient, private route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
+  constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, private route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 9,
@@ -22,6 +22,13 @@ export class HomeComponent implements OnInit {
     };
     route.queryParams.subscribe(
       params => this.config.currentPage = params['page'] ? params['page'] : 1);
+
+  }
+  ngAfterViewInit(): void {
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#195e83'
+  }
+  ngOnDestroy(): void {
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f3f7f3'
 
   }
 

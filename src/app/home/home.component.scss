@@ -1,11 +1,113 @@
-.card {
-    border: 0em;
-    transition: all 2s ease-in;
-    margin-right: 30px;
-}
-
 .searchbar {
     padding: 30px;
     padding-bottom: 30px;
-    
+}
+
+.DIVCARD {
+    width: 280px;
+    position: relative;
+    margin-top: 05%;
+    left: 05%;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+}
+/*-----------------     HEADER   ----------------------- */
+.divHEADER {
+    width: 280px;   
+    height: 250px;
+    background-position: 20% 50%;
+    border-radius: 0 0 0 0;
+    transition: all 0.3s ease-in-out;
+}
+/* Archeology Icon and Date IN HEADER */
+.bannerBODY {
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    font-size: 11px;
+}
+/*Archeology Icon on the left*/
+.bannerBODY {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    padding: 8px 14px;
+    line-height: 14px;
+}
+/* Date Icon on the right in Header */
+/*-----------------   MAIN BODY  ----------------------- */
+.mainBODY {
+    background-color: white;
+    border-radius: 0 0 1px 1px;
+    padding: 0 26px 26px 26px;
+}
+/* Header of Body*/
+h1 {
+    color: #23282d;
+    letter-spacing: -0.5px;
+    font-size: 27px;
+    font-weight: bold;
+    margin-top: -5px;
+}
+h2 {
+    color: #2980b9;
+    margin-top: 15px;
+    font-size: 22px;
+}
+.bodyHeader {
+    position: absolute;
+    left: 0;
+    padding: 26px;
+    padding-bottom: 15px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+/*-----------------     FOOTER   ----------------------- */
+.divFOOTER {
+    position: relative;
+    margin-top: 14px;
+    font-size: 14px;
+    color: #9fa5a8;
+}
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 20px;
+ }
+
+.BodyDescription {
+    opacity: 0;
+    color: #757b82;
+    line-height: 25px;
+    transition: all 0.1s ease-in-out;
+    margin-left: 15px;
+}
+/*---------------------------USING TRANSITION ------------------*/
+
+.DIVCARD:hover .divHEADER {
+    background-size: 470px 285px;
+    background-position: 10px 10px 0px;
+}
+
+.cardHeaderHidden {
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.DIVCARD:hover .BodyDescription {
+    opacity: 10;
+    transition: all 0.5s ease-in-out;
+}
+.cardHeaderDay {
+    font-size: 18px;
+}
+.cardHeaderMonth {
+    font-size: 11px;
+}
+.DIVCARD:hover .bodyHeader {
+    margin-top: -110px;
+}
+
+input,label{
+    color: #fff;
 }

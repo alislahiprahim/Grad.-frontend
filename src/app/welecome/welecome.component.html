@@ -21,7 +21,6 @@
 
             <mat-menu #menu="matMenu" class='myMenu1'>
                 <div class="row">
-                    <button mat-flat-button>all Cities</button>
                     <div class="col-6" style="padding: 5px;" *ngFor="let c of cities">
                         <button mat-flat-button
                             (click)="[onSelectValue(c.name_en),getAreas(c.name_en)]">{{c.name_en}}</button>
@@ -37,7 +36,6 @@
 
             <mat-menu #menu2="matMenu" class='myMenu2'>
                 <div class="row">
-                    <button mat-flat-button>all Area</button>
                     <div class="col-6" style="padding: 5px;" *ngFor="let a of areas">
 
                         <button mat-flat-button (click)="onSelectValue2(a.name_en)">{{a.name_en}}</button>
@@ -51,14 +49,14 @@
             <input class="myInput" placeholder="Doctor Name" >
 
         </li>
-        <li class="li-2 col-md-3">
+        <li class="li-2 col-md-3"  [routerLink]="[ '/home' ]">
             <i class="fa fa-search px-4"></i>
             <span>Search</span>
         </li>
     </ul>
 </div>
 
-<section class="container text-center" style='margin-top: 130px;'>
+<section class="container text-center py-5" style='margin-top: 150px;'>
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-12-sm mx-auto">
@@ -66,11 +64,12 @@
                     <img class="img-fluid" src="../../assets/images/1070305_Russel_04_0136.jpg">
                 </div>
             </div>
-            <div class="col-md-5 col-12-sm mx-auto">
-                <div class="pargraphCard mx-auto text-left px-3 overflow">
-                    <h2 class="py-2">Welecome To DocTourism</h2>
-                    <h6>online Reservation for medical tourism </h6>
-                    <p class="py-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+            <div class="col-md-1"></div>
+            <div class="col-md-4 col-12-sm ">
+                <div class="container px-3 pargraphCard mx-auto text-left overflow">
+                    <h1 >Welecome To DocTourism</h1>
+                    <h4>online Reservation for medical tourism </h4>
+                    <p class="py-1" style="word-spacing: 5px; line-height: 2;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                         Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -110,7 +109,7 @@
     </div>
 </section>
 <section class="icons2 text-right">
-    <div class="text-center mx-aut py-3">
+    <div class="text-center mx-aut py-1">
         <h3 style="color: #45abff;">Why Choose The DocTourism Clinic ?</h3>
     </div>
     <div class="container py-5">

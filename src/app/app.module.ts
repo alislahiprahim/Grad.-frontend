@@ -28,7 +28,9 @@ import { AuthService } from './services/auth.service';
 import { DoctorService } from './services/doctor.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotificationsService } from './services/notifications.service';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const routes: Routes = [
@@ -45,7 +47,7 @@ const routes: Routes = [
     NavComponent,
     HomeComponent,
     DoctorProfileComponent,
-    WelecomeComponent
+    WelecomeComponent,
 
   ],
   imports: [
@@ -56,6 +58,7 @@ const routes: Routes = [
     NavbarModule,
     WavesModule,
     ButtonsModule,
+    MatDialogModule,
     MatButtonModule,
     HttpClientModule,
     MatSelectModule,
@@ -67,7 +70,14 @@ const routes: Routes = [
     MatExpansionModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatMenuModule
+    MatMenuModule,
+    CheckboxModule,
+    InputsModule,
+    IconsModule,
+    CardsModule,
+    ModalModule,
+    TooltipModule,
+    PopoverModule,
   ],
 
 
