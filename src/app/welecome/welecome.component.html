@@ -1,4 +1,4 @@
-<section style="width: 100%; height: 500px;">
+<section class='bg-img'>
     <div class="crossfade">
         <figure></figure>
         <figure></figure>
@@ -8,52 +8,8 @@
     </div>
 </section>
 
-<div class="Searchbar container mx-auto">
-
-    <ul class="row dropDown">
-        <li class="li-1 col-md-3" [matMenuTriggerFor]="menu">
-            <span class='mySpan'>in this city</span>
-            <i class="myIcon fas fa-map-marker-alt"></i>
-
-            <span class="mySpan2"><span *ngIf="!selectedValue">Select City</span>{{selectedValue}} <i
-                    class="fas fa-caret-down px-3"></i></span>
-
-
-            <mat-menu #menu="matMenu" class='myMenu1'>
-                <div class="row">
-                    <div class="col-6" style="padding: 5px;" *ngFor="let c of cities">
-                        <button mat-flat-button
-                            (click)="[onSelectValue(c.name_en),getAreas(c.name_en)]">{{c.name_en}}</button>
-                    </div>
-                </div>
-            </mat-menu>
-        </li>
-        <li class="col-md-3" [matMenuTriggerFor]="menu2">
-            <span class='mySpan'>in this area</span>
-            <i class="myIcon fas fa-map-marker-alt"></i>
-            <span class="mySpan2"><span *ngIf="!selectedValue2">choose area</span>{{selectedValue2}}<i
-                    class="fas fa-caret-down px-3"></i></span>
-
-            <mat-menu #menu2="matMenu" class='myMenu2'>
-                <div class="row">
-                    <div class="col-6" style="padding: 5px;" *ngFor="let a of areas">
-
-                        <button mat-flat-button (click)="onSelectValue2(a.name_en)">{{a.name_en}}</button>
-                    </div>
-                </div>
-            </mat-menu>
-        </li>
-        <li class="col-md-3">
-            <span class='mySpan'>or search by name</span>
-            <i class="myIcon fas fa-user-md"></i>
-            <input class="myInput" placeholder="Doctor Name" >
-
-        </li>
-        <li class="li-2 col-md-3"  [routerLink]="[ '/home' ]">
-            <i class="fa fa-search px-4"></i>
-            <span>Search</span>
-        </li>
-    </ul>
+<div>
+    <app-search-bar></app-search-bar>
 </div>
 
 <section class="container text-center py-5" style='margin-top: 150px;'>
@@ -67,9 +23,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-4 col-12-sm ">
                 <div class="container px-3 pargraphCard mx-auto text-left overflow">
-                    <h1 >Welecome To DocTourism</h1>
+                    <h1>Welecome To DocTourism</h1>
                     <h4>online Reservation for medical tourism </h4>
-                    <p class="py-1" style="word-spacing: 5px; line-height: 2;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    <p class="py-1" style="word-spacing: 5px; line-height: 2;">Lorem Ipsum is simply dummy text of the
+                        printing and typesetting industry. Lorem
                         Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -81,57 +38,45 @@
     </div>
 </section>
 
-<section class="icons text-right">
-    <div class="text-center mx-aut py-3">
-        <h3 style="color: #fff;">Why Choose The DocTourism Clinic ?</h3>
+<section class="mx-auto bg-primary text-center">
+    <div class=" mx-auto py-3">
+        <h1 style="color: #fff;">Why Choose The DocTourism Clinic ?</h1>
     </div>
-    <div class="container py-5">
+    <div class="container py-3 mx-auto">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <i class="fas fa-thumbs-up"></i>
-                <h5>best price guarantee</h5>
+            <div class="col-md-3 col-sm-6 ">
+                <img style='width:95%;height:95%' src="../../assets/icon/easy.png">
             </div>
             <div class="col-md-3 col-sm-6">
-                <i class="far fa-clock"></i>
-                <h5>flexible schedule</h5>
-
+                <img style='width:95%;height:95%' src="../../assets/icon/time.png">
             </div>
             <div class="col-md-3 col-sm-6">
-                <i class="far fa-medal"></i>
-                <h5 style='margin-right:12px'>experience</h5>
-
+                <img style='width:95%;height:95%' src="../../assets/icon/experience.png">
             </div>
             <div class="col-md-3 col-sm-6">
-                <i class="fas fa-hand-pointer"></i>
-                <h5>easy booking</h5>
+                <img style='width:95%;height:95%' src="../../assets/icon/easy.png">
             </div>
         </div>
     </div>
 </section>
-<section class="icons2 text-right">
-    <div class="text-center mx-aut py-1">
-        <h3 style="color: #45abff;">Why Choose The DocTourism Clinic ?</h3>
+<section class=" text-center mx-auto">
+    <div class="text-center mx-auto py-3">
+        <h1 style="color: #45abff;">Why Choose The DocTourism Clinic ?</h1>
     </div>
-    <div class="container py-5">
+    <div class="container py-3 mx-auto">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <i class="fas fa-clipboard-list"></i>
-                <h5>send diagnosis</h5>
-
+            <div class=" col-md-3 col-sm-6 ">
+                <img style='width:95%;height:95%' src="../../assets/icon/send-dignos.png">
+            </div>
+            <div class="col-md-3 col-sm-6 ">
+                <img class="my-2" style='width:95%;height:95%' src="../../assets/icon/travel.png">
             </div>
             <div class="col-md-3 col-sm-6">
-                <i class="fas fa-globe-americas"></i>
-                <h5>start medical trip</h5>
-
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <i class="fas fa-notes-medical"></i>
-                <h5 style='margin-left:20px'> receive treatment plan</h5>
+                <img style='width:95%;height:95%' src="../../assets/icon/treatment-plan.png">
             </div>
 
             <div class="col-md-3 col-sm-6">
-                <i class="fas fa-user-md"></i>
-                <h5>select doctor</h5>
+                <img style='width:95%;height:95%'  [routerLink]="[ '/home' ]" src="../../assets/icon/select-doctor.png">
             </div>
         </div>
     </div>

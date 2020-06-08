@@ -3,7 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.bg-img {
+    width: 100%;
+    height: 500px;
+}
 .crossfade > figure {
     animation: imageAnimation 30s linear infinite 0s;
     backface-visibility: hidden;
@@ -61,89 +64,6 @@
         opacity: 0;
     }
 }
-.Searchbar {
-    position: absolute;
-    top: 70%;
-    left: 8%;
-    margin: auto;
-    text-align: center;
-    height: 20vh;
-    background-color: #fff;
-    box-shadow: 1px 1px 11px 1px #000;
-    z-index: 12;
-    border-radius: 25px;
-}
-
-.Searchbar ul {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: 20vh;
-    padding: 20px;
-}
-
-.dropDown li {
-    list-style: none;
-    width: 100%;
-    height: 12vh;
-    border: 1px solid #aaa;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-}
-
-.dropDown .li-1 {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-.dropDown .li-2 {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #068efe;
-    color: #fff;
-}
-
-.dropDown button {
-    width: 100%;
-    padding: 15px;
-    background-color: #fff;
-    border: 0;
-}
-
-.mySpan {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-}
-
-.mySpan2 {
-    position: absolute;
-    top: 30px;
-    left: 100px;
-    color: #0070cd;
-
-}
-
-.myIcon {
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    color: #0070cd;
-    font-size: 20px;
-}
-.myInput {
-    position: absolute;
-    top: 30px;
-    left: 100px;    
-    border: 0 solid transparent;
-    color: #0070cd;
-    cursor: pointer;
-}
-::placeholder {
-    color: #0070cd;
-}
-
 .imageCard img {
     padding-top: 10px;
     padding-left: 20px;
@@ -155,7 +75,6 @@
     height: 370px;
     padding: 10px;
     padding-top: 0;
-    
 }
 .pargraphCard h1 {
     color: rgb(23, 170, 219);
@@ -167,66 +86,6 @@
     color: rgb(8, 26, 34);
 }
 
-.icons {
-    text-align: center;
-    background-color: #45abff;
-    width: 100%;
-    margin-top: 80px;
-    margin-bottom: 30px;
-}
-.icons2 {
-    text-align: center;
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.icons .row .col-md-3 h5 {
-    font-size: 14px;
-    text-align: right;
-    padding-top: 10px;
-    color: #fff;
-}
-.icons i {
-    padding: 35px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    font-size: 28px;
-    font-weight: 600;
-    color: #fff;
-}
-.icons2 .row .col-md-3 h5 {
-    font-size: 14px;
-    text-align: right;
-    padding-top: 10px;
-    color: #0070cd;
-}
-.icons2 i {
-    padding: 35px;
-    border: 2px solid #45abff;
-    border-radius: 50%;
-    font-size: 28px;
-    font-weight: 600;
-    color: #45abff;
-}
-
-::ng-deep .myMenu1 {
-    max-width: none !important;
-    width: 800px;
-    height: auto;
-    background-color: #fff;
-}
-
-::ng-deep .myMenu2 {
-}
-
-@media (max-width: 600px) {
-    .Searchbar {
-        position: absolute;
-        top: 22%;
-        left: 8%;
-    }
-}
 
 @media (max-width: 1200px) {
     .Searchbar {
@@ -240,5 +99,12 @@
         position: absolute;
         top: 72%;
         left: 5%;
+    }
+}
+
+@media (max-width: 760px) {
+    .bg-img {
+        height:300px;
+        opacity: 0;
     }
 }

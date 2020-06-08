@@ -31,6 +31,7 @@ import { NotificationsService } from './services/notifications.service';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 import { MatDialogModule } from '@angular/material/dialog';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
     HomeComponent,
     DoctorProfileComponent,
     WelecomeComponent,
+    SearchBarComponent,
 
   ],
   imports: [

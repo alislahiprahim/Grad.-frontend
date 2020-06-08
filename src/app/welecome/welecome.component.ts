@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CitiesService } from '../services/cities.service';
 
 
 @Component({
@@ -10,32 +9,13 @@ import { CitiesService } from '../services/cities.service';
 
 
 export class WelecomeComponent implements OnInit {
-  cities: any;
-  areas: any;
-  selectedValue: any
-  selectedValue2: any;
-  constructor(private myCitiesService: CitiesService) { }
 
+  constructor(){ }
 
   ngOnInit(): void {
-    this.getCities()
-  }
-
-  getCities() {
-    this.cities = this.myCitiesService.getGovernoratesWithSubregions()
-
-  }
-  getAreas(city_name) {
-    this.areas = this.myCitiesService.getSubregionsByname(city_name)
-  }
-
-  onSelectValue(val) {
-    this.selectedValue = val
-  }
-
-  onSelectValue2(val){
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
     
-    this.selectedValue2 = val
   }
 
 }
