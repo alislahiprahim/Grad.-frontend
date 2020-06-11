@@ -14,6 +14,9 @@ export class AuthService {
     return this.myHttpClient.post(this.backendURL + 'signUp', data)
   }
 
+  d_register(data){
+    return this.myHttpClient.post('http://localhost:8085/doctor/' + 'signUp', data)
+  }
 
   login(data) {
     return this.myHttpClient.post('http://localhost:8085/login/', data)

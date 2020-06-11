@@ -32,13 +32,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-
+import { DiagnosisFormComponent } from './diagnosis-form/diagnosis-form.component';
+import { SignupDocComponent } from './signup-doc/signup-doc.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'Dregister', component: SignupDocComponent },
+  { path: 'Diagnosis', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({
@@ -50,6 +57,8 @@ const routes: Routes = [
     DoctorProfileComponent,
     WelecomeComponent,
     SearchBarComponent,
+    DiagnosisFormComponent,
+    SignupDocComponent,
 
   ],
   imports: [
@@ -64,6 +73,7 @@ const routes: Routes = [
     MatButtonModule,
     HttpClientModule,
     MatSelectModule,
+    MatCheckboxModule,
     FormsModule,
     NgxPaginationModule,
     MatGridListModule,
@@ -79,7 +89,9 @@ const routes: Routes = [
     CardsModule,
     ModalModule,
     TooltipModule,
+    MatStepperModule,
     PopoverModule,
+    NgbModule,
   ],
 
 

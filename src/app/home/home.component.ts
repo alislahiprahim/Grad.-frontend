@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 
 
   getDoctors() {
+    debugger
     this.myDoctorService.getDoctors().subscribe((resp: any) => {
       this.DataArr = resp.data
       this.filteredArray = [...this.DataArr]

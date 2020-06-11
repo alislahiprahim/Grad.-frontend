@@ -1,0 +1,116 @@
+<mat-dialog-content class="contaniner mx-auto" style="height:100%;max-height: 100%;min-height: 100%; ">
+    <div class="py-3 mx-auto " style="height:100%;max-height: 100%;min-height: 100%;">
+        <div class="row">
+            <div class="col-12">
+                <h2>Diagnosis Form</h2>
+            </div>
+        </div>
+        <div class="row py-3 mx-auto " style="height:100%;max-height: 100%;min-height: 100%;">
+            <mat-vertical-stepper [linear]=true #stepper>
+                <mat-step>
+                    <ng-template matStepLabel>Your Main Problem</ng-template>
+                    <div class="container">
+                        <div class="row py-3">
+                            <h4>Pick What You Want To Do</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4"
+                                *ngFor="let mp of ['apple','bannana','strewbary','watermelon','apple','bannana','strewbary','watermelon']">
+                                <input class="form-check-input" type="checkbox" value="{{mp}}"
+                                    (click)="getMainProblem($event)">{{mp}}
+                            </div>
+                            <hr class="container mx-auto">
+                        </div>
+                        <div class="row py-3">
+                            <h4>Little Description</h4>
+                        </div>
+                        <div class='row'>
+                            <mat-form-field class="example-full-width">
+                                <mat-label> Descripe What You want to do</mat-label>
+                                <textarea matInput placeholder="write what you need form Doctor"
+                                    [(ngModel)]="this.MP_object.text_problem"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Your Medical history</ng-template>
+                    <div class="container">
+                        <div class="row py-3">
+                            <h4>Check What you Complian About</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4"
+                                *ngFor="let mh of ['broccoli','cucumber','lettuce','pumpkin','tomato']">
+                                <input class="form-check-input" type="checkbox" value="{{mh}}"
+                                    (click)="getMedicalHitory($event)">{{mh}}
+                            </div>
+                            <hr class="container mx-auto">
+                        </div>
+                        <div class="row">
+                            <h4>Answer the following Questions </h4>
+                        </div>
+                        <div class="row">
+                            <div class="contaniner col-lg-4 col-md-4" *ngFor="let q of data.questions;let i = index">
+
+                                <ng-container *ngIf="q.type == 'checkbox'; else elseTemplate">
+
+                                    <input type='checkbox' class="form-check-input" value="{{q.question}}"
+                                        (click)='addDiagnosis($event)'>{{q.question}}
+
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>{{q.question}}</mat-label>
+                                        <input matInput type='text' (change)='addDiagnosis($event)'>
+                                    </mat-form-field>
+                                </ng-template>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Your Available Time</ng-template>
+                    <div class="container">
+                        <div class="row py-3">
+                            <h4>Give Us Your Free Duration To visit Us</h4>
+                        </div>
+                        <div class="row">
+                            <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2"
+                                [dayTemplate]="t" outsideDays="hidden">
+                            </ngb-datepicker>
+
+                            <ng-template #t let-date let-focused="focused">
+                                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                                    [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                                    (mouseleave)="hoveredDate = null">
+                                    {{ date.day }}
+                                </span>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Send Your Diagnosis Form</ng-template>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color=primary (click)="sendDiagnosis()">done</button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+
+    </div>
+</mat-dialog-content>

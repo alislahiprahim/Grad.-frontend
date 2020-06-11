@@ -2,6 +2,14 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../services/doctor.service';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { DiagnosisFormComponent } from '../diagnosis-form/diagnosis-form.component';
+
+
+export interface DialogData {
+  DId(DId: any);
+  questions: []
+}
 
 @Component({
   selector: 'app-doctor-profile',
@@ -14,7 +22,7 @@ export class DoctorProfileComponent implements OnInit {
   DData: any;
   apiData: any;
 
-  constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
+  constructor(private myMatDialog: MatDialog, private myelementRef: ElementRef, private myHttpClient: HttpClient, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
 
 
   ngAfterViewInit(): void {
@@ -26,7 +34,6 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger
     this.getDoctorProfile()
   }
 
@@ -34,10 +41,21 @@ export class DoctorProfileComponent implements OnInit {
     const { Did } = this
 
     this.myDoctorService.getDoctorProfile({ Did }).subscribe((resp: any) => {
-      debugger
-      this.DData = resp.DData
+      this.DData = resp.data
 
     })
+
+  }
+
+  openDialog() {
+    const dialogRef = this.myMatDialog.open(DiagnosisFormComponent, {
+      data: { DId: this.Did, questions: this.DData.Questions },
+      height: '100vh',
+      maxHeight:'100vh',
+      width:'150vh',
+      maxWidth:'150vh'
+    });
+
 
   }
 
