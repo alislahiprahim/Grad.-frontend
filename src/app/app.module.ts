@@ -37,6 +37,7 @@ import { SignupDocComponent } from './signup-doc/signup-doc.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
@@ -59,6 +60,7 @@ const routes: Routes = [
     SearchBarComponent,
     DiagnosisFormComponent,
     SignupDocComponent,
+    LoginSignUpComponent,
 
   ],
   imports: [
