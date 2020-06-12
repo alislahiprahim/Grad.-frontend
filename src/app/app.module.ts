@@ -35,8 +35,17 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DiagnosisFormComponent } from './diagnosis-form/diagnosis-form.component';
 import { SignupDocComponent } from './signup-doc/signup-doc.component';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
@@ -44,6 +53,7 @@ const routes: Routes = [
   { path: 'Dregister', component: SignupDocComponent },
   { path: 'Diagnosis', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
+  { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -59,6 +69,8 @@ const routes: Routes = [
     SearchBarComponent,
     DiagnosisFormComponent,
     SignupDocComponent,
+    DoctorDashboardComponent,
+    TreatmentPlanComponent,
 
   ],
   imports: [
@@ -69,8 +81,11 @@ const routes: Routes = [
     NavbarModule,
     WavesModule,
     ButtonsModule,
+    MatNativeDateModule,
     MatDialogModule,
     MatButtonModule,
+    MatDividerModule,
+    MatTableModule,
     HttpClientModule,
     MatSelectModule,
     MatCheckboxModule,
@@ -85,10 +100,13 @@ const routes: Routes = [
     MatMenuModule,
     CheckboxModule,
     InputsModule,
+    MatDatepickerModule,
+    DragDropModule,
     IconsModule,
     CardsModule,
     ModalModule,
     TooltipModule,
+    MatTabsModule,
     MatStepperModule,
     PopoverModule,
     NgbModule,

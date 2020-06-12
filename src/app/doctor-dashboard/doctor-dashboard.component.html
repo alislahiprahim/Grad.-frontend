@@ -1,0 +1,268 @@
+<div class="container my-5 py-5">
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="My Profile">
+            <div class="example-large-box mat-elevation-z4">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-md-4 doc-img">
+                            <div class="img">
+                                <img class="img-fluid" style="height: 300px;" src="{{this.img}}">
+                            </div>
+                            <div class="rating">
+                                <h3 style=" padding-top: 30px;">Name : {{this.username}} </h3>
+                                <h3>rating : <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
+                                        aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i
+                                        class="fa fa-star" aria-hidden="true"></i></h3>
+                            </div>
+                        </div>
+                        <div class="col-md-8 doc-about">
+                            <div class="container descrip">
+                                <div class="row py-3">
+                                    <span style="color:#09c; font-size: 35px; font-weight: 800;padding: 10px;"> i
+                                    </span>
+                                    <h2>About Doctor</h2>
+                                    <div class="col-md-12 py-3 parag">
+                                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas
+                                            dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
+                                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
+                                    </div>
+                                </div>
+                                <div class="row py-3">
+                                    <i class="fas fa-map-marker-alt" style="color:#09c; font-size: 30px;"></i>
+                                    <h2 style="padding-left: 10px;">About Doctor</h2>
+                                    <div class="col-md-12 py-2 parag">
+                                        <p>el-shikh zayed : capital busniss park-sdsdasd </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="My Patients">
+            <ng-container *ngIf="Patients; else elseTemplate">
+
+                <table class="table table-striped py-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Diagnosis Form</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of Patients; let i = index">
+                            <th scope="row">{{ i+1 }}</th>
+                            <td>
+                                {{ p.username }}
+                            </td>
+                            <td>{{ p.gender }}</td>
+                            <td>{{ p.Date | date }}</td>
+                            <td>
+                                <button mat-raised-button color=accent
+                                    (click)="[openLg(content),getDiagnosis(p.diagnosisForm[0]._id)]">
+                                    Show
+                                </button>
+
+                                <ng-template #content let-modal>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-5 col-md-12">
+                                                    <div class="container py-1">
+                                                        <div class="row">
+                                                            <h2 style="color: #09c;"> Diagnosis Form</h2>
+                                                        </div>
+                                                    </div>
+                                                    <mat-list>
+                                                        <mat-list-item>
+                                                            <div class="container py-2">
+                                                                <div class="row py-2">
+                                                                    <h2> Sending Date</h2>
+                                                                </div>
+                                                            </div>
+                                                            {{this.Diagnosis_Form.Date |date}}
+                                                        </mat-list-item>
+                                                        <mat-divider></mat-divider>
+                                                        <mat-list-item>
+
+                                                            <div class="container py-3">
+                                                                <div class="row py-2">
+                                                                    <h2> Main Problem</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="co-12 mx-2 py-2">
+                                                                        {{this.Diagnosis_Form.MainProblem.text_problem}}
+                                                                    </div>
+                                                                    <div class="col-12 py-2"
+                                                                        *ngFor="let i of this.Diagnosis_Form.MainProblem.problemsArr">
+                                                                        {{i}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </mat-list-item>
+                                                        <mat-divider></mat-divider>
+                                                        <mat-list-item>
+                                                            <div class="container py-3">
+                                                                <div class="row py-2">
+                                                                    <h2> Medical History</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class='col-12  py-2'>
+                                                                        {{this.Diagnosis_Form.medicalHistory.text_medical}}
+                                                                    </div>
+                                                                    <div class="col-12 py-2"
+                                                                        *ngFor="let i of this.Diagnosis_Form.medicalHistory.medicalArr">
+                                                                        {{i}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </mat-list-item>
+                                                        <mat-divider></mat-divider>
+                                                        <mat-list-item>
+                                                            <div class="container py-3">
+                                                                <div class="row py-2">
+                                                                    <h2> Related Questions</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 py-2"
+                                                                        *ngFor="let i of this.Diagnosis_Form.doctorQuesAns">
+                                                                        {{i}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </mat-list-item>
+                                                        <mat-divider></mat-divider>
+                                                        <mat-list-item>
+                                                            <ng-template>Available Duration</ng-template>
+                                                            <div class="container py-3">
+                                                                <div class="row py-2">
+                                                                    <h2> Available Duration</h2>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12 py-2">
+                                                                        Form:
+                                                                        {{this.Diagnosis_Form.avilableDuration.fromDate.day|number}}/{{this.Diagnosis_Form.avilableDuration.fromDate.month|number }}/{{this.Diagnosis_Form.avilableDuration.fromDate.year }}
+                                                                    </div>
+                                                                    <div class="col-12 py-2">
+                                                                        To:
+                                                                        {{this.Diagnosis_Form.avilableDuration.toDate.day|number }}/{{this.Diagnosis_Form.avilableDuration.toDate.month |number}}/{{this.Diagnosis_Form.avilableDuration.toDate.year }}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </mat-list-item>
+
+                                                    </mat-list>
+
+                                                </div>
+                                                <div class="col-lg-7 col-md-12 mx-auto">
+                                                    <div class="container py-1">
+                                                        <div class="row">
+                                                            <h2 style="color: #09c;"> Treatment Plan</h2>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="example-boundary">
+                                                                    <div class="example-box"
+                                                                        cdkDragBoundary=".example-boundary" cdkDrag>
+                                                                        <div class="container py-2">
+                                                                            <div class="row">
+                                                                                <div class="col-12 py-2">
+                                                                                    <mat-form-field
+                                                                                        class="example-full-width">
+                                                                                        <mat-label>Full Description
+                                                                                        </mat-label>
+                                                                                        <textarea matInput
+                                                                                            [(ngModel)]="description"
+                                                                                            placeholder="treatment plan description"></textarea>
+                                                                                    </mat-form-field>
+
+                                                                                </div>
+
+                                                                                <div class="col-12 py-2">
+                                                                                    <mat-form-field
+                                                                                        class="example-full-width">
+                                                                                        <mat-label>Initial Cost
+                                                                                        </mat-label>
+                                                                                        <input matInput
+                                                                                            placeholder="cost.."
+                                                                                            [(ngModel)]="cost">
+                                                                                    </mat-form-field>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-12 py-2">
+                                                                                    <h2>Appointment Date</h2>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-12 overflow-hidden mx-0">
+                                                                                    <ngb-datepicker #dp
+                                                                                        (dateSelect)="onDateSelection($event)"
+                                                                                        [displayMonths]="2"
+                                                                                        [dayTemplate]="t"
+                                                                                        outsideDays="hidden">
+                                                                                    </ngb-datepicker>
+
+                                                                                    <ng-template #t let-date
+                                                                                        let-focused="focused">
+                                                                                        <span class="custom-day"
+                                                                                            [class.focused]="focused"
+                                                                                            [class.range]="isRange(date)"
+                                                                                            [class.faded]="isHovered(date) || isInside(date)"
+                                                                                            (mouseenter)="hoveredDate = date"
+                                                                                            (mouseleave)="hoveredDate = null">
+                                                                                            {{ date.day }}
+                                                                                        </span>
+                                                                                    </ng-template>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row py-2">
+                                                                                <div class="col-12 py-2">
+                                                                                    <button mat-raised-button
+                                                                                        (click)="sendTreatmentPlan(p._id)"
+                                                                                        color="accent" class='px-5'>Create</button>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <div class="container py-3">
+                    <div class="row mx-auto">
+                        <div class="col-12 mx-auto">
+                            <h3 class="mx-auto py-2">NO Patients For Now (:</h3>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+        </mat-tab>
+        <mat-tab label="Treatment Plans">
+            <div class="example-large-box mat-elevation-z4">
+
+
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

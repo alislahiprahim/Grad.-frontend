@@ -2,6 +2,7 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/scss/bootstrap';
 
 * {
     margin: 0;
@@ -12,4 +13,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+
+.backdropBackground{
+  background-color: transparent;
+  color: red;
+  background: transparent;
+}

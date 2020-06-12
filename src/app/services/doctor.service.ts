@@ -19,4 +19,11 @@ export class DoctorService {
         return this.myHttpClient.post(this.backendURL + 'account', Did)
     }
 
+    getDiangosisForm(Did) {
+        return this.myHttpClient.post(this.backendURL + 'getDiangosisForm', Did)
+    }
+
+    createTreatmentPlan(data) {
+        return this.myHttpClient.post(this.backendURL + 'createTreatmentPlan', data)
+    }
 }

@@ -41,15 +41,14 @@ export class SignupDocComponent implements OnInit {
   Register() {
     const { username, email, password, phone, briefSummery } = this
     const Questions = this.doc_questions
-    debugger
     this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions }).subscribe((resp: any) => {
-      console.log(resp)
-      localStorage.setItem('token', resp.token)
-
+      if (resp.token) {
+        localStorage.setItem('token', resp.token)
+        localStorage.setItem('type', resp.type)
+        this.myRouter.navigate(['/dashboard',resp.data._id])
+      }
     })
   }
-
-
 
 
   // convenience getters for easy access to form fields

@@ -5,6 +5,7 @@
                 <img class="img-fluid" style="height: 400px;" src="{{DData.profileIMG}}">
             </div>
             <div class="rating">
+                <h3 style="color: #fff; padding: 10px;">Name : {{DData.username}} </h3>
                 <h3>rating : <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
                         aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
                         aria-hidden="true"></i></h3>
@@ -29,9 +30,17 @@
                     </div>
                 </div>
                 <div class="row py-2">
-                    <div class="col-md-12 py-3 ">
-                        <button class="btn btn-danger px-5"(click)="openDialog()">Send Diagnosis</button>
-                    </div>
+                    <ng-container *ngIf="this.myAuthService.getType()=='patient'; else elseTemplate">
+                        <div class="col-md-12 py-3">
+                            <button class="btn btn-danger px-5" (click)="openDialog()">Send Diagnosis</button>
+                        </div>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <div class="col-md-12 py-3">
+                            <button class="btn btn-danger px-5" disabled (click)="openDialog()">Send Diagnosis</button>
+                        </div>
+                    </ng-template>
+
                 </div>
             </div>
         </div>

@@ -11,6 +11,8 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 export class NavComponent implements OnInit {
   validatingForm: FormGroup;
   validatingForm2: FormGroup;
+  type: any;
+  id: any
 
   constructor(public myAuthService: AuthService, private myrouter: Router) { }
 
@@ -42,10 +44,13 @@ export class NavComponent implements OnInit {
     const phone = this.signupFormModalPassword.value
     const gender = this.signupFormModalGender.value
     const age = this.signupFormModalAge.value
-    debugger  
-    this.myAuthService.P_register({ username, password, email, phone, gender,age }).subscribe((resp: any) => {
-      localStorage.setItem('token', resp.token)
-      this.myrouter.navigate(['home']);
+
+    this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
+      if (resp.token) {
+        localStorage.setItem('token', resp.token)
+        localStorage.setItem('type', resp.type)
+        this.myrouter.navigate(['home']);
+      }
     })
 
   }
@@ -56,9 +61,40 @@ export class NavComponent implements OnInit {
     const password = loginFormModalPassword.value
 
     this.myAuthService.login({ email, password }).subscribe((resp: any) => {
-      localStorage.setItem('token', resp.token)
-      this.myrouter.navigate(['home']);
+      if (resp.token) {
+        localStorage.setItem('token', resp.token)
+        localStorage.setItem('type', resp.type)
+
+        if (resp.type == 'patient') {
+          this.myrouter.navigate(['home']);
+        } else if (resp.type == 'doctor') {
+          this.id = resp.id
+          this.myrouter.navigate(['dashboard', resp.id]);
+
+        }
+        else if (resp.type == 'travelAgent') {
+          this.myrouter.navigate(['dashboard', resp.id]);
+          this.id = resp.id
+        } else {
+          this.myrouter.navigate(['home']);
+        }
+      }
     })
+
+  }
+
+  myAccount() {
+    console.log(localStorage.getItem('type'))
+    debugger
+    if (localStorage.getItem('type') == 'patient') {
+      // navigate patient profile
+    }
+    if (localStorage.getItem('type') == 'doctor') {
+      this.myrouter.navigate(['dashboard', this.id]);
+    }
+    if (localStorage.getItem('type') == 'travelAgent') {
+      //this.myrouter.navigate(['dashboard', this.id]);
+    }
   }
 
 
@@ -90,7 +126,7 @@ export class NavComponent implements OnInit {
   get signupFormModalGender() {
     return this.validatingForm2.get('signupFormModalGender');
   }
-  
+
   get signupFormModalAge() {
     return this.validatingForm2.get('signupFormModalAge');
   }

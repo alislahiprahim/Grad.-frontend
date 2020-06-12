@@ -19,7 +19,7 @@
             <button class="my-btn" style="background-color: #fff;color:#068efe"
                 [matMenuTriggerFor]="menu">Profile</button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>My account</button>
+                <button mat-menu-item (click)="myAccount()">My account</button>
                 <button mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</button>
             </mat-menu>
         </li>

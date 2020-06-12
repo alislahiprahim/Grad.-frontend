@@ -14,7 +14,7 @@ export class AuthService {
     return this.myHttpClient.post(this.backendURL + 'signUp', data)
   }
 
-  d_register(data){
+  d_register(data) {
     return this.myHttpClient.post('http://localhost:8085/doctor/' + 'signUp', data)
   }
 
@@ -26,13 +26,21 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  
-  logout(){
+
+  logout() {
+    localStorage.removeItem('type')
     return localStorage.removeItem('token')
+
+
   }
 
   getToken() {
     return localStorage.getItem('token')
   }
+
+  getType() {
+    return localStorage.getItem('type')
+  }
+
 
 }

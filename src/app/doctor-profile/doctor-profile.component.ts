@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../services/doctor.service';
-import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { DiagnosisFormComponent } from '../diagnosis-form/diagnosis-form.component';
+import { AuthService } from '../services/auth.service';
 
 
 export interface DialogData {
@@ -22,7 +22,7 @@ export class DoctorProfileComponent implements OnInit {
   DData: any;
   apiData: any;
 
-  constructor(private myMatDialog: MatDialog, private myelementRef: ElementRef, private myHttpClient: HttpClient, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
+  constructor(public myAuthService:AuthService, private myMatDialog: MatDialog, private myelementRef: ElementRef, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
 
 
   ngAfterViewInit(): void {
