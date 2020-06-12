@@ -13,8 +13,9 @@ export class HomeComponent implements OnInit {
   filteredArray: any[];
   config: any;
   searchText: any = ''
+  location: any = this.route.snapshot.queryParams.Location
 
-  constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, private route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
+  constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, public route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 9,
@@ -38,9 +39,13 @@ export class HomeComponent implements OnInit {
 
 
   getDoctors() {
-    debugger
     this.myDoctorService.getDoctors().subscribe((resp: any) => {
       this.DataArr = resp.data
+      if (this.location) {
+        this.DataArr = this.DataArr.filter(doctor => {
+          return doctor.location.location == this.location
+        })
+      }
       this.filteredArray = [...this.DataArr]
 
     })

@@ -11,7 +11,7 @@
             </button>
         </li>
         <li *ngIf="!myAuthService.isLoggedin()">
-        <button class="my-btn" style="background-color: #fff;color:#068efe;" data-toggle="modal"
+            <button class="my-btn" style="background-color: #fff;color:#068efe;" data-toggle="modal"
                 (click)="frame.show()">Login</button>
         </li>
 
@@ -141,7 +141,7 @@
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn color="primary" class="waves-light" mdbWavesEffect (click)="[register(),frame.hide()]">Sign
+                <button mdbBtn color="primary" class="waves-light px-5" (click)="[register(),frame2.hide()]">Sign
                     up</button>
             </div>
         </div>
@@ -197,7 +197,8 @@
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="[login(),frame.hide()]">Login</button>
+                <button mdbBtn color="primary" class="waves-light px-5" mdbWavesEffect
+                    (click)="[login(),frame.hide()]">Login</button>
             </div>
         </div>
     </div>

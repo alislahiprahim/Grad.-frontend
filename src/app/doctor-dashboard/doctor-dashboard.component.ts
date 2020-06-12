@@ -56,6 +56,7 @@ export class DoctorDashboardComponent implements OnInit {
       this.Diagnosis_Form = this.Patients.diagnosisForm
       this.img = this.DData.profileIMG
       this.username = this.DData.username
+      
     })
   }
 

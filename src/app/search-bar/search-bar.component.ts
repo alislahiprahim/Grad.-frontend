@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitiesService } from '../services/cities.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,9 +12,12 @@ export class SearchBarComponent implements OnInit {
   public innerWidth: any
   cities: any;
   areas: any;
-  selectedValue: any
+  selectedValue: any;
   selectedValue2: any;
-  constructor(private myCitiesService: CitiesService) { }
+  location: any
+  area: any
+
+  constructor(private myCitiesService: CitiesService, private myRouter: Router) { }
 
 
   ngOnInit(): void {
@@ -30,13 +34,22 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSelectValue(val) {
+
     this.selectedValue = val
+    this.location = this.selectedValue
   }
 
   onSelectValue2(val) {
 
     this.selectedValue2 = val
+    this.area = this.selectedValue2
   }
 
+
+  SearchDoc() {
+
+    this.myRouter.navigate(['home',this.location])
+
+  }
 
 }

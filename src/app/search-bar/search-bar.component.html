@@ -41,7 +41,7 @@
                 <input class="myInput" placeholder="Doctor Name">
 
             </li>
-            <li class="li-2 col-md-3" [routerLink]="[ '/home' ]">
+            <li class="li-2 col-md-3" [routerLink]="['home']" [queryParams]="{Location:this.location}">
                 <i class="fa fa-search px-4"></i>
                 <span>Search</span>
             </li>
@@ -59,7 +59,8 @@
                 <i class="myIcon fas fa-map-marker-alt"></i>
 
                 <span class="mySpan2 "><span *ngIf="!selectedValue">Select City</span>{{selectedValue}} <i
-                        class="fas fa-caret-down " style="margin-left: 150px;padding-left: 150px; color:#aaa"></i></span>
+                        class="fas fa-caret-down "
+                        style="margin-left: 150px;padding-left: 150px; color:#aaa"></i></span>
 
 
                 <mat-menu #menu="matMenu" class='myMenu1'>

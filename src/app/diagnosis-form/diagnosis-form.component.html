@@ -106,7 +106,8 @@
                     <ng-template matStepLabel>Send Your Diagnosis Form</ng-template>
                     <div>
                         <button mat-button matStepperPrevious>Back</button>
-                        <button mat-raised-button color=primary (click)="sendDiagnosis()">done</button>
+                        <button mat-raised-button color=primary [mat-dialog-close]=this.dialogClose
+                            (click)="sendDiagnosis()">done</button>
                     </div>
                 </mat-step>
             </mat-vertical-stepper>

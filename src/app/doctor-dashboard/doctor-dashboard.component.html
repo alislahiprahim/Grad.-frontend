@@ -223,12 +223,26 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row py-2">
-                                                                                <div class="col-12 py-2">
-                                                                                    <button mat-raised-button
-                                                                                        (click)="sendTreatmentPlan(p._id)"
-                                                                                        color="accent" class='px-5'>Create</button>
+                                                                                <ng-container
+                                                                                    *ngIf="!this.treatmentPlan; else elseTemplate">
+                                                                                    <div class="col-12 py-2">
+                                                                                        <button mat-raised-button
+                                                                                            (click)="sendTreatmentPlan(p._id)"
+                                                                                            color="accent"
+                                                                                            class='px-5'>Create</button>
 
-                                                                                </div>
+                                                                                    </div>
+                                                                                </ng-container>
+                                                                                <ng-template #elseTemplate>
+                                                                                    <div class="col-12 py-2">
+                                                                                        <button mat-raised-button
+                                                                                            disabled color="accent"
+                                                                                            class='px-5'>Done</button>
+
+                                                                                    </div>
+
+                                                                                </ng-template>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>

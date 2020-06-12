@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { CitiesService } from '../services/cities.service';
 
 @Component({
   selector: 'app-signup-doc',
@@ -16,6 +17,8 @@ export class SignupDocComponent implements OnInit {
   password: any
   phone: any
   briefSummery: any
+  location: any
+  area: any
 
   visible = true;
   selectable = true;
@@ -25,27 +28,32 @@ export class SignupDocComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
   doc_questions
+  cities: any;
+  areas: any;
 
-  constructor(public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
+  constructor(private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    window.scroll(0,0);
 
     this.dynamicForm = this.formBuilder.group({
       numberOfQuestions: ['', Validators.required],
       Questions: new FormArray([])
     });
+    this.getCities();
 
   }
 
 
   Register() {
-    const { username, email, password, phone, briefSummery } = this
+    const { username, email, password, phone, briefSummery, } = this
     const Questions = this.doc_questions
-    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions }).subscribe((resp: any) => {
+    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions,location:{location:this.location,area:this.area} }).subscribe((resp: any) => {
       if (resp.token) {
         localStorage.setItem('token', resp.token)
         localStorage.setItem('type', resp.type)
-        this.myRouter.navigate(['/dashboard',resp.data._id])
+        this.myRouter.navigate(['/dashboard', resp.data._id])
       }
     })
   }
@@ -95,6 +103,14 @@ export class SignupDocComponent implements OnInit {
     // clear errors and reset ticket fields
     this.submitted = false;
     this.q.reset();
+  }
+
+  getCities() {
+    this.cities = this.myCitiesService.getGovernoratesWithSubregions()
+
+  }
+  getAreas(city_name) {
+    this.areas = this.myCitiesService.getSubregionsByname(city_name)
   }
 
 

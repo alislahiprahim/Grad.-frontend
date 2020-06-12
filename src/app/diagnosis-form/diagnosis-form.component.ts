@@ -33,6 +33,7 @@ export class DiagnosisFormComponent implements OnInit {
   MH_object = new medicalHistory
   doctorQuesAns: any = []
   avilableDuration: any
+  dialogClose: boolean;
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, calendar: NgbCalendar, private mypatientService: patientService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -54,7 +55,6 @@ export class DiagnosisFormComponent implements OnInit {
 
     let val = event.target.value
     this.doctorQuesAns.push(val)
-    console.log(this.doctorQuesAns)
   }
 
 
@@ -84,10 +84,12 @@ export class DiagnosisFormComponent implements OnInit {
 
 
   sendDiagnosis() {
-    console.log(this.MH_object, this.MP_object, this.doctorQuesAns, this.fromDate, this.toDate)
     this.avilableDuration = { toDate: this.toDate, fromDate: this.fromDate }
     this.mypatientService.fill_diagnosis({ MainProblem: this.MP_object, medicalHistory: this.MH_object, avilableDuration: this.avilableDuration, doctorQuesAns: this.doctorQuesAns, doctorID: this.data.DId }).subscribe((resp: any) => {
-      console.log(resp)
+      if (resp.data) {
+        debugger
+        this.dialogClose = true
+      }
     })
   }
 

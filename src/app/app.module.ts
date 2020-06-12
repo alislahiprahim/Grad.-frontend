@@ -49,6 +49,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
+  { path: 'home/:location', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Dregister', component: SignupDocComponent },
   { path: 'Diagnosis', component: DiagnosisFormComponent },
