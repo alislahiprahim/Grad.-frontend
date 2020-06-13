@@ -1,5 +1,5 @@
 <div class="container py-5 my-5">
-    <mat-vertical-stepper #stepper>
+    <mat-vertical-stepper #stepper [linear]="true">
         <mat-step>
             <ng-template matStepLabel>Fill out your Username</ng-template>
             <mat-form-field>
@@ -51,7 +51,7 @@
                 </mat-select>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext >Next</button>
+                <button mat-button matStepperNext>Next</button>
             </div>
         </mat-step>
         <mat-step>

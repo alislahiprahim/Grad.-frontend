@@ -45,7 +45,6 @@ import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.componen
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
