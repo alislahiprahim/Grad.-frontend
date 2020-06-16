@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { CitiesService } from '../services/cities.service';
 
 @Component({
   selector: 'app-signup-doc',
@@ -11,11 +12,18 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 })
 export class SignupDocComponent implements OnInit {
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
   username: any
   email: any
   password: any
   phone: any
   briefSummery: any
+  location: any
+  area: any
+
 
   visible = true;
   selectable = true;
@@ -25,16 +33,31 @@ export class SignupDocComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
   doc_questions
+  cities: any;
+  areas: any;
 
-  constructor(public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
+  constructor(private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
+    this.firstFormGroup = this.formBuilder.group({
+      nameCtrl: ['', Validators.required],
+      phoneCtrl: ['', Validators.required],
+      locationCtrl: ['', Validators.required],
+      areaCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      emailCtrl: ['', Validators.required],
+      passwordCtrl: ['', Validators.required],
+      repasswordCtrl: [this.password, Validators.required]
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
     this.dynamicForm = this.formBuilder.group({
       numberOfQuestions: ['', Validators.required],
       Questions: new FormArray([])
     });
-
+    this.getCities();
   }
 
 
@@ -43,8 +66,11 @@ export class SignupDocComponent implements OnInit {
     const Questions = this.doc_questions
     debugger
     this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions }).subscribe((resp: any) => {
-      console.log(resp)
-      localStorage.setItem('token', resp.token)
+      if(resp.message == "success"){
+        this.myRouter.navigate(['/', resp.data._id])
+
+      }
+
 
     })
   }
@@ -98,6 +124,12 @@ export class SignupDocComponent implements OnInit {
     this.q.reset();
   }
 
+  getCities() {
+    this.cities = this.myCitiesService.getGovernoratesWithSubregions()
 
+  }
+  getAreas(city_name) {
+    this.areas = this.myCitiesService.getSubregionsByname(city_name)
+  }
 
 }
