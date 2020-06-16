@@ -12,6 +12,10 @@ import { CitiesService } from '../services/cities.service';
 })
 export class SignupDocComponent implements OnInit {
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
   username: any
   email: any
   password: any
@@ -35,7 +39,23 @@ export class SignupDocComponent implements OnInit {
 
   ngOnInit(): void {
 
-    window.scroll(0,0);
+    this.firstFormGroup = this.formBuilder.group({
+      nameCtrl: ['', Validators.required],
+      phoneCtrl: ['', Validators.required],
+      locationCtrl: ['', Validators.required],
+      areaCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      emailCtrl: ['', Validators.required],
+      passwordCtrl: ['', Validators.required],
+      repasswordCtrl: [this.password, Validators.required]
+
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+
+    window.scroll(0, 0);
 
     this.dynamicForm = this.formBuilder.group({
       numberOfQuestions: ['', Validators.required],
@@ -47,13 +67,14 @@ export class SignupDocComponent implements OnInit {
 
 
   Register() {
-    const { username, email, password, phone, briefSummery, } = this
+    const { username, email, password, phone, briefSummery } = this
     const Questions = this.doc_questions
-    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions,location:{location:this.location,area:this.area} }).subscribe((resp: any) => {
-      if (resp.token) {
-        localStorage.setItem('token', resp.token)
-        localStorage.setItem('type', resp.type)
-        this.myRouter.navigate(['/dashboard', resp.data._id])
+    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
+      if (resp.message = "success") {
+        this.myRouter.navigate(['/'])
+      }
+      else if(resp.message = "error"){
+
       }
     })
   }

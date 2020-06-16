@@ -1,0 +1,28 @@
+.formSignUp{
+    margin: 5rem 10rem 0rem 10rem;
+    width: 75%;
+    height: auto;
+}
+ng-template{
+    background-color: red
+}
+mat-form-field{
+    margin: auto;
+    width: 50%;
+    display: inline-table;
+    padding: 0rem 5rem;
+    input {
+        border-radius: 1px solid red;
+    }
+}
+head{
+    margin-top: 15rem;
+}
+.button{
+   text-align: center;
+   margin: 2rem;
+  button{
+    margin: 1rem;
+   }
+    
+}
