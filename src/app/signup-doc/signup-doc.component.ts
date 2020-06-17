@@ -23,6 +23,10 @@ export class SignupDocComponent implements OnInit {
   briefSummery: any
   location: any
   area: any
+<<<<<<< HEAD
+=======
+
+>>>>>>> Design_Editing
 
   visible = true;
   selectable = true;
@@ -38,7 +42,10 @@ export class SignupDocComponent implements OnInit {
   constructor(private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+<<<<<<< HEAD
 
+=======
+>>>>>>> Design_Editing
     this.firstFormGroup = this.formBuilder.group({
       nameCtrl: ['', Validators.required],
       phoneCtrl: ['', Validators.required],
@@ -49,31 +56,50 @@ export class SignupDocComponent implements OnInit {
       emailCtrl: ['', Validators.required],
       passwordCtrl: ['', Validators.required],
       repasswordCtrl: [this.password, Validators.required]
+<<<<<<< HEAD
 
+=======
+>>>>>>> Design_Editing
     });
     this.thirdFormGroup = this.formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+<<<<<<< HEAD
 
     window.scroll(0, 0);
 
+=======
+>>>>>>> Design_Editing
     this.dynamicForm = this.formBuilder.group({
       numberOfQuestions: ['', Validators.required],
       Questions: new FormArray([])
     });
     this.getCities();
+<<<<<<< HEAD
 
+=======
+>>>>>>> Design_Editing
   }
 
 
   Register() {
     const { username, email, password, phone, briefSummery } = this
     const Questions = this.doc_questions
+<<<<<<< HEAD
     this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
       if (resp.message = "success") {
         this.myRouter.navigate(['/'])
       }
       else if(resp.message = "error"){
+=======
+    debugger
+    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions }).subscribe((resp: any) => {
+      if(resp.message == "success"){
+        this.myRouter.navigate(['/', resp.data._id])
+
+      }
+
+>>>>>>> Design_Editing
 
       }
     })
@@ -128,12 +154,19 @@ export class SignupDocComponent implements OnInit {
 
   getCities() {
     this.cities = this.myCitiesService.getGovernoratesWithSubregions()
+<<<<<<< HEAD
 
   }
   getAreas(city_name) {
     this.areas = this.myCitiesService.getSubregionsByname(city_name)
   }
 
+=======
+>>>>>>> Design_Editing
 
+  }
+  getAreas(city_name) {
+    this.areas = this.myCitiesService.getSubregionsByname(city_name)
+  }
 
 }

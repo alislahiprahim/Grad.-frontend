@@ -37,6 +37,7 @@ import { SignupDocComponent } from './signup-doc/signup-doc.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -46,6 +47,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 // import { MatMomentDateModule } from "@angular/material-moment-adapter";
+=======
+import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
+>>>>>>> Design_Editing
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
@@ -70,8 +74,12 @@ const routes: Routes = [
     SearchBarComponent,
     DiagnosisFormComponent,
     SignupDocComponent,
+<<<<<<< HEAD
     DoctorDashboardComponent,
     TreatmentPlanComponent,
+=======
+    LoginSignUpComponent,
+>>>>>>> Design_Editing
 
   ],
   imports: [

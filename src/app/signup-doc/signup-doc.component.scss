@@ -1,10 +1,23 @@
 .formSignUp{
+<<<<<<< HEAD
     margin: 5rem 10rem 0rem 10rem;
     width: 75%;
     height: auto;
 }
 ng-template{
     background-color: red
+=======
+    margin: auto;
+    text-align: center; 
+    width: 70%;
+    height: auto;
+    background-color: #fff
+}
+.head{
+        color: #022f54;
+        font-weight: bold;
+        font-size: 1rem;
+>>>>>>> Design_Editing
 }
 mat-form-field{
     margin: auto;
@@ -26,3 +39,17 @@ head{
    }
     
 }
+<<<<<<< HEAD
+=======
+
+body{
+    background-origin: border-box;
+    background-color: slateblue;
+}
+
+.card-title{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #022f54;
+}
+>>>>>>> Design_Editing

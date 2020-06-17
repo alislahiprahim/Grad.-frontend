@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <head>Doctor SignUp</head>
 
 
@@ -7,6 +8,13 @@
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel><span style="font-weight: bold; font-size: 1rem; color: #022f54;">Personal
                     Data</span></ng-template>
+=======
+<mat-horizontal-stepper [linear]='true' #stepper class="formSignUp my-5">
+
+     <mat-step [stepControl]="firstFormGroup" [optional]=false>  
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel><span class="head">Personal Data</span></ng-template>
+>>>>>>> Design_Editing
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" [(ngModel)]="username" formControlName="nameCtrl" required>
@@ -42,8 +50,12 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" [optional]=false>
         <form [formGroup]="secondFormGroup">
+<<<<<<< HEAD
             <ng-template matStepLabel><span style="font-weight: bold; font-size: 1rem; color: #022f54;">Login
                     Data</span></ng-template>
+=======
+            <ng-template matStepLabel><span class="head">Login Data</span></ng-template>
+>>>>>>> Design_Editing
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput type='email' placeholder="email" formControlName="emailCtrl" [(ngModel)]="email"
@@ -64,6 +76,7 @@
                 <button class="btn btn-primary" mat-button matStepperNext>Next</button>
             </div>
         </form>
+<<<<<<< HEAD
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" [optional]=false>
         <form [formGroup]="thirdFormGroup">
@@ -73,6 +86,16 @@
                 <mat-label>Brief History</mat-label>
                 <textarea matInput placeholder="Brief History" [(ngModel)]="briefSummery" formControlName="thirdCtrl"
                     required></textarea>
+=======
+    </mat-step>  -->
+    <mat-step [stepControl]="thirdFormGroup" [optional]=false>
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel><span class="head">A Brief About Your History</span></ng-template>
+            <mat-form-field>
+                <mat-label>Brief History</mat-label>
+                <textarea cols="300" rows="10" class="boxsizingBorder" matInput placeholder="Brief History"
+                    [(ngModel)]="briefSummery" formControlName="thirdCtrl" required></textarea>
+>>>>>>> Design_Editing
             </mat-form-field>
             <div class="button">
                 <button class="btn btn-info" mat-button matStepperPrevious>Previous</button>
@@ -80,11 +103,19 @@
             </div>
 
         </form>
+<<<<<<< HEAD
     </mat-step> -->
     <mat-step [stepControl]="dynamicForm" [optional]=false  >
         <ng-template matStepLabel><span style="font-weight: bold; font-size: 1rem; color: #022f54;">Add Questions</span>
         </ng-template>
         <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()"  >
+=======
+    </mat-step> 
+    <mat-step [stepControl]="dynamicForm" [optional]=false>
+        <ng-template matStepLabel><span class="head">Add Questions</span>
+        </ng-template>
+        <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" >
+>>>>>>> Design_Editing
             <div class="card m-3">
                 <div class="card-body">
                     <div class="form-row">
@@ -102,9 +133,15 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div *ngFor="let question of q.controls; let i = index" class="list-group list-group-flush" >
                     <div class="list-group-item" >
                         <h5 class="card-title">Question {{i + 1}}</h5>
+=======
+                <div *ngFor="let question of q.controls; let i = index" class="list-group list-group-flush">
+                    <div class="list-group-item">
+                        <h3 class="card-title">Question {{i + 1}}</h3>
+>>>>>>> Design_Editing
                         <div [formGroup]="question" class="form-row">
                             <div class="form-group col-6">
                                 <mat-form-field class="example-form-field">
@@ -133,6 +170,7 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                 </div>
                 <div class="card-footer text-center button">
                     <button class="btn btn-info" mat-button matStepperPrevious>Previous</button>
@@ -140,18 +178,36 @@
                         (click)="onClear()">Clear</button>
                     <button class="btn btn-primary" matStepperNext mat-button>Submit Questions</button>
                 </div>
+=======
+                </div>
+                <div class="card-footer text-center button">
+                    <button class="btn btn-info" mat-button matStepperPrevious>Previous</button>
+                   
+                        <button class="mr-1 btn btn-danger" mat-flat-button color=danger type="reset"
+                            (click)="onReset()">Reset</button>
+                    <button class="btn btn-primary" matStepperNext mat-button>Submit Questions</button>
+                </div>
+>>>>>>> Design_Editing
             </div>
         </form>
 
 
     </mat-step>
     <mat-step>
+<<<<<<< HEAD
         <ng-template matStepLabel><span style="font-weight: bold; font-size: 1rem; color: #022f54;">Done</span>
+=======
+        <ng-template matStepLabel><span class="head">Done</span>
+>>>>>>> Design_Editing
         </ng-template>
         <p>You are now done.</p>
         <div class="button">
 
+<<<<<<< HEAD
             <button  class="btn btn-success" mat-raised-button color=primary (click)="Register()">register</button>
+=======
+            <button class="btn btn-success" mat-raised-button color=primary (click)="Register()">register</button>
+>>>>>>> Design_Editing
 
         </div>
     </mat-step>
