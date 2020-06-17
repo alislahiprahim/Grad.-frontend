@@ -1,13 +1,13 @@
-<div class="container my-5 py-5">
-    <div class="row float-right ">
+<div class="  py-5">
+    <!-- <div class="row float-right ">
         <div class="col-12 float-right">
             <button class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
                 (click)="ngOnInit()">
                 <i class="fas fa-sync"></i>
             </button>
         </div>
-    </div>
-    <div class="clearfix"></div>
+    </div> -->
+    <!-- <div class="clearfix"></div> -->
     <mat-tab-group dynamicHeight>
         <mat-tab label="My Profile">
             <div class="example-large-box mat-elevation-z4">
@@ -175,7 +175,8 @@
                                                             <h2 style="color: #09c;"> Treatment Plan</h2>
                                                         </div>
                                                         <div class="row">
-                                                            <ng-container *ngIf="!checkTreatment(p._id); else elseTemplate">
+                                                            <ng-container
+                                                                *ngIf="!checkTreatment(p._id); else elseTemplate">
                                                                 <div class="col-12">
                                                                     <div class="example-boundary">
                                                                         <div class="example-box"
@@ -233,8 +234,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row py-2">
-                                                                                    <ng-container
-                                                                                        *ngIf="!checkTreatment(p._id); else elseTemplate">
+                                                                                    <ng-container>
                                                                                         <div class="col-12 py-2">
                                                                                             <button mat-raised-button
                                                                                                 (click)="sendTreatmentPlan(p._id)"
@@ -243,14 +243,14 @@
 
                                                                                         </div>
                                                                                     </ng-container>
-                                                                                    <ng-template #elseTemplate>
+                                                                                    <!-- <ng-template #elseTemplate>
                                                                                         <div class="col-12 py-2">
                                                                                             <button mat-raised-button
                                                                                                 disabled color="accent"
                                                                                                 class='px-5'>Done</button>
                                                                                         </div>
                                                                                     </ng-template>
-
+ -->
                                                                                 </div>
                                                                             </div>
                                                                         </div>
