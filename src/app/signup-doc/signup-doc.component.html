@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <head>Doctor SignUp</head>
 
 
@@ -15,6 +16,22 @@
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel><span class="head">Personal Data</span></ng-template>
 >>>>>>> Design_Editing
+=======
+<div class="container py-5 my-5">
+    <mat-vertical-stepper #stepper [linear]="true">
+        <mat-step>
+            <ng-template matStepLabel>Fill out your Username</ng-template>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="username" [(ngModel)]="username" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Fill out your Email</ng-template>
+>>>>>>> 2d4296bb6b2a124275ba33bd55cbed1db2ab52cc
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" [(ngModel)]="username" formControlName="nameCtrl" required>
@@ -33,7 +50,16 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+<<<<<<< HEAD
 
+=======
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Your Area</ng-template>
+>>>>>>> 2d4296bb6b2a124275ba33bd55cbed1db2ab52cc
             <mat-form-field>
                 <mat-label>Area</mat-label>
                 <mat-select [(ngModel)]="area" formControlName="areaCtrl" required>

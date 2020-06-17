@@ -13,7 +13,7 @@ import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DoctorDashboardComponent implements OnInit {
 
-
+  panelOpenState = false;
   hoveredDate: NgbDate | null = null;
 
   fromDate: NgbDate;
@@ -30,6 +30,8 @@ export class DoctorDashboardComponent implements OnInit {
   cost: any;
   description: any;
   treatmentPlan: any;
+  Patient_TP: any;
+  Patient_DF: any;
 
 
   constructor(private config: NgbDatepickerConfig, calendar: NgbCalendar, public myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, private modalService: NgbModal) {
@@ -42,49 +44,72 @@ export class DoctorDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.DData) { } else {
-      this.getDoctor();
-    }
+    if (!this.DData) { this.getDoctor(); }
+    if (!this.Diagnosis_Form) { this.getAllDiagnosis() }
+    if (!this.treatmentPlan) { this.getAllTreatmentPlan() }
   }
 
   getDoctor() {
-
-
     this.myDoctorService.getDoctorProfile({ Did: this.Did }).subscribe((resp: any) => {
+
       this.DData = resp.data
       this.Patients = this.DData.patients
-      this.Diagnosis_Form = this.Patients.diagnosisForm
       this.img = this.DData.profileIMG
       this.username = this.DData.username
-      
+    })
+
+  }
+
+  getAllDiagnosis() {
+    this.myDoctorService.getAllDiagnosis().subscribe((resp: any) => {
+      this.Diagnosis_Form = resp.data
     })
   }
 
-  openLg(content) {
-    this.modalService.open(content, { size: 'xl', scrollable: true, centered: true });
+  getDiagnosis(pid) {
+    this.Patient_DF = this.Diagnosis_Form.find(df => {
+      return df.patientID._id == pid
+    })
   }
 
-  getDiagnosis(id) {
+  getAllTreatmentPlan() {
 
-    if (this.Diagnosis_Form) { } else {
-      this.myDoctorService.getDiangosisForm({ Did: id }).subscribe((resp: any) => {
-        console.log(resp.data)
-        this.Diagnosis_Form = resp.data
-      });
-    }
+    this.myDoctorService.getTreatment().subscribe((resp: any) => {
+      this.treatmentPlan = resp.data
+    })
+  }
 
+  geTreatment(pid) {
+    this.Patient_TP = this.treatmentPlan.find(tp => {
+      return tp.patientID._id == pid
+    })
+  }
+  checkTreatment(pid): Boolean {
+
+    const ts = this.treatmentPlan.find(tp => {
+      if (tp.patientID._id == pid) {
+    
+        return true;
+      } else { return false }
+    });
+    return ts
   }
 
   sendTreatmentPlan(Pid) {
 
-    this.myDoctorService.createTreatmentPlan({ description: this.description, cost: this.cost, treatmentDate: { toDate: this.toDate, formDate: this.fromDate }, patientID: Pid }).subscribe((resp: any) => {
+    this.myDoctorService.createTreatmentPlan({ description: this.description, cost: this.cost, treatmentDate: { toDate: this.toDate, fromDate: this.fromDate }, patientID: Pid }).subscribe((resp: any) => {
       console.log(resp.data)
       if (resp.message == 'success') {
-        this.treatmentPlan = resp.data
+        
       }
     })
 
   };
+
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'xl', scrollable: true, centered: true });
+  }
 
 
   onDateSelection(date: NgbDate) {
@@ -109,5 +134,7 @@ export class DoctorDashboardComponent implements OnInit {
   isRange(date: NgbDate) {
     return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
   }
+
+
 
 }

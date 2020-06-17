@@ -64,16 +64,16 @@ export class NavComponent implements OnInit {
       if (resp.token) {
         localStorage.setItem('token', resp.token)
         localStorage.setItem('type', resp.type)
+        localStorage.setItem('id', resp.id)
 
         if (resp.type == 'patient') {
           this.myrouter.navigate(['home']);
         } else if (resp.type == 'doctor') {
-          this.id = resp.id
-          this.myrouter.navigate(['dashboard', resp.id]);
+          this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
 
         }
         else if (resp.type == 'travelAgent') {
-          this.myrouter.navigate(['dashboard', resp.id]);
+          this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
           this.id = resp.id
         } else {
           this.myrouter.navigate(['home']);
@@ -84,13 +84,12 @@ export class NavComponent implements OnInit {
   }
 
   myAccount() {
-    console.log(localStorage.getItem('type'))
-    debugger
+    
     if (localStorage.getItem('type') == 'patient') {
       // navigate patient profile
     }
     if (localStorage.getItem('type') == 'doctor') {
-      this.myrouter.navigate(['dashboard', this.id]);
+      this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
     }
     if (localStorage.getItem('type') == 'travelAgent') {
       //this.myrouter.navigate(['dashboard', this.id]);
