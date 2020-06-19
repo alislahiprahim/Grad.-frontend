@@ -44,8 +44,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: 'Diagnosis/:id', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
+  { path: 'Pdashboard/:id', component: PatientProfileComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -73,6 +75,7 @@ const routes: Routes = [
     SignupDocComponent,
     DoctorDashboardComponent,
     TreatmentPlanComponent,
+    PatientProfileComponent,
 
   ],
   imports: [

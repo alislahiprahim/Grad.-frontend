@@ -13,4 +13,7 @@ export class patientService {
     fill_diagnosis(data) {
         return this.myHttpClient.post(this.backendURL + 'fillDiagnosisForm', data)
     }
+    get_patient() {
+        return this.myHttpClient.get(this.backendURL + 'account')
+    }
 }

@@ -84,9 +84,9 @@ export class NavComponent implements OnInit {
   }
 
   myAccount() {
-    
+
     if (localStorage.getItem('type') == 'patient') {
-      // navigate patient profile
+      this.myrouter.navigate(['Pdashboard', localStorage.getItem('id')]);
     }
     if (localStorage.getItem('type') == 'doctor') {
       this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);

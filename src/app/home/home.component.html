@@ -1,7 +1,11 @@
-<div class="container py-5 my-5">
-    <div class="row">
-        <div class="col-lg-2 col-md-12 col-sm-12 ">
-            <div class="searchbar text-center">
+<div class="my-3" style="position: relative; top: 4rem;">
+    <app-search-bar></app-search-bar>
+</div>
+
+<div class="container-fluid" style="background-color: #195e83;">
+    <div class="row py-5">
+        <div class="col-lg-2 col-md-12 mx-auto">
+            <div class="searchbar text-center ">
                 <div class="md-form">
                     <input mdbInput type="text" class="form-control" [matAutocomplete]="auto"
                         (keyup)='handleFilter($event)'>
@@ -22,56 +26,54 @@
             </div>
         </div>
         <div class="col-lg-10 col-md-12 col-sm-12">
+            <div class="container py-2 ">
+                <div class="row mx-auto">
+                    <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
 
-            <div class="py-4 px-0">
-                <div class="row py-2 px-0">
-                    <div class="col-md-6 col-lg-4 col-sm-12 px-0" *ngFor="let i of filteredArray | paginate: config">
+                        <div class="py-4 px-0">
+                            <div class="row py-2 px-0">
+                                <div class="col-md-6 col-lg-4 col-sm-12 px-0"
+                                    *ngFor="let i of filteredArray | paginate: config">
 
-                        <div class="DIVCARD">
-                            <!------------------- HEADER OF THE CARD -------------------->
-                            <div class="divHEADER">
-                                <img class="img-fluid" src="{{i.profileIMG}}">
-                            </div>
-                            <!------------------- BODY OF THE CARD -------------------->
-                            <div class="mainBODY">
-                                <div class="bodyHeader" style="width: 100%;">
-                                    <div class="bannerBODY bg-primary" >Archeology</div>
-                                    <h1>{{i.username}}</h1>
-                                    <!--TITRE -->
-                                    <p class="bodySentence">
-                                        Using Satellite Imagery
-                                    </p>
+                                    <div class="DIVCARD">
+                                        <!------------------- HEADER OF THE CARD -------------------->
+                                        <div class="divHEADER">
+                                            <img class="img-fluid" src="{{i.profileIMG}}">
+                                        </div>
+                                        <!------------------- BODY OF THE CARD -------------------->
+                                        <div class="mainBODY">
+                                            <div class="bodyHeader" style="width: 100%;">
+                                                <div class="bannerBODY bg-primary">Archeology</div>
+                                                <h1>{{i.username | uppercase}}</h1>
+                                                <!--TITRE -->
+                                                <p class="bodySentence">
+                                                    Dental
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-------- HIDDEN Description of the article------>
+                                        <p class="BodyDescription">
+                                            {{i.briefSummery }}
+                                            <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}}
+                                                profile</a>
+                                        </p>
+
+
+
+                                    </div>
+
                                 </div>
-                            </div>
-                            <!-------- HIDDEN Description of the article------>
-                            <p class="BodyDescription">
-                                Two archaeologists, who recently published their findings in the American Schools of
-                                Research, used
-                                {{i.driefSummery}}
-                                <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}} profile</a>
-                            </p>
 
-                            <!------------------- FOOTER OF THE CARD ------------------>
-                            <div class="divFOOTER">
-                                <i class="icon icon-time"></i> 2min. read
-                                <i class="icon icon-comment"></i> 2139 comments
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     </div>
-</div>
 
-
-
-<div class=" container text-center">
-    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
-    </pagination-controls>
+    <div class=" container text-center">
+        <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
+        </pagination-controls>
+    </div>
 </div>
