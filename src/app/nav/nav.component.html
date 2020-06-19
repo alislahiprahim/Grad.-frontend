@@ -1,31 +1,48 @@
 <header class="header">
-    <a class="logo" [routerLink]="[ '/' ]">DocTourism</a>
+    <a class="logo" [routerLink]="[ '/' ]"><span style="color: gold;"><i
+                class="fab fa-dyalog"></i></span>octour<span style="color: gold; font-weight: 600;">i</span>sm</a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu">
+    <ul class="menu2">
         <li>
-            <button class="my-btn" [routerLink]="[ '/home']">Home</button>
+            <a class="my-btn" [routerLink]="[ '/home']">Home</a>
         </li>
-        <li *ngIf="!myAuthService.isLoggedin()">
-            <button class="my-btn" data-toggle="modal" (click)="frame2.show()">Sign Up
-            </button>
+        <li>
+            <a class="my-btn" [routerLink]="[ '/home']">Doctors</a>
         </li>
-        <li *ngIf="!myAuthService.isLoggedin()">
-            <button class="my-btn" style="background-color: #fff;color:#068efe;" data-toggle="modal"
-                (click)="frame.show()">Login</button>
+        <li>
+            <a class="my-btn" [routerLink]="[ '/home']">Services</a>
         </li>
-
-        <li *ngIf="myAuthService.isLoggedin()">
-            <button class="my-btn" style="background-color: #fff;color:#068efe"
-                [matMenuTriggerFor]="menu">Profile</button>
+        <li>
+            <a class="my-btn" [routerLink]="[ '/home']">About</a>
+        </li>
+    </ul>
+    <ul class="menu" *ngIf="!myAuthService.isLoggedin()">
+        <li>
+            <a class="signup" data-toggle="modal" (click)="frame2.show()">Sign Up
+            </a>
+        </li>
+        <li>
+            <a class="login" data-toggle="modal" (click)="frame.show()">Login</a>
+        </li>
+    </ul>
+    <ul style="float: right;" *ngIf="myAuthService.isLoggedin()">
+        <li>
+            <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="myAccount()">My account</button>
-                <button mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</button>
+                <a class="item" mat-menu-item (click)="myAccount()">Profile</a>
+                <a class="item" mat-menu-item (click)="myAccount()">Diagnosis Forms</a>
+                <a class="item" mat-menu-item (click)="myAccount()">Treatment Plans</a>
+                <div style="height: 2px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
+                <a class="item" mat-menu-item (click)="myAccount()">Doctors</a>
+                <a class="item" mat-menu-item (click)="myAccount()">English</a>
+                <a class="item" mat-menu-item (click)="myAccount()">Help & Support</a>
+                <div style="height: 3px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
+                <a class="item" mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</a>
             </mat-menu>
         </li>
-
-
     </ul>
+
 </header>
 
 <!-- sign up -->
@@ -34,7 +51,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center" style="background-color: #068efe;">
-                <h4 class="modal-title w-100 font-weight-bold"  style="font-size: 2rem; padding-top: .5rem; color: white;">Sign up</h4>
+                <h4 class="modal-title w-100 font-weight-bold"
+                    style="font-size: 2rem; padding-top: .5rem; color: white;">Sign up</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
                     <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
                 </button>
@@ -42,8 +60,8 @@
             <div class="modal-body mx-3">
                 <div class="md-form mb-2">
                     <mdb-icon fas icon="user" class="prefix " style="color: #068efe;"></mdb-icon>
-                    <input type="text" id="orangeForm-name" style="border: 1px solid #068efe; padding-left: 1rem;" class="form-control" [formControl]="signupFormModalName"
-                        mdbInput mdbValidate>
+                    <input type="text" id="orangeForm-name" style="border: 1px solid #068efe; padding-left: 1rem;"
+                        class="form-control" [formControl]="signupFormModalName" mdbInput mdbValidate>
                     <label for="orangeForm-name">&nbsp;&nbsp;&nbsp;Your name</label>
                     <mdb-error
                         *ngIf="signupFormModalName.invalid && (signupFormModalName.dirty || signupFormModalName.touched)">
@@ -56,7 +74,8 @@
                 </div>
                 <div class="md-form mb-3">
                     <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="email" id="orangeForm-email" class="form-control"  style="border: 1px solid #068efe; padding-left: 1rem;"  [formControl]="signupFormModalEmail"
+                    <input type="email" id="orangeForm-email" class="form-control"
+                        style="border: 1px solid #068efe; padding-left: 1rem;" [formControl]="signupFormModalEmail"
                         mdbInput mdbValidate>
                     <label for="orangeForm-email">&nbsp;&nbsp;&nbsp;Your email</label>
                     <mdb-error
@@ -73,8 +92,9 @@
 
                 <div class="md-form mb-3">
                     <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="password" id="orangeForm-pass" class="form-control"  style="border: 1px solid #068efe; padding-left: 1rem;" 
-                        [formControl]="signupFormModalPassword" mdbInput mdbValidate>
+                    <input type="password" id="orangeForm-pass" class="form-control"
+                        style="border: 1px solid #068efe; padding-left: 1rem;" [formControl]="signupFormModalPassword"
+                        mdbInput mdbValidate>
                     <label for="orangeForm-pass">&nbsp;&nbsp;&nbsp;Your password</label>
                     <mdb-error
                         *ngIf="signupFormModalPassword.invalid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
@@ -87,7 +107,8 @@
                 </div>
                 <div class="md-form mb-3">
                     <i class="fas fa-venus-mars prefix" style="color: #068efe;"></i>
-                    <input type="text" id="orangeForm-gender" class="form-control"  style="border: 1px solid #068efe; padding-left: 1rem;"  [formControl]="signupFormModalGender"
+                    <input type="text" id="orangeForm-gender" class="form-control"
+                        style="border: 1px solid #068efe; padding-left: 1rem;" [formControl]="signupFormModalGender"
                         mdbInput mdbValidate>
                     <label for="orangeForm-Gender">&nbsp;&nbsp;&nbsp;male or female</label>
                     <mdb-error
@@ -104,7 +125,8 @@
 
                 <div class="md-form mb-3">
                     <mdb-icon fas icon="phone-alt" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="number" id="orangeForm-phone" class="form-control"  style="border: 1px solid #068efe; padding-left: 1rem;"  [formControl]="signupFormModalPhone"
+                    <input type="number" id="orangeForm-phone" class="form-control"
+                        style="border: 1px solid #068efe; padding-left: 1rem;" [formControl]="signupFormModalPhone"
                         mdbInput mdbValidate>
                     <label for="orangeForm-phone">&nbsp;&nbsp;&nbsp;Your Phone</label>
                     <mdb-error
@@ -121,8 +143,9 @@
 
                 <div class="md-form mb-3">
 
-                    <mdb-icon far icon="calendar-check" class="prefix" style="color: #068efe;"  ></mdb-icon>
-                    <input type="number" id="orangeForm-age" class="form-control"  style="border: 1px solid #068efe; padding-left: 1rem;"  [formControl]="signupFormModalAge"
+                    <mdb-icon far icon="calendar-check" class="prefix" style="color: #068efe;"></mdb-icon>
+                    <input type="number" id="orangeForm-age" class="form-control"
+                        style="border: 1px solid #068efe; padding-left: 1rem;" [formControl]="signupFormModalAge"
                         mdbInput mdbValidate>
                     <label for="orangeForm-age">&nbsp;&nbsp;&nbsp;Your Age</label>
                     <mdb-error
@@ -141,7 +164,9 @@
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn class="waves-light"  style="background-color: #068efe; font-size: medium;color: white; width: 100%;"  mdbWavesEffect (click)="[register(),frame.hide()]">Sign
+                <button mdbBtn class="waves-light"
+                    style="background-color: #068efe; font-size: medium;color: white; width: 100%;" mdbWavesEffect
+                    (click)="[register(),frame.hide()]">Sign
                     up</button>
             </div>
         </div>
@@ -157,17 +182,18 @@
     aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header text-center" style="background-color: #068eff;"> 
-                <h4 class="modal-title w-100 font-weight-bold" style="font-size: 2rem; padding-top: .5rem;color: white;">Sign in</h4>
+            <div class="modal-header text-center" style="background-color: #068eff;">
+                <h4 class="modal-title w-100 font-weight-bold"
+                    style="font-size: 2rem; padding-top: .5rem;color: white;">Sign in</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
                     <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
                 </button>
             </div>
             <div class="modal-body mx-3">
                 <div class="md-form mb-5">
-                    <mdb-icon fas icon="envelope" class="prefix"style="color: #068efe;"></mdb-icon>
-                    <input type="email" id="defaultForm-email"  style="border: 1px solid #068efe;" [formControl]="loginFormModalEmail" class="form-control"
-                        mdbInput mdbValidate>
+                    <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
+                    <input type="email" id="defaultForm-email" style="border: 1px solid #068efe;"
+                        [formControl]="loginFormModalEmail" class="form-control" mdbInput mdbValidate>
                     <label for="defaultForm-email">&nbsp;&nbsp;&nbsp;Your email</label>
                     <mdb-error
                         *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
@@ -182,8 +208,8 @@
 
                 <div class="md-form mb-4">
                     <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="password" id="defaultForm-pass"  style="border: 1px solid #068efe;" [formControl]="loginFormModalPassword"
-                        class="form-control" mdbInput mdbValidate>
+                    <input type="password" id="defaultForm-pass" style="border: 1px solid #068efe;"
+                        [formControl]="loginFormModalPassword" class="form-control" mdbInput mdbValidate>
                     <label for="defaultForm-pass">&nbsp;&nbsp;&nbsp;Your password</label>
                     <mdb-error
                         *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
@@ -202,21 +228,19 @@
                         </div>
                     </div>
                     <div>
-                        <a href="http://localhost:4200/password/forget"  style="font-size: 1rem ; color: #63b7ff;">Forgot password?</a>
+                        <a href="http://localhost:4200/password/forget" style="font-size: 1rem ; color: #63b7ff;">Forgot
+                            password?</a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn  class="waves-light" style="background-color: #068efe; font-size: medium;color: white; width: 100%;" mdbWavesEffect (click)="[login(),frame.hide()]" >Login</button>
+                <button mdbBtn class="waves-light"
+                    style="background-color: #068efe; font-size: medium;color: white; width: 100%;" mdbWavesEffect
+                    (click)="[login(),frame.hide()]">Login</button>
             </div>
         </div>
     </div>
 </div>
 <!-- /login -->
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> Design_Editing
+<<<<<<< HEAD=======>>>>>>> Design_Editing

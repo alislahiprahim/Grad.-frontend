@@ -1,35 +1,25 @@
 .Searchbar {
-    position: absolute;
-    top: 70%;
-    left: 8%;
     margin: auto;
     text-align: center;
-    height: 20vh;
+    height: auto;
     background-color: #fff;
-    box-shadow: 1px 1px 11px 1px #000;
+    box-shadow: 1px 1px 5px 1px #939aa0;
     z-index: 12;
-    border-radius: 25px;
 }
 
 .Searchbar2 {
-    position: absolute;
-    top: 30%;
-    left: 8%;
     margin: auto;
-    text-align: center;
-    height: 47vh;
+    height: auto;
     background-color: #fff;
-    box-shadow: 1px 1px 11px 1px #000;
+    box-shadow: 1px 1px 5px 1px #939aa0;
     z-index: 12;
-    border-radius: 25px;
 }
 
 .Searchbar ul {
     justify-content: center;
     align-items: center;
     display: flex;
-    height: 20vh;
-    padding: 20px;
+    border: 2px solid #068efe;
 }
 
 .dropDown li {
@@ -41,17 +31,17 @@
     align-items: center;
     display: flex;
     cursor: pointer;
+    background-color: rgb(255,255,255);
 }
 
-.dropDown .li-1 {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
+
 .dropDown .li-2 {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    
     background-color: #068efe;
     color: #fff;
+    background-color: #068efe;
+    font-size: 1.5rem;
+    font-weight: 100;
 }
 
 .dropDown button {
@@ -65,6 +55,9 @@
     position: absolute;
     top: 5px;
     left: 10px;
+    font-size: 1rem;
+    font-weight: 100;
+    padding-left: .5rem;
 }
 
 .mySpan2 {
@@ -72,6 +65,9 @@
     top: 30px;
     left: 80px;
     color: #0070cd;
+    font-size: 1rem;
+    font-weight: 100;
+    padding: 1rem;
 }
 
 .myIcon {
@@ -85,11 +81,14 @@
     position: absolute;
     top: 30px;
     left: 80px;
-    border: 0 solid transparent;
     color: #0070cd;
+    border: 0px solid transparent;
+    padding: 1rem;
     cursor: pointer;
     background-color: transparent;
     width: 50%;
+    font-size: 1rem;
+    font-weight: 100;
 }
 ::placeholder {
     color: #0070cd;
@@ -108,8 +107,6 @@
         border: none;
     }
     .dropDown .li-2 {
-        border-bottom-left-radius: 15px;
         border-top: 1px;
-        border-top-right-radius: 0px;
     }
 }

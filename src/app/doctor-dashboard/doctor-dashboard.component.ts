@@ -33,7 +33,6 @@ export class DoctorDashboardComponent implements OnInit {
   Patient_TP: any;
   Patient_DF: any;
 
-
   constructor(private config: NgbDatepickerConfig, calendar: NgbCalendar, public myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, private modalService: NgbModal) {
 
     this.config.maxDate = { year: 2020, month: 7, day: 30 };
@@ -66,16 +65,16 @@ export class DoctorDashboardComponent implements OnInit {
     })
   }
 
-  getDiagnosis(pid) {
-    this.Patient_DF = this.Diagnosis_Form.find(df => {
-      return df.patientID._id == pid
+  getAllTreatmentPlan() {
+    this.myDoctorService.getTreatment().subscribe((resp: any) => {
+      this.treatmentPlan = resp.data
     })
   }
 
-  getAllTreatmentPlan() {
 
-    this.myDoctorService.getTreatment().subscribe((resp: any) => {
-      this.treatmentPlan = resp.data
+  getDiagnosis(pid) {
+    this.Patient_DF = this.Diagnosis_Form.find(df => {
+      return df.patientID._id == pid
     })
   }
 
@@ -88,7 +87,7 @@ export class DoctorDashboardComponent implements OnInit {
 
     const ts = this.treatmentPlan.find(tp => {
       if (tp.patientID._id == pid) {
-    
+
         return true;
       } else { return false }
     });
@@ -100,7 +99,7 @@ export class DoctorDashboardComponent implements OnInit {
     this.myDoctorService.createTreatmentPlan({ description: this.description, cost: this.cost, treatmentDate: { toDate: this.toDate, fromDate: this.fromDate }, patientID: Pid }).subscribe((resp: any) => {
       console.log(resp.data)
       if (resp.message == 'success') {
-        
+
       }
     })
 

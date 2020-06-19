@@ -67,3 +67,23 @@
 .example-full-width {
   width: 100%;
 }
+
+.mat-tab-labels{
+  background-color: #068eff!important;
+  border-radius:5px;
+
+}
+.mat-tab-label-content{
+  font-size: 1.5rem!important;
+  font-weight: 200;
+  color: #fff;
+  font-variant-caps: all-petite-caps;
+  &:focus{
+    font-weight: bold;
+  }
+}
+.mat-tab-group.mat-primary .mat-ink-bar{
+  background-color: gold!important;
+  height: 1.6px!important;
+  margin: auto!important;
+}

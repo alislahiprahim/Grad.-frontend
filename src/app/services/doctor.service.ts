@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class DoctorService {
 
     backendURL = 'http://localhost:8085/doctor/'
+    sharedData: any
 
     constructor(private myHttpClient: HttpClient) { }
 
@@ -31,4 +32,6 @@ export class DoctorService {
     getAllDiagnosis() {
         return this.myHttpClient.get(this.backendURL + 'getAllDiagnosis')
     }
+
+
 }

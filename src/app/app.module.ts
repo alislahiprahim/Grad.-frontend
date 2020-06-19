@@ -37,7 +37,6 @@ import { SignupDocComponent } from './signup-doc/signup-doc.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-<<<<<<< HEAD
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -46,20 +45,15 @@ import { TreatmentPlanComponent } from './treatment-plan/treatment-plan.componen
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-<<<<<<< HEAD
-// import { MatMomentDateModule } from "@angular/material-moment-adapter";
-=======
-import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
->>>>>>> Design_Editing
-=======
->>>>>>> 2d4296bb6b2a124275ba33bd55cbed1db2ab52cc
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
   { path: 'home/:location', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Dregister', component: SignupDocComponent },
-  { path: 'Diagnosis', component: DiagnosisFormComponent },
+  { path: 'Diagnosis/:id', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: '**', component: PageNotFoundComponent },
@@ -77,12 +71,8 @@ const routes: Routes = [
     SearchBarComponent,
     DiagnosisFormComponent,
     SignupDocComponent,
-<<<<<<< HEAD
     DoctorDashboardComponent,
     TreatmentPlanComponent,
-=======
-    LoginSignUpComponent,
->>>>>>> Design_Editing
 
   ],
   imports: [
@@ -118,6 +108,7 @@ const routes: Routes = [
     CardsModule,
     ModalModule,
     TooltipModule,
+    MatSnackBarModule,
     MatTabsModule,
     MatStepperModule,
     PopoverModule,

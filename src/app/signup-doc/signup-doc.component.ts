@@ -12,10 +12,6 @@ import { CitiesService } from '../services/cities.service';
 })
 export class SignupDocComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-
   username: any
   email: any
   password: any
@@ -23,10 +19,8 @@ export class SignupDocComponent implements OnInit {
   briefSummery: any
   location: any
   area: any
-<<<<<<< HEAD
-=======
-
->>>>>>> Design_Editing
+  gender: any
+  title:any
 
   visible = true;
   selectable = true;
@@ -42,65 +36,28 @@ export class SignupDocComponent implements OnInit {
   constructor(private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-
-=======
->>>>>>> Design_Editing
-    this.firstFormGroup = this.formBuilder.group({
-      nameCtrl: ['', Validators.required],
-      phoneCtrl: ['', Validators.required],
-      locationCtrl: ['', Validators.required],
-      areaCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this.formBuilder.group({
-      emailCtrl: ['', Validators.required],
-      passwordCtrl: ['', Validators.required],
-      repasswordCtrl: [this.password, Validators.required]
-<<<<<<< HEAD
-
-=======
->>>>>>> Design_Editing
-    });
-    this.thirdFormGroup = this.formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
-<<<<<<< HEAD
 
     window.scroll(0, 0);
 
-=======
->>>>>>> Design_Editing
     this.dynamicForm = this.formBuilder.group({
       numberOfQuestions: ['', Validators.required],
       Questions: new FormArray([])
     });
     this.getCities();
-<<<<<<< HEAD
 
-=======
->>>>>>> Design_Editing
   }
 
 
   Register() {
-    const { username, email, password, phone, briefSummery } = this
+    const { username, email, password, phone, briefSummery, gender,title } = this
     const Questions = this.doc_questions
-<<<<<<< HEAD
-    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
-      if (resp.message = "success") {
-        this.myRouter.navigate(['/'])
-      }
-      else if(resp.message = "error"){
-=======
-    debugger
-    this.myAuthService.d_register({ username, email, password, phone, briefSummery, Questions }).subscribe((resp: any) => {
-      if(resp.message == "success"){
-        this.myRouter.navigate(['/', resp.data._id])
-
-      }
-
->>>>>>> Design_Editing
-
+    
+    this.myAuthService.d_register({ username, email, password, phone, gender,title, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
+      debugger
+      if (resp.token) {
+        localStorage.setItem('token', resp.token)
+        localStorage.setItem('type', resp.type)
+        this.myRouter.navigate(['/dashboard', resp.data._id])
       }
     })
   }
@@ -154,19 +111,12 @@ export class SignupDocComponent implements OnInit {
 
   getCities() {
     this.cities = this.myCitiesService.getGovernoratesWithSubregions()
-<<<<<<< HEAD
 
   }
   getAreas(city_name) {
     this.areas = this.myCitiesService.getSubregionsByname(city_name)
   }
 
-=======
->>>>>>> Design_Editing
 
-  }
-  getAreas(city_name) {
-    this.areas = this.myCitiesService.getSubregionsByname(city_name)
-  }
 
 }

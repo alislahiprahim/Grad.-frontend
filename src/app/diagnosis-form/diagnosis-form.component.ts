@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import * as _ from 'lodash';
-import { DialogData } from '../doctor-profile/doctor-profile.component';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { patientService } from '../services/patient.services';
+import { DoctorService } from '../services/doctor.service';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 class MainProblem {
@@ -24,7 +26,10 @@ class medicalHistory {
 })
 export class DiagnosisFormComponent implements OnInit {
 
+  Did = this.myActivatedRoute.snapshot.paramMap.get('id')
+
   hoveredDate: NgbDate | null = null;
+  agreeConditions:any=false
 
   fromDate: NgbDate;
   toDate: NgbDate | null = null;
@@ -33,13 +38,39 @@ export class DiagnosisFormComponent implements OnInit {
   MH_object = new medicalHistory
   doctorQuesAns: any = []
   avilableDuration: any
-  dialogClose: boolean;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, calendar: NgbCalendar, private mypatientService: patientService) {
+  DData: any;
+
+  constructor(config: NgbModalConfig,private modalService: NgbModal, private myelementRef: ElementRef, private _snackBar: MatSnackBar, private myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, calendar: NgbCalendar, private mypatientService: patientService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
+  ngAfterViewInit(): void {
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#195e83'
+  }
+  ngOnDestroy(): void {
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f3f7f3'
+  }
+
+
   ngOnInit(): void {
+    if (!this.DData) {
+      this.getDoctorProfile()
+    }
+  }
+
+  getDoctorProfile() {
+    const { Did } = this
+
+    this.myDoctorService.getDoctorProfile({ Did }).subscribe((resp: any) => {
+      this.DData = resp.data
+      debugger
+
+    })
+
   }
 
   getMainProblem(e) {
@@ -85,14 +116,25 @@ export class DiagnosisFormComponent implements OnInit {
 
   sendDiagnosis() {
     this.avilableDuration = { toDate: this.toDate, fromDate: this.fromDate }
-    this.mypatientService.fill_diagnosis({ MainProblem: this.MP_object, medicalHistory: this.MH_object, avilableDuration: this.avilableDuration, doctorQuesAns: this.doctorQuesAns, doctorID: this.data.DId }).subscribe((resp: any) => {
+    this.mypatientService.fill_diagnosis({ MainProblem: this.MP_object, medicalHistory: this.MH_object, avilableDuration: this.avilableDuration, doctorQuesAns: this.doctorQuesAns, doctorID: this.Did }).subscribe((resp: any) => {
       if (resp.data) {
-        debugger
-        this.dialogClose = true
+        setTimeout(() => {
+          this.openSnackBar('Diagnosis Created Successfully', 'done')
+        }, 2000);
+        window.close()
       }
     })
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
 
+  }
+
+  open(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
 
 }

@@ -1,6 +1,6 @@
 <ng-container *ngIf="this.innerWidth >760; else elseTemplate">
 
-    <div class="Searchbar container mx-auto">
+    <div class="Searchbar container">
 
         <ul class="row dropDown">
             <li class="li-1 col-md-3" [matMenuTriggerFor]="menu">
@@ -41,7 +41,7 @@
                 <input class="myInput" placeholder="Doctor Name">
 
             </li>
-            <li class="li-2 col-md-3" [routerLink]="['home']" [queryParams]="{Location:this.location}">
+            <li class="li-2 col-md-3" [routerLink]="['home']" [queryParams]="{Location:this.location}" style="">
                 <i class="fa fa-search px-4"></i>
                 <span>Search</span>
             </li>

@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: Helvetica, sans-serif;
     background-color: #f4f4f4;
+    text-align: center;
 }
 
 a {
@@ -13,10 +14,8 @@ a {
 .header {
     background-color: #fff;
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 332;
-    height: 50px;
 }
 
 .header ul {
@@ -40,34 +39,31 @@ a {
     border: none;
     background-color: #fff;
     color: #000;
-    border-radius: 10px;
-    padding: 3px;
-    margin: 7px;
-    margin-top: 15px;
-    margin-right: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    background-color: #068efe;
-    color: #fff;
+    padding: 1.3rem;
+    color: #068efe;
     transition: all .3s ease-in;
+    font-size: 1rem;
+    font-weight: 100;
+
 }
 
 
 .my-btn:hover{
-    background-color: #068efe;
-    color :#fff;
+    border-bottom: 1px solid gold ;
+    font-weight: 500;
 }
 
 .header li a:hover,
 .header .menu-btn:hover {
     background-color: #f4f4f4;
+    overflow-y: visible;
 }
 
 .header .logo {
     display: block;
     float: left;
     font-size: 2em;
-    padding: 10px 20px;
+    padding: 1.3rem;
     text-decoration: none;
     color: #068efe;
 }
@@ -75,6 +71,11 @@ a {
 /* menu */
 
 .header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+.header .menu2 {
     clear: both;
     max-height: 0;
     transition: max-height 0.2s ease-out;
@@ -96,7 +97,6 @@ a {
     display: block;
     height: 2px;
     position: relative;
-    transition: background 0.2s ease-out;
     width: 18px;
 }
 
@@ -126,6 +126,9 @@ a {
 }
 
 .header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+.header .menu-btn:checked ~ .menu2 {
     max-height: 240px;
 }
 
@@ -160,6 +163,11 @@ a {
         float: right;
         max-height: none;
     }
+    .header .menu2 {
+        clear: none;
+        float: left;
+        max-height: none;
+    }
     .header .menu-icon {
         display: none;
     }
@@ -175,4 +183,55 @@ a {
         background-color: #fff;
 
     }
+}
+
+.signup , .login{
+    padding: .5rem!important;
+    margin: 1rem 1rem;
+    border-radius: 1rem;
+}
+.signup{
+    color : #fff!important;
+    background-color: #068efe;
+    &:hover{
+        color:#068efe!important ;
+        border: 1px solid #068efe;
+        font-weight: bold;
+    }
+}
+.login{
+    color:#068efe!important ;
+    font-weight: bold!important;
+    border: 1px solid #068efe;
+
+    &:hover{
+        color : #fff!important;
+        background-color: #068efe!important;
+        border: 1px solid #fff!important;
+
+    }
+
+}
+
+
+//drop down style
+a.mat-menu-trigger.my-btn3{
+    padding: .7rem!important;
+    margin-top: .4rem;
+    margin-right: 1rem;
+
+}
+.my-btn3{
+    background-color: rgb(218, 218, 218);
+    // margin: .5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+.item{
+font-size: 1rem;
+font-weight: 100;
+text-decoration: none;
+&:hover{
+    color: #068efe;
+}
 }

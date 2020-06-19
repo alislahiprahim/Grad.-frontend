@@ -1,15 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../services/doctor.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DiagnosisFormComponent } from '../diagnosis-form/diagnosis-form.component';
 import { AuthService } from '../services/auth.service';
 
 
-export interface DialogData {
-  DId(DId: any);
-  questions: []
-}
 
 @Component({
   selector: 'app-doctor-profile',
@@ -18,11 +12,12 @@ export interface DialogData {
 })
 export class DoctorProfileComponent implements OnInit {
 
+
   Did = this.myActivatedRoute.snapshot.paramMap.get('id')
   DData: any;
   apiData: any;
 
-  constructor(public myAuthService:AuthService, private myMatDialog: MatDialog, private myelementRef: ElementRef, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
+  constructor(public myAuthService: AuthService, private myelementRef: ElementRef, private myActivatedRoute: ActivatedRoute, public myDoctorService: DoctorService) { }
 
 
   ngAfterViewInit(): void {
@@ -42,23 +37,9 @@ export class DoctorProfileComponent implements OnInit {
 
     this.myDoctorService.getDoctorProfile({ Did }).subscribe((resp: any) => {
       this.DData = resp.data
-
+      
     })
 
   }
-
-  openDialog() {
-    const dialogRef = this.myMatDialog.open(DiagnosisFormComponent, {
-      data: { DId: this.Did, questions: this.DData.Questions },
-      height: '100vh',
-      maxHeight:'100vh',
-      width:'150vh',
-      maxWidth:'150vh'
-    });
-
-
-  }
-
-
 
 }

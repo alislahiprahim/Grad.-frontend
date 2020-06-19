@@ -1,46 +1,45 @@
-<section class='bg-img'>
-    <div class="crossfade">
-        <figure></figure>
-        <figure></figure>
-        <figure></figure>
-        <figure></figure>
-        <figure></figure>
+<section class='bg-img' >
+    <div class="crossfade" >
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
     </div>
 </section>
-
-<div>
+<div style="position: relative;bottom: 6rem;left: 0px;">
     <app-search-bar></app-search-bar>
 </div>
-
-<section class="container text-center py-5" style='margin-top: 150px;'>
+<section class="container text-center" style="margin: auto; margin-bottom: 2rem;"  >
     <div class="container">
         <div class="row">
-            <div class="col-md-7 col-12-sm mx-auto">
+            <div class="col-md-1"></div>
+            <div class="col-md-4 col-12-sm mx-auto">
                 <div class="imageCard d-block-100 text-right">
                     <img class="img-fluid" src="../../assets/images/1070305_Russel_04_0136.jpg">
                 </div>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4 col-12-sm ">
-                <div class="container px-3 pargraphCard mx-auto text-left overflow-hidden">
-                    <h1>Welecome To DocTourism</h1>
-                    <h4>online Reservation for medical tourism </h4>
-                    <p class="py-1 " style="word-spacing: 5px; line-height: 2;">Lorem Ipsum is simply dummy text of the
+            <div class="col-md-6 col-12-sm ">
+                <div class="container px-5 my-3 pargraphCard mx-auto text-left overflow-hidden">
+                    <h1 style="font-weight: 900;font-size: 2rem;">Welecome To DocTourism</h1>
+                    <h4 style="font-weight: 100;font-size: 1.3rem;">online Reservation for medical tourism </h4>
+                    <p class="py-1" style="word-spacing:0.2rem; line-height: 2; font-weight: 500;font-size: 1rem;">Lorem Ipsum is simply dummy text of the
                         printing and typesetting industry. Lorem
                         Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                         but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                        Lorem Ipsum electronic typesetting, remaining essentially unchanged. It was
                         Lorem Ipsum</p>
                 </div>
             </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </section>
-
 <section class="mx-auto bg-primary text-center">
-    <div class=" mx-auto py-3">
-        <h1 style="color: #fff;">Why Choose The DocTourism Clinic ?</h1>
+    <div class=" mx-auto py-5">
+        <h1 style="color: #fff; font-weight: bold;">Why Choose The DocTourism Clinic ?</h1>
     </div>
     <div class="container py-3 mx-auto">
         <div class="row">
@@ -60,24 +59,26 @@
     </div>
 </section>
 <section class=" text-center mx-auto">
-    <div class="text-center mx-auto py-3">
-        <h1 style="color: #45abff;">Why Choose The DocTourism Clinic ?</h1>
+    <div class="text-center mx-auto py-5">
+        <h1 style="color: #45abff; font-weight: bold;">Why Choose The DocTourism Clinic ?</h1>
     </div>
     <div class="container py-3 mx-auto">
         <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <img style='width:95%;height:95%'  [routerLink]="[ '/home' ]" src="../../assets/icon/select-doctor.png">
+            </div>
             <div class=" col-md-3 col-sm-6 ">
                 <img style='width:95%;height:95%' src="../../assets/icon/send-dignos.png">
-            </div>
-            <div class="col-md-3 col-sm-6 ">
-                <img class="my-2" style='width:95%;height:95%' src="../../assets/icon/travel.png">
             </div>
             <div class="col-md-3 col-sm-6">
                 <img style='width:95%;height:95%' src="../../assets/icon/treatment-plan.png">
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <img style='width:95%;height:95%'  [routerLink]="[ '/home' ]" src="../../assets/icon/select-doctor.png">
+            <div class="col-md-3 col-sm-6 ">
+                <img class="my-2" style='width:95%;height:95%' src="../../assets/icon/travel.png">
             </div>
+            
+
+            
         </div>
     </div>
 </section>

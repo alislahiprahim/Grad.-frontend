@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 
 
 @Component({
@@ -10,11 +10,19 @@ import { Component, OnInit } from '@angular/core';
 
 export class WelecomeComponent implements OnInit {
 
+  scrHeight:any;
+  scrWidth:any; 
+  @HostListener('window:resize', ['$event'])
+    getScreenSize(event?) {
+          this.scrHeight = window.innerHeight + "px";
+          this.scrWidth = window.innerWidth + "px";
+          console.log(this.scrHeight, this.scrWidth);
+    }
+
   constructor(){ }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    
     
   }
 
