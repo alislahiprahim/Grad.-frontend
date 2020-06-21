@@ -12,6 +12,11 @@ import { CitiesService } from '../services/cities.service';
 })
 export class SignupDocComponent implements OnInit {
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  hide = true;
+  errorData = false
   username: any
   email: any
   password: any
@@ -37,6 +42,22 @@ export class SignupDocComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.firstFormGroup = this.formBuilder.group({
+      nameCtrl: ['', Validators.required],
+      phoneCtrl: ['', Validators.required],
+      locationCtrl: ['', Validators.required],
+      areaCtrl: ['', Validators.required],
+      genderCtrl: ['', Validators.required],
+      emailCtrl: ['', Validators.required],
+      passwordCtrl: ['', Validators.required]
+
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      briefSummeryCtrl: ['', Validators.required],
+      titleCtrl: ['', Validators.required]
+
+    });
+
     window.scroll(0, 0);
 
     this.dynamicForm = this.formBuilder.group({
@@ -53,11 +74,12 @@ export class SignupDocComponent implements OnInit {
     const Questions = this.doc_questions
     
     this.myAuthService.d_register({ username, email, password, phone, gender,title, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
-      debugger
-      if (resp.token) {
-        localStorage.setItem('token', resp.token)
-        localStorage.setItem('type', resp.type)
-        this.myRouter.navigate(['/dashboard', resp.data._id])
+      if (resp.message == "success") {
+        this.errorData = false
+        this.myRouter.navigate(['/', resp.data._id])
+      }
+      else{
+        this.errorData = true
       }
     })
   }
@@ -93,7 +115,6 @@ export class SignupDocComponent implements OnInit {
     }
 
     this.doc_questions = this.dynamicForm.value.Questions
-    this.onReset()
   }
 
   onReset() {
