@@ -10,8 +10,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
-import { HomeComponent } from './home/home.component'
+import { NavbarModule, WavesModule, ButtonsModule  } from 'angular-bootstrap-md';
+import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,7 +29,7 @@ import { DoctorService } from './services/doctor.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotificationsService } from './services/notifications.service';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
+import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule  } from 'angular-bootstrap-md'
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DiagnosisFormComponent } from './diagnosis-form/diagnosis-form.component';
@@ -47,6 +47,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 const routes: Routes = [
@@ -102,6 +103,7 @@ const routes: Routes = [
     MatExpansionModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatIconModule,
     MatMenuModule,
     CheckboxModule,
     InputsModule,

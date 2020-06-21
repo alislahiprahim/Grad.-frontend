@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   validatingForm2: FormGroup;
   type: any;
   id: any
+  hide = true;
 
   constructor(public myAuthService: AuthService, private myrouter: Router) { }
 
@@ -130,6 +131,8 @@ export class NavComponent implements OnInit {
     return this.validatingForm2.get('signupFormModalAge');
   }
 
+
+  
 
 
 }

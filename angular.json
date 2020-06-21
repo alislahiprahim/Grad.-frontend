@@ -134,5 +134,8 @@
       }
     }
   },
-  "defaultProject": "Doctourism"
+  "defaultProject": "Doctourism",
+  "cli": {
+    "analytics": "725113c4-5d2e-49e8-886a-d8862d7cbf4f"
+  }
 }
