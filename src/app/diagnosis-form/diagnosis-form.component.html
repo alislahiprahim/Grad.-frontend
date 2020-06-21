@@ -92,36 +92,9 @@
             <div class='container py-3 px-4 float-right'>
                 <button class="float-right btn"
                     style="font-size:15px; color:#fff;font-weight: 600; padding:10px 20px;border-radius: 5px; background-color:#ed1b24"
-                    (click)="open(content)">Send Diagnosis</button>
+                    (click)="sendDiagnosis()">Send Diagnosis</button>
             </div>
             <div class="clear-fix"></div>
         </div>
     </div>
 </div>
-
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="container py-1">
-        <div class="modal-body py-3">
-            <p>If you run an ecommerce business using a WooCommerce store, you need a clear and robust set of Terms and
-                Conditions. This will help you manage your relationships...</p>
-            <p>Creating a Terms and Conditions agreement is crucially important for practically any business, whatever
-                its
-                turnover, industry, or target market. In this article, we're going to address some of...</p>
-        </div>
-        <div class="container py-1">
-            <div class="row px-4">
-                <div class="col-lg-6 col-md-6">
-                    <input class="form-check-input" type="checkbox" [(ngModel)]="agreeConditions">i agree on the terms
-                    and
-                    conditions
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <button [disabled]='!agreeConditions' class="float-right btn"
-                        style="font-size:15px; color:#fff;font-weight: 600; padding:10px 20px;border-radius: 5px; background-color:#ed1b24"
-                        (click)="[c('Save click'),'sendDiagnosis()']">Confirm</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</ng-template>

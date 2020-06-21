@@ -5,7 +5,6 @@ import { patientService } from '../services/patient.services';
 import { DoctorService } from '../services/doctor.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 class MainProblem {
@@ -29,7 +28,7 @@ export class DiagnosisFormComponent implements OnInit {
   Did = this.myActivatedRoute.snapshot.paramMap.get('id')
 
   hoveredDate: NgbDate | null = null;
-  agreeConditions:any=false
+  agreeConditions: any = false
 
   fromDate: NgbDate;
   toDate: NgbDate | null = null;
@@ -40,12 +39,9 @@ export class DiagnosisFormComponent implements OnInit {
   avilableDuration: any
   DData: any;
 
-  constructor(config: NgbModalConfig,private modalService: NgbModal, private myelementRef: ElementRef, private _snackBar: MatSnackBar, private myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, calendar: NgbCalendar, private mypatientService: patientService) {
+  constructor(private myelementRef: ElementRef, private _snackBar: MatSnackBar, private myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, calendar: NgbCalendar, private mypatientService: patientService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
-
-    config.backdrop = 'static';
-    config.keyboard = false;
   }
 
   ngAfterViewInit(): void {
@@ -117,12 +113,12 @@ export class DiagnosisFormComponent implements OnInit {
   sendDiagnosis() {
     this.avilableDuration = { toDate: this.toDate, fromDate: this.fromDate }
     this.mypatientService.fill_diagnosis({ MainProblem: this.MP_object, medicalHistory: this.MH_object, avilableDuration: this.avilableDuration, doctorQuesAns: this.doctorQuesAns, doctorID: this.Did }).subscribe((resp: any) => {
+      console.log(resp.data)
       if (resp.data) {
-        setTimeout(() => {
-          this.openSnackBar('Diagnosis Created Successfully', 'done')
-        }, 2000);
         window.close()
+        console.log(resp.data)
       }
+
     })
   }
 
@@ -131,10 +127,6 @@ export class DiagnosisFormComponent implements OnInit {
       duration: 2000,
     });
 
-  }
-
-  open(content) {
-    this.modalService.open(content, { size: 'lg' });
   }
 
 }

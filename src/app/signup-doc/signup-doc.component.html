@@ -1,20 +1,20 @@
 <div class="container py-5 my-5">
     <mat-vertical-stepper #stepper [linear]="true">
         <mat-step>
-            <ng-template matStepLabel>Fill out your profession</ng-template>
+            <ng-template matStepLabel>Fill out your Username</ng-template>
             <mat-form-field>
-                <mat-label>title</mat-label>
-                <input matInput placeholder="title" [(ngModel)]="title" required>
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="username" [(ngModel)]="username" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Next</button>
             </div>
         </mat-step>
         <mat-step>
-            <ng-template matStepLabel>Fill out your Username</ng-template>
+            <ng-template matStepLabel>Fill out your profession</ng-template>
             <mat-form-field>
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="username" [(ngModel)]="username" required>
+                <mat-label>title</mat-label>
+                <input matInput placeholder="title" [(ngModel)]="title" required>
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext>Next</button>

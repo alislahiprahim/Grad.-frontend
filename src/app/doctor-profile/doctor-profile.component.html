@@ -17,9 +17,7 @@
                     <span style="color:#09c; font-size: 35px; font-weight: 800;padding: 10px;"> i </span>
                     <h2>About Doctor</h2>
                     <div class="col-md-12 py-3 parag">
-                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas
-                            dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
-                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
+                        <p>{{DData.briefSummery}}</p>
                     </div>
                 </div>
                 <div class="row py-3">
@@ -40,7 +38,7 @@
                     <ng-template #elseTemplate>
                         <div class="col-md-12 py-3">
                             <button class="btn btn-danger px-5" disabled>
-                                <a [routerLink]="[ '/Diagnosis',DData._id ]" target="_blank">Fill Diagnosis</a>
+                                <a style="color:#fff;font-weight:500" [routerLink]="[ '/Diagnosis',DData._id ]" target="_blank">Fill Diagnosis</a>
                             </button>
                         </div>
                     </ng-template>

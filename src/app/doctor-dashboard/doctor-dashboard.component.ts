@@ -22,7 +22,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   Did = this.myActivatedRoute.snapshot.paramMap.get('id')
   DData: any;
-  Patients: any;
+  Patients: any = null;
   Diagnosis_Form: any
   public img: any;
   public username: any;
@@ -62,6 +62,7 @@ export class DoctorDashboardComponent implements OnInit {
   getAllDiagnosis() {
     this.myDoctorService.getAllDiagnosis().subscribe((resp: any) => {
       this.Diagnosis_Form = resp.data
+      debugger
     })
   }
 

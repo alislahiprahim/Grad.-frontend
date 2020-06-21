@@ -29,6 +29,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('type')
+    localStorage.removeItem('id')
     return localStorage.removeItem('token')
 
 
