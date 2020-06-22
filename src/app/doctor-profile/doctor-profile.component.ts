@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class DoctorProfileComponent implements OnInit {
 
-
+  readMore= false;
   Did = this.myActivatedRoute.snapshot.paramMap.get('id')
   DData: any;
   apiData: any;
@@ -37,9 +37,18 @@ export class DoctorProfileComponent implements OnInit {
 
     this.myDoctorService.getDoctorProfile({ Did }).subscribe((resp: any) => {
       this.DData = resp.data
-      
+
     })
 
+  }
+
+  ReadMore() {
+    debugger
+    if (this.readMore == false) {
+      this.readMore = true
+    } else {
+      this.readMore = false
+    }
   }
 
 }

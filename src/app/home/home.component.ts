@@ -9,7 +9,7 @@ import { DoctorService } from '../services/doctor.service';
 })
 export class HomeComponent implements OnInit {
 
-  DataArr: any = [];
+  DataArr: any;
   filteredArray: any[];
   config: any;
   searchText: any = ''
@@ -34,7 +34,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDoctors()
+    if (this.DataArr) { } else {
+      this.getDoctors()
+    }
   }
 
 

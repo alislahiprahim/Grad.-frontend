@@ -76,7 +76,9 @@ export class SignupDocComponent implements OnInit {
     this.myAuthService.d_register({ username, email, password, phone, gender,title, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
       if (resp.message == "success") {
         this.errorData = false
-        this.myRouter.navigate(['/', resp.data._id])
+        localStorage.setItem('token', resp.token)
+        localStorage.setItem('type', resp.type)
+        this.myRouter.navigate(['/dashboard', resp.data._id])
       }
       else{
         this.errorData = true

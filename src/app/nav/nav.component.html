@@ -34,10 +34,10 @@
                 <a class="item" mat-menu-item (click)="myAccount()">Diagnosis Forms</a>
                 <a class="item" mat-menu-item (click)="myAccount()">Treatment Plans</a>
                 <div style="height: 2px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
-                <a class="item" mat-menu-item (click)="myAccount()">Doctors</a>
-                <a class="item" mat-menu-item (click)="myAccount()">English</a>
-                <a class="item" mat-menu-item (click)="myAccount()">Help & Support</a>
-                <div style="height: 3px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
+                <a class="item" mat-menu-item>Doctors</a>
+                <a class="item" mat-menu-item>English</a>
+                <a class="item" mat-menu-item>Help & Support</a>
+                <div style=" height: 3px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
                 <a class="item" mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</a>
             </mat-menu>
         </li>
@@ -45,128 +45,70 @@
 
 </header>
 
+
 <!-- sign up -->
-<div mdbModal #frame2="mdbModal"  class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+<div mdbModal #frame2="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"  role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-radius: 1rem;">
-            <div class="modal-header text-center" style="background-color: #068efe;border-top-left-radius: 1rem;border-top-right-radius: 1rem;">
+            <div class="modal-header text-center"
+                style="background-color: #068efe;border-top-left-radius: 1rem;border-top-right-radius: 1rem;">
                 <h4 class="modal-title w-100 font-weight-bold"
                     style="font-size: 2rem; padding-top: .5rem; color: white;">Sign up</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame2.hide()">
-                        <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
-                    </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame2.hide()">
+                    <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
+                </button>
             </div>
             <div class="modal-body mx-3">
-                <div class="md-form mb-2">
-                    <mdb-icon fas icon="user" class="prefix " style="color: #068efe;"></mdb-icon>
-                    <input type="text" id="orangeForm-name" style="  padding-left: 1rem;"
-                        class="form-control" [formControl]="signupFormModalName" mdbInput mdbValidate>
-                    <label for="orangeForm-name">&nbsp;&nbsp;&nbsp;Your name</label>
-                    <mdb-error
-                        *ngIf="signupFormModalName.invalid && (signupFormModalName.dirty || signupFormModalName.touched)">
-                        Input invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalName.valid && (signupFormModalName.dirty || signupFormModalName.touched)">
+                <mdb-icon fas icon="user" class="prefix " style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Enter Username</mat-label>
+                    <input matInput placeholder="username" [(ngModel)]="username">
+                </mat-form-field>
+                <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Email</mat-label>
+                    <input matInput placeholder="Email" [(ngModel)]="email">
+                </mat-form-field>
 
-                    </mdb-success>
-                </div>
-                <div class="md-form mb-3">
-                    <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="email" id="orangeForm-email" class="form-control"
-                        style="  padding-left: 1rem;" [formControl]="signupFormModalEmail"
-                        mdbInput mdbValidate>
-                    <label for="orangeForm-email">&nbsp;&nbsp;&nbsp;Your email</label>
-                    <mdb-error
-                        *ngIf="signupFormModalEmail.invalid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">
-                        Input
-                        invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalEmail.valid && (signupFormModalEmail.dirty || signupFormModalEmail.touched)">
+                <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Password</mat-label>
+                    <input matInput placeholder="password" [(ngModel)]="password">
+                </mat-form-field>
+                <i class="fas fa-venus-mars prefix" style="color: #068efe;"></i>
+                <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <mat-select [(ngModel)]="gender" formControlName="genderCtrl">
+                        <mat-option *ngFor="let g of ['male','female']" [value]='g'>
+                            {{g | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-                    </mdb-success>
-                </div>
-
-                <div class="md-form mb-3">
-                    <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="password" id="orangeForm-pass" class="form-control"
-                        style="  padding-left: 1rem;" [formControl]="signupFormModalPassword"
-                        mdbInput mdbValidate>
-                    <label for="orangeForm-pass">&nbsp;&nbsp;&nbsp;Your password</label>
-                    <mdb-error
-                        *ngIf="signupFormModalPassword.invalid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
-                        Input invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalPassword.valid && (signupFormModalPassword.dirty || signupFormModalPassword.touched)">
-
-                    </mdb-success>
-                </div>
-                <div class="md-form mb-3">
-                    <i class="fas fa-venus-mars prefix" style="color: #068efe;"></i>
-                    <input type="text" id="orangeForm-gender" class="form-control"
-                        style="  padding-left: 1rem;" [formControl]="signupFormModalGender"
-                        mdbInput mdbValidate>
-                    <label for="orangeForm-Gender">&nbsp;&nbsp;&nbsp;male or female</label>
-                    <mdb-error
-                        *ngIf="signupFormModalGender.invalid && (signupFormModalGender.dirty || signupFormModalGender.touched)">
-                        Input
-                        invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalGender.valid && (signupFormModalGender.dirty || signupFormModalGender.touched)">
-
-                    </mdb-success>
-                </div>
-
-                <div class="md-form mb-3">
-                    <mdb-icon fas icon="phone-alt" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="number" id="orangeForm-phone" class="form-control"
-                        style="  padding-left: 1rem;" [formControl]="signupFormModalPhone"
-                        mdbInput mdbValidate>
-                    <label for="orangeForm-phone">&nbsp;&nbsp;&nbsp;Your Phone</label>
-                    <mdb-error
-                        *ngIf="signupFormModalPhone.invalid && (signupFormModalPhone.dirty || signupFormModalPhone.touched)">
-                        Input
-                        invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalPhone.valid && (signupFormModalPhone.dirty || signupFormModalPhone.touched)">
-
-                    </mdb-success>
-                </div>
-
-                <div class="md-form mb-3">
-
-                    <mdb-icon far icon="calendar-check" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="number" id="orangeForm-age" class="form-control"
-                        style="  padding-left: 1rem;" [formControl]="signupFormModalAge"
-                        mdbInput mdbValidate>
-                    <label for="orangeForm-age">&nbsp;&nbsp;&nbsp;Your Age</label>
-                    <mdb-error
-                        *ngIf="signupFormModalAge.invalid && (signupFormModalAge.dirty || signupFormModalAge.touched)">
-                        Input
-                        invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="signupFormModalAge.valid && (signupFormModalAge.dirty || signupFormModalAge.touched)">
-
-                    </mdb-success>
-                </div>
+                <mdb-icon fas icon="phone-alt" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Phone</mat-label>
+                    <input matInput placeholder="phone" [(ngModel)]="phone">
+                </mat-form-field>
 
 
+                <mdb-icon far icon="calendar-check" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Age</mat-label>
+                    <input matInput placeholder="age" [(ngModel)]="age">
+                </mat-form-field>
 
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button mdbBtn class=""
-                    style="background-color: #f7f7f78a; font-size: medium;color: #068efe; width: 100%; border-radius: 2rem;" mdbWavesEffect
-                    (click)="[register(),frame.hide()]">Signup</button>
+                    style="background-color: #f7f7f78a; font-size: medium;color: #068efe; width: 100%; border-radius: 2rem;"
+                    mdbWavesEffect (click)="[register(),frame2.hide()]">Signup</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- /sign up -->
 
@@ -185,35 +127,16 @@
                 </button>
             </div>
             <div class="modal-body mx-3">
-                 <div class="md-form mb-5">
-                    <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="email" id="defaultForm-email" style=" "
-                        [formControl]="loginFormModalEmail" class="form-control" mdbInput mdbValidate>
-                    <label for="defaultForm-email">&nbsp;&nbsp;&nbsp;Your email</label>
-                    <mdb-error
-                        *ngIf="loginFormModalEmail.invalid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
-                        Input invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="loginFormModalEmail.valid && (loginFormModalEmail.dirty || loginFormModalEmail.touched)">
-                       
-                    </mdb-success>
-                </div> 
-
-                <div class="md-form mb-4">
-                    <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                    <input type="password" id="defaultForm-pass" style=" "
-                        [formControl]="loginFormModalPassword" class="form-control" mdbInput mdbValidate>
-                    <label for="defaultForm-pass">&nbsp;&nbsp;&nbsp;Your password</label>
-                    <mdb-error
-                        *ngIf="loginFormModalPassword.invalid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
-                        Input invalid
-                    </mdb-error>
-                    <mdb-success
-                        *ngIf="loginFormModalPassword.valid && (loginFormModalPassword.dirty || loginFormModalPassword.touched)">
-
-                    </mdb-success>
-                </div>
+                <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Email</mat-label>
+                    <input matInput placeholder="email" [(ngModel)]="email">
+                </mat-form-field>
+                <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Password</mat-label>
+                    <input matInput placeholder="password" [(ngModel)]="password">
+                </mat-form-field>
                 <div class="d-flex justify-content-between">
                     <div>
                         <div class="custom-control custom-checkbox">

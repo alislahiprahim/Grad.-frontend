@@ -1,5 +1,5 @@
-<div class="container-fluid my-5">
-    <div class="row float-right" >
+<div class="container-fluid py-5 ">
+    <div class="row float-right ">
         <div class="col-12 float-right my-1">
             <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
                 (click)="ngOnInit()">
@@ -31,16 +31,14 @@
                                     </span>
                                     <h2>About Doctor</h2>
                                     <div class="col-md-12 py-3 parag">
-                                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas
-                                            dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
-                                        <p>dasdlasdjasldjasldsdlaskdasldkjoqwiddwqdqwoddwas</p>
+                                        <p>{{DData.briefSummery}}</p>
                                     </div>
                                 </div>
                                 <div class="row py-3">
                                     <i class="fas fa-map-marker-alt" style="color:#09c; font-size: 30px;"></i>
                                     <h2 style="padding-left: 10px;">About Doctor</h2>
                                     <div class="col-md-12 py-2 parag">
-                                        <p>el-shikh zayed : capital busniss park-sdsdasd </p>
+                                        <p>{{DData.location.location}} : {{DData.location.area}} </p>
                                     </div>
                                 </div>
 
@@ -310,7 +308,7 @@
                                                 {{tp.treatmentDate.toDate.year}}/{{tp.treatmentDate.toDate.month}}/{{tp.treatmentDate.toDate.day}}
                                             </div>
                                             <div class="col-12 py-3">
-                                                Start-date :
+                                                End-date :
                                                 {{tp.treatmentDate.fromDate.year}}/{{tp.treatmentDate.fromDate.month}}/{{tp.treatmentDate.fromDate.day}}
                                             </div>
 

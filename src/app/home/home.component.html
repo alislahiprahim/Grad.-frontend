@@ -1,19 +1,23 @@
-<div class="py-4" style="position: relative; top: 4rem;">
+<div class="" style="position: relative; top: 3.5rem;">
     <app-search-bar></app-search-bar>
 </div>
 <div class="container-fluid px-5" style="background-color: #195e83;">
-    <div class="row my-5">
-        <div class="col-lg-2 col-md-12  text-center my-5 py-4" style="background-color: #fff; height: 20rem;border-radius: 2rem;">
+    <div class="row ">
+
+
+        <div class="col-lg-2 col-md-12  text-center  py-4" 
+            style="background-color: #fff; height: 20rem;border-radius: 1rem; margin-top: 60px;">
             <div class="head">Filter</div>
 
             <div class="searchbar text-center">
                 <div class="md-form">
-                    <input mdbInput type="text" class="form-control" 
-                        (keyup)='handleFilter($event)' style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
+                    <input mdbInput type="text" class="form-control" (keyup)='handleFilter($event)'
+                        style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
                     <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Doctor name</label>
                 </div>
                 <div class="md-form">
-                    <input mdbInput type="text" class="form-control" style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
+                    <input mdbInput type="text" class="form-control"
+                        style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
                     <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</label>
                 </div>
                 <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
@@ -26,10 +30,12 @@
                 </mat-autocomplete>
             </div>
         </div>
+
+
         <div class="col-lg-10 col-md-12 col-sm-12 my-5">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 col-sm-12" *ngFor="let i of filteredArray | paginate: config" >
+                    <div class="col-md-6 col-lg-3 col-sm-12" *ngFor="let i of filteredArray | paginate: config">
 
                         <div class="DIVCARD">
                             <!------------------- HEADER OF THE CARD -------------------->
@@ -39,8 +45,8 @@
                             <!------------------- BODY OF THE CARD -------------------->
                             <div class="mainBODY">
                                 <div class="bodyHeader" style="width: 100%;">
-                                    <div class="bannerBODY bg-primary">Archeology</div>
-                                    <h1>{{i.username | uppercase}}</h1>
+                                    <div class="bannerBODY bg-primary">{{i.title}}</div>
+                                    <h3 style="color:#2980b9">Dr.{{ i.username |titlecase}}</h3>
                                     <!--TITRE -->
                                     <p class="bodySentence">
                                         Dental
@@ -49,8 +55,8 @@
                             </div>
                             <!-------- HIDDEN Description of the article------>
                             <p class="BodyDescription">
-                                {{i.briefSummery }}
-                                <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}}
+                                {{i.briefSummery |slice : 0:20 }}
+                                <a class="btn btn-primary mx-auto" [routerLink]="['/Dprofile',i._id]">{{i.username}}
                                     profile</a>
                             </p>
 
