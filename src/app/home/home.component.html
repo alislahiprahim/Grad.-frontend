@@ -1,11 +1,14 @@
-<div class="my-3" style="position: relative; top: 4rem;">
+<div class="py-4" style="position: relative; top: 4rem;">
     <app-search-bar></app-search-bar>
 </div>
 
 <div class="container-fluid" style="background-color: #195e83;">
     <div class="row py-5">
-        <div class="col-lg-2 col-md-12 mx-auto">
-            <div class="searchbar text-center ">
+        <div class="col-lg-2 col-md-12">
+            <div class="searchbar text-center my-5" style="background-color: #fff;">
+                <div class="bg-primary text-center my-0 py-1" style="color: #fff;">
+                    <h3>Filter Doctors</h3>
+                </div>
                 <div class="md-form">
                     <input mdbInput type="text" class="form-control" [matAutocomplete]="auto"
                         (keyup)='handleFilter($event)'>
@@ -15,8 +18,8 @@
                     <input mdbInput type="text" class="form-control">
                     <label class="">Location</label>
                 </div>
-                <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
-                    mdbWavesEffect>filter</button>
+                <!-- <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
+                    mdbWavesEffect>filter</button> -->
 
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredArray" [value]="option">
@@ -26,35 +29,37 @@
             </div>
         </div>
         <div class="col-lg-10 col-md-12 col-sm-12">
-            <div class="container py-2 ">
+            <div class=" py-2 ">
                 <div class="row mx-auto">
                     <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
 
                         <div class="py-4 px-0">
                             <div class="row py-2 px-0">
-                                <div class="col-md-6 col-lg-4 col-sm-12 px-0"
+                                <div class="col-md-4 col-lg-3 col-sm-12 px-0 my-2"
                                     *ngFor="let i of filteredArray | paginate: config">
 
                                     <div class="DIVCARD">
                                         <!------------------- HEADER OF THE CARD -------------------->
-                                        <div class="divHEADER">
-                                            <img class="img-fluid" src="{{i.profileIMG}}">
+                                        <div class="divHEADER ">
+                                            <img class="img-fluid" style="cursor: pointer;" src="{{i.profileIMG}}"
+                                                [routerLink]="['/Dprofile',i._id]">
                                         </div>
                                         <!------------------- BODY OF THE CARD -------------------->
                                         <div class="mainBODY">
                                             <div class="bodyHeader" style="width: 100%;">
-                                                <div class="bannerBODY bg-primary">Archeology</div>
-                                                <h1>{{i.username | uppercase}}</h1>
+                                                <div class="bannerBODY bg-primary">{{i.title}}</div>
+                                                <h3 style="color:#2980b9">Dr.{{ i.username |titlecase}}</h3>
                                                 <!--TITRE -->
                                                 <p class="bodySentence">
-                                                    Dental
+                                                    {{i.briefSummery |slice : 0:20}}
+                                                    <!-- rate of doctor -->
                                                 </p>
                                             </div>
                                         </div>
                                         <!-------- HIDDEN Description of the article------>
                                         <p class="BodyDescription">
-                                            {{i.title  }}
-                                            <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}}
+
+                                            <a class="btn btn-primary mx-auto" [routerLink]="['/Dprofile',i._id]">
                                                 profile</a>
                                         </p>
 

@@ -38,6 +38,7 @@ export class DiagnosisFormComponent implements OnInit {
   doctorQuesAns: any = []
   avilableDuration: any
   DData: any;
+  others: boolean = false;
 
   constructor(private myelementRef: ElementRef, private _snackBar: MatSnackBar, private myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, calendar: NgbCalendar, private mypatientService: patientService) {
     this.fromDate = calendar.getToday();
@@ -127,6 +128,11 @@ export class DiagnosisFormComponent implements OnInit {
       duration: 2000,
     });
 
+  }
+
+
+  OnOther() {
+    if (this.others == false) { this.others = true } else { this.others = false }
   }
 
 }

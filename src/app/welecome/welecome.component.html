@@ -1,16 +1,16 @@
-<section class='bg-img' >
-    <div class="crossfade" >
-        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
-        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
-        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
-        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
-        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"  ></figure>
+<section class='bg-img'>
+    <div class="crossfade">
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"></figure>
+        <figure [ngStyle]="{'height': scrHeight, 'width':scrWidth}"></figure>
     </div>
 </section>
 <div style="position: relative;bottom: 6rem;left: 0px;">
     <app-search-bar></app-search-bar>
 </div>
-<section class="container text-center" style="margin: auto; margin-bottom: 2rem;"  >
+<section class="container text-center" style="margin: auto; margin-bottom: 2rem;">
     <div class="container">
         <div class="row">
             <div class="col-md-1"></div>
@@ -23,7 +23,8 @@
                 <div class="container px-5 my-3 pargraphCard mx-auto text-left overflow-hidden">
                     <h1 style="font-weight: 900;font-size: 2rem;">Welecome To DocTourism</h1>
                     <h4 style="font-weight: 100;font-size: 1.3rem;">online Reservation for medical tourism </h4>
-                    <p class="py-1" style="word-spacing:0.2rem; line-height: 2; font-weight: 500;font-size: 1rem;">Lorem Ipsum is simply dummy text of the
+                    <p class="py-1" style="word-spacing:0.2rem; line-height: 2; font-weight: 500;font-size: 1rem;">Lorem
+                        Ipsum is simply dummy text of the
                         printing and typesetting industry. Lorem
                         Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
@@ -65,7 +66,7 @@
     <div class="container py-3 mx-auto">
         <div class="row">
             <div class="col-md-3 col-sm-6">
-                <img style='width:95%;height:95%'  [routerLink]="[ '/home' ]" src="../../assets/icon/select-doctor.png">
+                <img style='width:95%;height:95%' [routerLink]="[ '/home' ]" src="../../assets/icon/select-doctor.png">
             </div>
             <div class=" col-md-3 col-sm-6 ">
                 <img style='width:95%;height:95%' src="../../assets/icon/send-dignos.png">
@@ -76,9 +77,10 @@
             <div class="col-md-3 col-sm-6 ">
                 <img class="my-2" style='width:95%;height:95%' src="../../assets/icon/travel.png">
             </div>
-            
 
-            
         </div>
     </div>
+
+
+    <i *ngIf="isShow" (click)="gotoTop()" class="far fa-arrow-alt-circle-up"></i>
 </section>

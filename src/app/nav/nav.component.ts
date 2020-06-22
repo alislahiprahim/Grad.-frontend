@@ -14,37 +14,31 @@ export class NavComponent implements OnInit {
   type: any;
   id: any
   hide = true;
+  email: any
+  username: any
+  password: any
+  phone: any
+  gender: any
+  age: any
 
   constructor(public myAuthService: AuthService, private myrouter: Router) { }
 
   ngOnInit(): void {
 
-    this.validatingForm = new FormGroup({
-      loginFormModalEmail: new FormControl('', Validators.email),
-      loginFormModalPassword: new FormControl('', Validators.required)
-    });
-
-    this.validatingForm2 = new FormGroup({
-      signupFormModalName: new FormControl('', Validators.required),
-      signupFormModalEmail: new FormControl('', Validators.email),
-      signupFormModalPassword: new FormControl('', Validators.required),
-      signupFormModalPhone: new FormControl('', Validators.required),
-      signupFormModalGender: new FormControl('', Validators.required),
-      signupFormModalAge: new FormControl('', Validators.required),
-
-    });
   }
 
 
 
   register() {
 
-    const email = this.signupFormModalEmail.value
-    const username = this.signupFormModalName.value
-    const password = this.signupFormModalPassword.value
-    const phone = this.signupFormModalPassword.value
-    const gender = this.signupFormModalGender.value
-    const age = this.signupFormModalAge.value
+    const {
+      email,
+      username,
+      password,
+      phone,
+      gender,
+      age
+    } = this
 
     this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
       if (resp.token) {
@@ -57,11 +51,9 @@ export class NavComponent implements OnInit {
   }
 
   login() {
-    const { loginFormModalEmail, loginFormModalPassword } = this
-    const email = loginFormModalEmail.value
-    const password = loginFormModalPassword.value
-
+    const { email, password } = this
     this.myAuthService.login({ email, password }).subscribe((resp: any) => {
+      debugger
       if (resp.token) {
         localStorage.setItem('token', resp.token)
         localStorage.setItem('type', resp.type)
@@ -98,41 +90,6 @@ export class NavComponent implements OnInit {
   }
 
 
-  get loginFormModalEmail() {
-    return this.validatingForm.get('loginFormModalEmail');
-  }
-
-  get loginFormModalPassword() {
-    return this.validatingForm.get('loginFormModalPassword');
-  }
-
-
-  get signupFormModalName() {
-    return this.validatingForm2.get('signupFormModalName');
-  }
-
-  get signupFormModalEmail() {
-    return this.validatingForm2.get('signupFormModalEmail');
-  }
-
-  get signupFormModalPassword() {
-    return this.validatingForm2.get('signupFormModalPassword');
-  }
-
-  get signupFormModalPhone() {
-    return this.validatingForm2.get('signupFormModalPhone');
-  }
-
-  get signupFormModalGender() {
-    return this.validatingForm2.get('signupFormModalGender');
-  }
-
-  get signupFormModalAge() {
-    return this.validatingForm2.get('signupFormModalAge');
-  }
-
-
-  
 
 
 }

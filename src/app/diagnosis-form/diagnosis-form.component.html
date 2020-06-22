@@ -1,4 +1,4 @@
-<div class="container  mx-auto" style="background-color: #fff;margin-top: 100px;margin-bottom: 100px;">
+<div class="container mx-auto" style="background-color: #fff;margin:100px;">
     <div class="row">
         <div class="col-12 py-2">
             <h2 class="py-2" style="color: #235a88;border-bottom: 2px solid #235a88; width: 14%;">Diagnosis Form :
@@ -7,7 +7,7 @@
     </div>
     <div class='container px-5'>
         <div class="row px-4 mx-auto">
-            <h3 class="step-head"><span style="font-size: 26px;">Stage 1:</span> Your Main Problem</h3>
+            <h3 class="step-head"><span style="font-size: 26px;">Your Main Problem : </span></h3>
             <div class="container px-5">
                 <div class="row py-3 px-2">
                     <h4> <i class="far fa-arrow-alt-circle-right"></i> Pick What You Want To Do</h4>
@@ -18,20 +18,29 @@
                         <input class="form-check-input" type="checkbox" value="{{mp}}"
                             (click)="getMainProblem($event)">{{mp}}
                     </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input class="form-check-input" type="checkbox" (click)="OnOther()">Other
+                        <mat-form-field *ngIf="others" class="example-full-width">
+                            <mat-label>write down any other main problem</mat-label>
+                            <input matInput type='text' (change)='getMainProblem($event)'>
+                        </mat-form-field>
+
+                    </div>
+
                     <hr class="container mx-auto">
                 </div>
                 <div class="row py-3 px-2">
-                    <h4><i class="far fa-arrow-alt-circle-right"> </i> Little Description</h4>
+                    <h4><i class="far fa-arrow-alt-circle-right"> </i> Little Description About Main Problem</h4>
                 </div>
                 <div class='row px-5'>
                     <mat-form-field class="example-full-width">
                         <mat-label> Descripe What You want to do</mat-label>
-                        <textarea matInput placeholder="write what you need form Doctor"
+                        <textarea matInput placeholder="Ask doctor what you need"
                             [(ngModel)]="this.MP_object.text_problem"></textarea>
                     </mat-form-field>
                 </div>
             </div>
-            <h3 class="step-head"><span style="font-size: 26px;">Stage 2: </span> Your Medical history</h3>
+            <h3 class="step-head"><span style="font-size: 26px;">Your Medical history :</span> </h3>
             <div class="container px-5">
                 <div class="row py-3 px-2">
                     <h4><i class="far fa-arrow-alt-circle-right"> </i>Check What you Complian About</h4>
@@ -68,7 +77,7 @@
             </div>
             <div>
             </div>
-            <h3 class="step-head"><span style="font-size: 26px;">Stage 3: </span> Your Available Time</h3>
+            <h3 class="step-head"><span style="font-size: 26px;">Your Available Time : </span></h3>
             <div class="container px-5">
                 <div class="row py-3 px-2">
                     <h4><i class="far fa-arrow-alt-circle-right"> </i> Give Us Your Free Duration To visit Us</h4>

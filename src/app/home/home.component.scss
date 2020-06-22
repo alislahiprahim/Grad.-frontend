@@ -1,20 +1,25 @@
+*{
+    font-weight:100px;
+}
 .searchbar {
-    padding: 30px;
-    padding-bottom: 30px;
+    padding: 0px;
+    padding-bottom: 60px;
+    margin: 0;
+    height: 240px;
 }
 
 .DIVCARD {
-    width: 280px;
+    width: 210px;
     position: relative;
-    margin-top: 05%;
     left: 05%;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+    padding-bottom: 5px;
 }
 /*-----------------     HEADER   ----------------------- */
 .divHEADER {
-    width: 280px;   
-    height: 250px;
+    width: 210px;   
+    height: 180px;
     background-position: 20% 50%;
     border-radius: 0 0 0 0;
     transition: all 0.3s ease-in-out;
@@ -32,8 +37,8 @@
     position: absolute;
     top: -30px;
     left: 0;
-    padding: 8px 14px;
-    line-height: 14px;
+    padding: 8px 16px;
+    line-height: 16px;
 }
 /* Date Icon on the right in Header */
 /*-----------------   MAIN BODY  ----------------------- */
@@ -50,16 +55,11 @@ h1 {
     font-weight: bold;
     margin-top: -5px;
 }
-h2 {
-    color: #2980b9;
-    margin-top: 15px;
-    font-size: 22px;
-}
 .bodyHeader {
     position: absolute;
     left: 0;
-    padding: 26px;
-    padding-bottom: 15px;
+    padding: 20px;
+    padding-bottom: 0px;
     background-color: white;
     transition: all 0.3s ease-in-out;
 }
@@ -79,7 +79,7 @@ h2 {
 .BodyDescription {
     opacity: 0;
     color: #757b82;
-    line-height: 25px;
+    line-height: 20px;
     transition: all 0.1s ease-in-out;
     margin-left: 15px;
 }
@@ -109,5 +109,7 @@ h2 {
 }
 
 input,label{
-    color: #fff;
+    color: #2e9bf3;
+    font-size: 16px;
+    font-weight:100px;
 }
