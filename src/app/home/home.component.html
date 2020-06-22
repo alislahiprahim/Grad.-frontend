@@ -1,19 +1,20 @@
-<div class="my-3" style="position: relative; top: 4rem;">
+<div class="py-4" style="position: relative; top: 4rem;">
     <app-search-bar></app-search-bar>
 </div>
+<div class="container-fluid px-5" style="background-color: #195e83;">
+    <div class="row my-5">
+        <div class="col-lg-2 col-md-12  text-center my-5 py-4" style="background-color: #fff; height: 20rem;border-radius: 2rem;">
+            <div class="head">Filter</div>
 
-<div class="container-fluid" style="background-color: #195e83;">
-    <div class="row py-5">
-        <div class="col-lg-2 col-md-12 mx-auto">
-            <div class="searchbar text-center ">
+            <div class="searchbar text-center">
                 <div class="md-form">
-                    <input mdbInput type="text" class="form-control" [matAutocomplete]="auto"
-                        (keyup)='handleFilter($event)'>
-                    <label class="">Doctor name</label>
+                    <input mdbInput type="text" class="form-control" 
+                        (keyup)='handleFilter($event)' style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
+                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Doctor name</label>
                 </div>
                 <div class="md-form">
-                    <input mdbInput type="text" class="form-control">
-                    <label class="">Location</label>
+                    <input mdbInput type="text" class="form-control" style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
+                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</label>
                 </div>
                 <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
                     mdbWavesEffect>filter</button>
@@ -25,46 +26,36 @@
                 </mat-autocomplete>
             </div>
         </div>
-        <div class="col-lg-10 col-md-12 col-sm-12">
-            <div class="container py-2 ">
-                <div class="row mx-auto">
-                    <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-lg-10 col-md-12 col-sm-12 my-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 col-sm-12" *ngFor="let i of filteredArray | paginate: config" >
 
-                        <div class="py-4 px-0">
-                            <div class="row py-2 px-0">
-                                <div class="col-md-6 col-lg-4 col-sm-12 px-0"
-                                    *ngFor="let i of filteredArray | paginate: config">
-
-                                    <div class="DIVCARD">
-                                        <!------------------- HEADER OF THE CARD -------------------->
-                                        <div class="divHEADER">
-                                            <img class="img-fluid" src="{{i.profileIMG}}">
-                                        </div>
-                                        <!------------------- BODY OF THE CARD -------------------->
-                                        <div class="mainBODY">
-                                            <div class="bodyHeader" style="width: 100%;">
-                                                <div class="bannerBODY bg-primary">Archeology</div>
-                                                <h1>{{i.username | uppercase}}</h1>
-                                                <!--TITRE -->
-                                                <p class="bodySentence">
-                                                    Dental
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!-------- HIDDEN Description of the article------>
-                                        <p class="BodyDescription">
-                                            {{i.briefSummery }}
-                                            <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}}
-                                                profile</a>
-                                        </p>
-
-
-
-                                    </div>
-
-                                </div>
-
+                        <div class="DIVCARD">
+                            <!------------------- HEADER OF THE CARD -------------------->
+                            <div class="divHEADER">
+                                <img class="img-fluid" src="{{i.profileIMG}}">
                             </div>
+                            <!------------------- BODY OF THE CARD -------------------->
+                            <div class="mainBODY">
+                                <div class="bodyHeader" style="width: 100%;">
+                                    <div class="bannerBODY bg-primary">Archeology</div>
+                                    <h1>{{i.username | uppercase}}</h1>
+                                    <!--TITRE -->
+                                    <p class="bodySentence">
+                                        Dental
+                                    </p>
+                                </div>
+                            </div>
+                            <!-------- HIDDEN Description of the article------>
+                            <p class="BodyDescription">
+                                {{i.briefSummery }}
+                                <a class="btn btn-primary" [routerLink]="['/Dprofile',i._id]">{{i.username}}
+                                    profile</a>
+                            </p>
+
+
+
                         </div>
                     </div>
                 </div>
