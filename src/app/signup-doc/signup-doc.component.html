@@ -1,7 +1,7 @@
 <div class="container-fluid py-5 " style="  background-color: rgb(2, 117, 216);">
 
     <mat-horizontal-stepper #stepper [linear]="true" class="formSignUp my-5">
-           <mat-step [stepControl]="firstFormGroup" [optional]=false>
+        <mat-step [stepControl]="firstFormGroup" [optional]=false>
             <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel><span class="head">Personal Data</span></ng-template>
                 <mat-form-field>
@@ -42,19 +42,19 @@
                     <input matInput type='email' placeholder="email" formControlName="emailCtrl" [(ngModel)]="email"
                         required email>
                 </mat-form-field>
-                <mat-form-field >
+                <mat-form-field>
                     <mat-label>Enter your password</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password"
-                    formControlName="passwordCtrl" required>
-                    <button mat-icon-button matSuffix (click)="hide = !hide"  >
-                    <mat-icon *ngIf="hide">visibility_off</mat-icon>
-                    <mat-icon *ngIf="!hide">visibility</mat-icon>
+                        formControlName="passwordCtrl" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <mat-icon *ngIf="hide">visibility_off</mat-icon>
+                        <mat-icon *ngIf="!hide">visibility</mat-icon>
 
                     </button>
-                  </mat-form-field>
-                
-               
-                  <div>
+                </mat-form-field>
+
+
+                <div>
                     <button class="btn btn-primary" mat-button matStepperNext>Next</button>
                 </div>
             </form>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
             </form>
-        </mat-step> 
+        </mat-step>
         <mat-step>
             <ng-template matStepLabel><span class="head">Done</span>
             </ng-template>
@@ -152,7 +152,8 @@
             <div class="button">
                 <button class="btn btn-info" mat-button matStepperPrevious>Previous</button>
 
-                <button class="btn btn-success" mat-raised-button color=primary (click)="Register()">register</button>
+                <button class="btn btn-success" mat-raised-button color=primary
+                    (click)="Register(content)">register</button>
             </div>
         </mat-step>
     </mat-horizontal-stepper>
@@ -160,13 +161,13 @@
 </div>
 
 
+<ng-template #content let-modal>
 
-
-
-
-
-
-
+    <div class="modal-body">
+        <p>You Sign Up Successfully &hellip;</p>
+        <p>Admins Will Approve Your Request &hellip;</p>
+    </div>
+</ng-template>
 
 
 

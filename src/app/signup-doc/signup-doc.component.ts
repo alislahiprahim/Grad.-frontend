@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CitiesService } from '../services/cities.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-signup-doc',
@@ -25,7 +26,7 @@ export class SignupDocComponent implements OnInit {
   location: any
   area: any
   gender: any
-  title:any
+  title: any
 
   visible = true;
   selectable = true;
@@ -38,7 +39,7 @@ export class SignupDocComponent implements OnInit {
   cities: any;
   areas: any;
 
-  constructor(private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
+  constructor(private modalService: NgbModal, private myCitiesService: CitiesService, public myAuthService: AuthService, private myRouter: Router, public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -69,18 +70,20 @@ export class SignupDocComponent implements OnInit {
   }
 
 
-  Register() {
-    const { username, email, password, phone, briefSummery, gender,title } = this
+  Register(content) {
+    const { username, email, password, phone, briefSummery, gender, title } = this
     const Questions = this.doc_questions
-    
-    this.myAuthService.d_register({ username, email, password, phone, gender,title, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
+
+    this.myAuthService.d_register({ username, email, password, phone, gender, title, briefSummery, Questions, location: { location: this.location, area: this.area } }).subscribe((resp: any) => {
       if (resp.message == "success") {
         this.errorData = false
-        localStorage.setItem('token', resp.token)
-        localStorage.setItem('type', resp.type)
-        this.myRouter.navigate(['/dashboard', resp.data._id])
+        this.openLg(content)
+        setTimeout(() => {
+          this.modalService.dismissAll()
+        }, 3000);
+        this.myRouter.navigate(['/home']  )
       }
-      else{
+      else {
         this.errorData = true
       }
     })
@@ -140,6 +143,10 @@ export class SignupDocComponent implements OnInit {
     this.areas = this.myCitiesService.getSubregionsByname(city_name)
   }
 
+
+  openLg(content) {
+    this.modalService.open(content);
+  }
 
 
 }

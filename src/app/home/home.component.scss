@@ -7,12 +7,12 @@
 }
 
 .DIVCARD {
-    width: 280px;
+    width: 210px;
     position: relative;
-    margin-top: 05%;
     left: 05%;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+    padding-bottom: 5px;
 }
 /*-----------------     HEADER   ----------------------- */
 .divHEADER {
@@ -52,11 +52,6 @@ h1 {
     font-size: 27px;
     font-weight: bold;
     margin-top: -5px;
-}
-h2 {
-    color: #2980b9;
-    margin-top: 15px;
-    font-size: 22px;
 }
 .bodyHeader {
     position: absolute;
@@ -114,7 +109,8 @@ h2 {
 input,label{
     color: #2e9bf3;
     font-size: 16px;
-    font-weight:100px;}
+    font-weight:100px;
+}
 
 .head{
     color: #2980b9;

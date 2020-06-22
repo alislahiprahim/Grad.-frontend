@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="row py-2">
-                    <ng-container *ngIf="this.myAuthService.getType()=='patient'; else elseTemplate">
+                    <ng-container *ngIf="this.myAuthService.getType()=='patient'; else elseTemplate2">
                         <div class="col-md-12 py-3">
                             <button class="btn btn-danger px-5">
                                 <a style="color:#fff;font-weight:500;text-decoration: none;"
@@ -45,11 +45,10 @@
                             </button>
                         </div>
                     </ng-container>
-                    <ng-template #elseTemplate>
+                    <ng-template #elseTemplate2>
                         <div class="col-md-12 py-3">
                             <button class="btn btn-danger px-5" disabled>
-                                <a style="color:#fff;font-weight:500;text-decoration: none"
-                                    [routerLink]="[ '/Diagnosis',DData._id ]" target="_blank">Fill Diagnosis</a>
+                                <a style="color:#fff;font-weight:500;text-decoration: none">Fill Diagnosis</a>
                             </button>
                         </div>
                     </ng-template>

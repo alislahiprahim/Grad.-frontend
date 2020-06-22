@@ -4,9 +4,8 @@
 <div class="container-fluid px-5" style="background-color: #195e83;">
     <div class="row ">
 
-
-        <div class="col-lg-2 col-md-12  text-center  py-4" 
-            style="background-color: #fff; height: 20rem;border-radius: 1rem; margin-top: 60px;">
+        <div class="col-lg-2 col-md-12  text-center  py-4"
+            style="background-color: #fff; height: 20rem;border-radius: 0; margin-top: 60px;box-shadow: 5px 5px 5px rgba(0,0,0,0.7);">
             <div class="head">Filter</div>
 
             <div class="searchbar text-center">
@@ -32,36 +31,48 @@
         </div>
 
 
-        <div class="col-lg-10 col-md-12 col-sm-12 my-5">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 col-sm-12" *ngFor="let i of filteredArray | paginate: config">
+        <div class="col-lg-10 col-md-12 col-sm-12">
+            <div class=" py-3 ">
+                <div class="row mx-auto">
+                    <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
 
-                        <div class="DIVCARD">
-                            <!------------------- HEADER OF THE CARD -------------------->
-                            <div class="divHEADER">
-                                <img class="img-fluid" src="{{i.profileIMG}}">
-                            </div>
-                            <!------------------- BODY OF THE CARD -------------------->
-                            <div class="mainBODY">
-                                <div class="bodyHeader" style="width: 100%;">
-                                    <div class="bannerBODY bg-primary">{{i.title}}</div>
-                                    <h3 style="color:#2980b9">Dr.{{ i.username |titlecase}}</h3>
-                                    <!--TITRE -->
-                                    <p class="bodySentence">
-                                        Dental
-                                    </p>
+                        <div class="py-4 px-0">
+                            <div class="row py-2 px-0">
+                                <div class="col-md-4 col-lg-3 col-sm-12 px-0 my-2"
+                                    *ngFor="let i of filteredArray | paginate: config">
+
+                                    <div class="DIVCARD">
+                                        <!------------------- HEADER OF THE CARD -------------------->
+                                        <div class="divHEADER ">
+                                            <img class="img-fluid" style="cursor: pointer;" src="{{i.profileIMG}}"
+                                                [routerLink]="['/Dprofile',i._id]">
+                                        </div>
+                                        <!------------------- BODY OF THE CARD -------------------->
+                                        <div class="mainBODY">
+                                            <div class="bodyHeader" style="width: 100%;">
+                                                <div class="bannerBODY bg-primary">{{i.title}}</div>
+                                                <h3 style="color:#2980b9">Dr.{{ i.username |titlecase}}</h3>
+                                                <!--TITRE -->
+                                                <p class="bodySentence">
+                                                    {{i.briefSummery |slice : 0:20}}
+                                                    <!-- rate of doctor -->
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-------- HIDDEN Description of the article------>
+                                        <p class="BodyDescription">
+
+                                            <a class="btn btn-primary mx-auto" [routerLink]="['/Dprofile',i._id]">
+                                                profile</a>
+                                        </p>
+
+
+
+                                    </div>
+
                                 </div>
+
                             </div>
-                            <!-------- HIDDEN Description of the article------>
-                            <p class="BodyDescription">
-                                {{i.briefSummery |slice : 0:20 }}
-                                <a class="btn btn-primary mx-auto" [routerLink]="['/Dprofile',i._id]">{{i.username}}
-                                    profile</a>
-                            </p>
-
-
-
                         </div>
                     </div>
                 </div>
