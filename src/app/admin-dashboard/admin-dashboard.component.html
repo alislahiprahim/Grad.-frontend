@@ -1,0 +1,77 @@
+<div style="height: 100%; margin-top: 55px;">
+    <mat-tab-group>
+        <mat-tab label="Dashboard">
+            <h2 class="mx-2 py-2" style="color:#068efe;"> Admin Dashboard</h2>
+            <!-- Admin profile -->
+        </mat-tab>
+        <mat-tab label="Doctors">
+            <div class="container bg-danger py-4">
+                <h2 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h2>
+                <div class="row">
+                    <div class="container col-12">
+                        <mat-list *ngFor="let d of Doctors;let i of index">
+                            <mat-list-item>
+                                <mat-accordion>
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <div class="col-lg-4 col-md-6">
+                                                <mat-panel-title>
+                                                    {{d.username }}
+                                                </mat-panel-title>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <mat-panel-title>
+                                                    status :{{d.activeChecked}}
+                                                </mat-panel-title>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <mat-panel-title>
+                                                    Approving Status: {{d.isApproved}}
+                                                </mat-panel-title>
+                                            </div>
+                                        </mat-expansion-panel-header>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    name: {{d.username}}
+                                                </div>
+                                                <div class="col-12">
+                                                    email: {{d.email}}
+                                                </div>
+                                                <div class="col-12">
+                                                    location: {{d.location.location}}:{{d.location.area}}
+                                                </div>
+                                                <div class="col-12">
+                                                    gender: {{d.gender}}
+                                                </div>
+                                                <div class="col-12">
+                                                    title: {{d.title}}
+                                                </div>
+                                                <div class="col-12">
+                                                    phone: {{d.phone}}
+                                                </div>
+                                                <div class="col-12" *ngIf="!d.isApproved">
+                                                    <button class="btn btn-success my-1 py-0"
+                                                        (click)="approveDoc(d._id,'true')">Accept</button>
+                                                    <button class="btn btn-danger my-1 py-0"
+                                                        (click)="approveDoc(d._id,'false')">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Second">
+        </mat-tab>
+
+    </mat-tab-group>
+</div>

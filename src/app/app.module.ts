@@ -48,6 +48,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import {MatIconModule} from '@angular/material/icon';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 const routes: Routes = [
@@ -59,6 +61,7 @@ const routes: Routes = [
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
+  { path: 'admin', component: AdminDashboardComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -77,6 +80,7 @@ const routes: Routes = [
     DoctorDashboardComponent,
     TreatmentPlanComponent,
     PatientProfileComponent,
+    AdminDashboardComponent,
 
   ],
   imports: [
@@ -87,6 +91,7 @@ const routes: Routes = [
     NavbarModule,
     WavesModule,
     ButtonsModule,
+    MatSidenavModule,
     MatNativeDateModule,
     MatDialogModule,
     MatButtonModule,

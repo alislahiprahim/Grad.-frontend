@@ -32,16 +32,16 @@
 
 
         <div class="col-lg-10 col-md-12 col-sm-12">
-            <div class=" py-3 ">
+            <div class="py-3 ">
                 <div class="row mx-auto">
                     <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
 
-                        <div class="py-4 px-0">
-                            <div class="row py-2 px-0">
+                        <div class="py-4 px-0 mx-auto">
+                            <div class="row py-2 px-0 mx-auto">
                                 <div class="col-md-4 col-lg-3 col-sm-12 px-0 my-2"
                                     *ngFor="let i of filteredArray | paginate: config">
 
-                                    <div class="DIVCARD">
+                                    <div class="DIVCARD" *ngIf="i.isApproved">
                                         <!------------------- HEADER OF THE CARD -------------------->
                                         <div class="divHEADER ">
                                             <img class="img-fluid" style="cursor: pointer;" src="{{i.profileIMG}}"

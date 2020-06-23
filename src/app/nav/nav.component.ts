@@ -68,7 +68,11 @@ export class NavComponent implements OnInit {
         else if (resp.type == 'travelAgent') {
           this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
           this.id = resp.id
-        } else {
+        }
+        else if (resp.type == 'admin') {
+          this.myrouter.navigate(['admin']);
+        }
+        else {
           this.myrouter.navigate(['home']);
         }
       }
@@ -86,6 +90,9 @@ export class NavComponent implements OnInit {
     }
     if (localStorage.getItem('type') == 'travelAgent') {
       //this.myrouter.navigate(['dashboard', this.id]);
+    }
+    if (localStorage.getItem('type') == 'admin') {
+      this.myrouter.navigate(['admin']);
     }
   }
 
