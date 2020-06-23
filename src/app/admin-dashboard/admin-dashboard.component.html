@@ -2,11 +2,30 @@
     <mat-tab-group>
         <mat-tab label="Dashboard">
             <h2 class="mx-2 py-2" style="color:#068efe;"> Admin Dashboard</h2>
-            <!-- Admin profile -->
+            <div class="row">
+                <div class="container col-9">
+                    <div style="display: block">
+                        <canvas mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabels"
+                            [colors]="chartColors" [options]="chartOptions" [legend]="true"
+                            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
         </mat-tab>
         <mat-tab label="Doctors">
-            <div class="container bg-danger py-4">
-                <h2 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h2>
+            <div class="container  py-4">
+                <div class="row">
+                    <div class="col-6">
+                        <h2 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h2>
+                    </div>
+                    <div class="col-6">
+                        <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
+                            (click)="listDoctors()">
+                            <i class="fas fa-sync"></i>
+                        </a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="container col-12">
                         <mat-list *ngFor="let d of Doctors;let i of index">
@@ -31,29 +50,36 @@
                                             </div>
                                         </mat-expansion-panel-header>
                                         <div class="container">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    name: {{d.username}}
+                                            <div class="">
+                                                <div class="row ">
+                                                    <div class="col-3">name:</div>
+                                                    <div class="col-3">{{d.username}}</div>
                                                 </div>
-                                                <div class="col-12">
-                                                    email: {{d.email}}
+                                                <div class="row">
+                                                    <div class="col-3">email:</div>
+                                                    <div class="col-3">{{d.email}}</div>
                                                 </div>
-                                                <div class="col-12">
-                                                    location: {{d.location.location}}:{{d.location.area}}
+                                                <div class="row">
+                                                    <div class="col-3">location:</div>
+                                                    <div class="col-3"> {{d.location.location}}:{{d.location.area}}
+                                                    </div>
                                                 </div>
-                                                <div class="col-12">
-                                                    gender: {{d.gender}}
+                                                <div class="row">
+                                                    <div class="col-3">gender:</div>
+                                                    <div class="col-3"> {{d.gender}}</div>
                                                 </div>
-                                                <div class="col-12">
-                                                    title: {{d.title}}
+                                                <div class="row">
+                                                    <div class="col-3">title: </div>
+                                                    <div class="col-3"> {{d.title}}</div>
                                                 </div>
-                                                <div class="col-12">
-                                                    phone: {{d.phone}}
+                                                <div class="row">
+                                                    <div class="col-3">phone: </div>
+                                                    <div class="col-3"> {{d.phone}} </div>
                                                 </div>
-                                                <div class="col-12" *ngIf="!d.isApproved">
-                                                    <button class="btn btn-success my-1 py-0"
+                                                <div class="col-12" *ngIf="d.isApproved=='false'">
+                                                    <button class="btn btn-success my-1 py-0 myDiv"
                                                         (click)="approveDoc(d._id,'true')">Accept</button>
-                                                    <button class="btn btn-danger my-1 py-0"
+                                                    <button class="btn btn-danger my-1 py-0 myDiv"
                                                         (click)="approveDoc(d._id,'false')">Reject</button>
                                                 </div>
                                             </div>

@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NavbarModule, WavesModule, ButtonsModule  } from 'angular-bootstrap-md';
+import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { HomeComponent } from './home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
@@ -29,7 +29,7 @@ import { DoctorService } from './services/doctor.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotificationsService } from './services/notifications.service';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalModule, TooltipModule, PopoverModule, CheckboxModule, InputsModule, IconsModule, CardsModule  } from 'angular-bootstrap-md'
+import { ModalModule, TooltipModule, PopoverModule, ChartsModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DiagnosisFormComponent } from './diagnosis-form/diagnosis-form.component';
@@ -47,9 +47,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PatientProfileComponent } from './patient-profile/patient-profile.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { AuthGuard } from './services/Auth.guard';
 
 
 const routes: Routes = [
@@ -61,7 +62,7 @@ const routes: Routes = [
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
-  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -89,6 +90,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),
     NavbarModule,
+    ChartsModule,
     WavesModule,
     ButtonsModule,
     MatSidenavModule,

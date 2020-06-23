@@ -41,7 +41,7 @@
                                 <div class="col-md-4 col-lg-3 col-sm-12 px-0 my-2"
                                     *ngFor="let i of filteredArray | paginate: config">
 
-                                    <div class="DIVCARD" *ngIf="i.isApproved">
+                                    <div class="DIVCARD" *ngIf="i.isApproved=='true'">
                                         <!------------------- HEADER OF THE CARD -------------------->
                                         <div class="divHEADER ">
                                             <img class="img-fluid" style="cursor: pointer;" src="{{i.profileIMG}}"
