@@ -51,7 +51,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AuthGuard } from './services/Auth.guard';
+import { UploadImgComponent } from './upload-img/upload-img.component';
+import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
+
+firebase.initializeApp(environment.firebaseConfig);
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
@@ -82,6 +90,7 @@ const routes: Routes = [
     TreatmentPlanComponent,
     PatientProfileComponent,
     AdminDashboardComponent,
+    UploadImgComponent,
 
   ],
   imports: [
@@ -125,6 +134,9 @@ const routes: Routes = [
     MatStepperModule,
     PopoverModule,
     NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
 
 

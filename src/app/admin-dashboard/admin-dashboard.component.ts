@@ -55,7 +55,7 @@ export class AdminDashboardComponent implements OnInit {
     this.myAdminServices.listDoctors().subscribe((resp: any) => {
       if (resp.message == 'success') {
         console.log(resp)
-        this.Doctors = resp.data
+        this.Doctors = resp.data.doctors
       }
       else {
         alert('response error')
@@ -67,8 +67,13 @@ export class AdminDashboardComponent implements OnInit {
 
     this.myAdminServices.approveDoc({ ID: Did, approveFlag: flag }).subscribe((resp: any) => {
       if (resp.message == 'success') {
-        this.openSnackBar('Approvement', 'Done')
-        this.listDoctors()
+        if (flag == 'true') {
+          this.openSnackBar('Approvement', 'Done')
+          this.listDoctors()
+        } else {
+          this.openSnackBar('DisApprovement', 'Done')
+          this.listDoctors()
+        }
       }
     });
   }

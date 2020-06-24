@@ -11,7 +11,7 @@ export class AdminServices {
     constructor(private myHttpClient: HttpClient) { }
 
     listDoctors() {
-        return this.myHttpClient.get(this.backendURL + '/listDcotors')
+        return this.myHttpClient.get(this.backendURL + 'listDcotorsAndAgents')
     }
 
     approveDoc(data) {

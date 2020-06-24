@@ -33,19 +33,24 @@
                                 <mat-accordion>
                                     <mat-expansion-panel>
                                         <mat-expansion-panel-header>
-                                            <div class="col-lg-4 col-md-6">
+                                            <div class="col-lg-3 col-md-6">
                                                 <mat-panel-title>
                                                     {{d.username }}
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-4 col-md-6">
+                                            <div class="col-lg-3 col-md-6">
                                                 <mat-panel-title>
                                                     status :{{d.activeChecked}}
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-4 col-md-6">
+                                            <div class="col-lg-3 col-md-6">
                                                 <mat-panel-title>
                                                     Approving Status: {{d.isApproved}}
+                                                </mat-panel-title>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    CreatedDate: {{d.CreatedDate|date}}
                                                 </mat-panel-title>
                                             </div>
                                         </mat-expansion-panel-header>
@@ -76,7 +81,7 @@
                                                     <div class="col-3">phone: </div>
                                                     <div class="col-3"> {{d.phone}} </div>
                                                 </div>
-                                                <div class="col-12" *ngIf="d.isApproved=='false'">
+                                                <div class="col-12" *ngIf="d.isApproved=='false'||d.isApproved==null">
                                                     <button class="btn btn-success my-1 py-0 myDiv"
                                                         (click)="approveDoc(d._id,'true')">Accept</button>
                                                     <button class="btn btn-danger my-1 py-0 myDiv"

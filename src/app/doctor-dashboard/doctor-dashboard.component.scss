@@ -43,7 +43,6 @@
   max-width: 100%;
   // border: dotted #ccc 2px;
   cursor: move;
-
 }
 
 .custom-day {
@@ -56,7 +55,8 @@
 .custom-day.focused {
   background-color: #e6e6e6;
 }
-.custom-day.range, .custom-day:hover {
+.custom-day.range,
+.custom-day:hover {
   background-color: rgb(2, 117, 216);
   color: white;
 }
@@ -68,22 +68,35 @@
   width: 100%;
 }
 
-.mat-tab-labels{
-  background-color: #068eff!important;
-  border-radius:5px;
-
+.mat-tab-labels {
+  background-color: #068eff !important;
+  border-radius: 5px;
 }
-.mat-tab-label-content{
-  font-size: 1.5rem!important;
+.mat-tab-label-content {
+  font-size: 1.5rem !important;
   font-weight: 200;
   color: #fff;
   font-variant-caps: all-petite-caps;
-  &:focus{
+  &:focus {
     font-weight: bold;
   }
 }
-.mat-tab-group.mat-primary .mat-ink-bar{
-  background-color: gold!important;
-  height: 1.6px!important;
-  margin: auto!important;
+.mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: gold !important;
+  height: 1.6px !important;
+  margin: auto !important;
+}
+
+.layer {
+  background-color: rgb(255, 0, 0);
+  position: absolute;
+  top: 27%;
+  left:40%;
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  transition: all 0.3s ease-in;
+}
+.img:hover>.layer {
+  opacity: 1;
 }
