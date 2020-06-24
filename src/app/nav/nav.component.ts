@@ -9,6 +9,11 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  options = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ];
   validatingForm: FormGroup;
   validatingForm2: FormGroup;
   type: any;
@@ -20,6 +25,10 @@ export class NavComponent implements OnInit {
   phone: any
   gender: any
   age: any
+  validError = false;
+  alreadyRegester = false;
+  invalidMail = false;
+
 
   constructor(public myAuthService: AuthService, private myrouter: Router) { }
 
@@ -28,6 +37,10 @@ export class NavComponent implements OnInit {
   }
 
 
+  validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 
   register() {
 
@@ -40,13 +53,38 @@ export class NavComponent implements OnInit {
       age
     } = this
 
-    this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
-      if (resp.token) {
-        localStorage.setItem('token', resp.token)
-        localStorage.setItem('type', resp.type)
-        this.myrouter.navigate(['home']);
+    if (username && password && phone && gender && age) {
+      if (this.validateEmail(email)) {
+
+        this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
+          console.log(resp)
+          if (resp.token) {
+            localStorage.setItem('token', resp.token)
+            localStorage.setItem('type', resp.type)
+            this.myrouter.navigate(['home']);
+          }
+          else if (resp.message = "error") {
+            this.validError = true
+          }
+          else if (resp.message = "user already registered") {
+            this.alreadyRegester = true
+          }
+          else {
+            console.log("A7A")
+
+          }
+        })
+
       }
-    })
+      else {
+        this.invalidMail = true
+      }
+    }
+    else {
+      this.validError = true
+    }
+
+
 
   }
 

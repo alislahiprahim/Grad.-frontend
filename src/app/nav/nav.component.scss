@@ -233,3 +233,59 @@ a.mat-menu-trigger.my-btn3 {
         color: #068efe;
     }
 }
+
+
+.modal-content {
+    width: 90%!important;
+    height: auto !important;
+    margin: auto !important;
+}
+.nav-item{
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 100;
+    a{
+        padding: 1rem;
+        border: 0px solid red ;
+        border-radius: 0px;
+    }
+}
+
+.nav-tabs .nav-link.active{
+    color: #fff;
+    /* background-color: #fff; */
+    background-color: #2a4f6e;
+}
+.nav-tabs .nav-link{
+    color: #fff;
+    /* background-color: #fff; */
+    background-color: #068efe;
+}
+.modal-content{
+    bottom: 3rem;
+}
+.tab-content{
+    padding-top: 0px!important;
+}
+.md-form.form-sm .validate{
+    margin-bottom: 0px;
+}
+
+.modal-footer .btn{
+    background-color: #068efe!important;
+    color: #fff!important;
+    font-weight: 100;
+    padding: .5rem;
+    border: 0px solid red!important;
+    
+}
+.modal-body .btn{
+    background-color: #068efe!important;
+    color: #fff!important;
+    font-weight: 100;
+    padding: .5rem;
+    border: 0px solid red!important;
+    width: 100%;
+}
