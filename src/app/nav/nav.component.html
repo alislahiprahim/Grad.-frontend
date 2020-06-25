@@ -48,7 +48,8 @@
 
 
 <!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: hidden!important;">
+<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="overflow-y: hidden!important;">
     <div class="modal-dialog cascading-modal" role="document">
         <!--Content-->
         <div class="modal-content">
@@ -79,19 +80,23 @@
                         <div class="modal-body mb-1">
                             <div class="md-form form-sm mb-5">
                                 <i class="fas fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                                <label data-error="wrong" data-success="right" for="modalLRInput10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your email</label>
+                                <input type="email" id="modalLRInput10" [(ngModel)]="email"
+                                    class="form-control form-control-sm validate">
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your email</label>
                             </div>
 
                             <div class="md-form form-sm mb-4">
                                 <i class="fas fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput11"
-                                    class="form-control form-control-sm validate">
-                                <label data-error="wrong" data-success="right" for="modalLRInput11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your
+                                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate"
+                                    [(ngModel)]="password">
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your
                                     password</label>
                             </div>
                             <div class="text-center mt-2">
-                                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                                <button class="btn btn-info" (click)="login()" data-dismiss="modal">Log in <i
+                                        class="fas fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                         <!--Footer-->
@@ -112,69 +117,82 @@
 
                         <!--Body-->
                         <div class="modal-body my-0">
-         <!-- name -->
-                            <div class="md-form form-sm mb-0"> 
+                            <!-- name -->
+                            <div class="md-form form-sm mb-0">
                                 <i class="fas fa-user prefix"></i>
-                                <input type="text" id="modalLRInput1" class="form-control form-control-sm validate " [(ngModel)]="username" required>
-                                <label data-error="wrong" data-success="right" for="modalLRInput1"
-                                    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name </label>
+                                <input type="text" id="modalLRInput1" class="form-control form-control-sm validate "
+                                    [(ngModel)]="username" required>
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name </label>
                             </div>
-         <!-- Gender-->
-                            <div class="md-form form-sm mb-0">
-                                <i class="fas fa-venus-mars prefix custom-control-inline" style="font-size: 1.5rem;"></i>
-                                <div class="custom-control custom-radio custom-control-inline" style="margin-left: 6rem!important;">
-                                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input validate" value="Male"  [(ngModel)]="gender" required>
-                                    <label class="custom-control-label" for="customRadioInline1">Male</label>
-                                  </div>
-                                  <div class="custom-control custom-radio custom-control-inline ml-5">
-                                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input validate" value="Female"  [(ngModel)]="gender" required>
-                                    <label class="custom-control-label" for="customRadioInline2">Female</label>
-                                  </div>
-                            </div>
-         <!-- Age -->
-                            <div class="md-form form-sm mb-0">
-                                <i class="fas fa-birthday-cake prefix"></i>
-                                <input type="number" id="modalLRInput2" class="form-control form-control-sm validate " [(ngModel)]="age" required>
-                                <label data-error="wrong" data-success="right" for="modalLRInput2"
-                                    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age </label>
-                            </div>
-        <!-- phon -->
-                            <div class="md-form form-sm mb-0">
-                                <i class="fas fa-phone prefix"></i>
-                                <input type="number" id="modalLRInput3" class="form-control form-control-sm validate "  [(ngModel)]="phone" required>
-                                <label data-error="wrong" data-success="right" for="modalLRInput3"
-                                   >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone </label>
-                            </div>
-        <!-- email -->
                             <div class="md-form form-sm mb-0">
                                 <i class="fas fa-envelope prefix"></i>
-                                <input type="email" id="modalLRInput4" class="form-control form-control-sm validate "  email [(ngModel)]="email" required>
-                                <label data-error="wrong" data-success="right" for="modalLRInput4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your email</label>
-                                <mat-hint *ngIf = "alreadyRegester">This mail already <i class="fa fa-registered" aria-hidden="true"></i></mat-hint>
-                                <mat-hint *ngIf = "invalidMail">Invlid mail!</mat-hint>
+                                <input type="email" id="modalLRInput4" class="form-control form-control-sm validate "
+                                    email [(ngModel)]="email" required>
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your email</label>
+                                <mat-hint *ngIf="alreadyRegester">This mail already <i class="fa fa-registered"
+                                        aria-hidden="true"></i></mat-hint>
+                                <mat-hint *ngIf="invalidMail">Invlid mail!</mat-hint>
 
                             </div>
-         <!-- password -->
+                            <!-- password -->
                             <div class="md-form form-sm mb-0">
                                 <i class="fas fa-lock prefix"></i>
-                                <input type="password" id="modalLRInput5"
-                                    class="form-control form-control-sm validate"  [(ngModel)]="password" required>
-                                <label data-error="wrong" data-success="right" for="modalLRInput5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your
+                                <input type="password" id="modalLRInput5" class="form-control form-control-sm validate"
+                                    [(ngModel)]="password" required>
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your
                                     password</label>
                             </div>
 
-                           
+                            <!-- Age -->
+                            <div class="md-form form-sm mb-0">
+                                <i class="fas fa-birthday-cake prefix"></i>
+                                <input type="number" id="modalLRInput2" class="form-control form-control-sm validate "
+                                    [(ngModel)]="age" required>
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age </label>
+                            </div>
+                            <!-- phon -->
+                            <div class="md-form form-sm mb-0">
+                                <i class="fas fa-phone prefix"></i>
+                                <input type="number" id="modalLRInput3" class="form-control form-control-sm validate "
+                                    [(ngModel)]="phone" required>
+                                <label data-error="wrong" data-success="right"
+                                    for="modalLRInput3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone </label>
+                            </div>
+                            <!-- Gender-->
+                            <div class="md-form form-sm mb-0">
+                                <i class="fas fa-venus-mars prefix custom-control-inline"
+                                    style="font-size: 1.5rem;"></i>
+                                <div class="custom-control custom-radio custom-control-inline"
+                                    style="margin-left: 6rem!important;">
+                                    <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                                        class="custom-control-input validate" value="Male" [(ngModel)]="gender"
+                                        required>
+                                    <label class="custom-control-label" for="customRadioInline1">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline ml-5">
+                                    <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                                        class="custom-control-input validate" value="Female" [(ngModel)]="gender"
+                                        required>
+                                    <label class="custom-control-label" for="customRadioInline2">Female</label>
+                                </div>
+                            </div>
+
 
                             <div class="text-center form-sm mt-2">
-                                <mat-hint *ngIf = "validError">*Pelease Fill All Inputs!</mat-hint>
-                                <button class="btn" (click)="[register()]" >Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                                <mat-hint *ngIf="validError">*Pelease Fill All Inputs!</mat-hint>
+                                <button class="btn" (click)="[register()]">Sign up <i
+                                    data-dismiss="modal" class="fas fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-right">
-                                <p class="pt-1">Already have an account? 
+                                <p class="pt-1">Already have an account?
                                     <a class="blue-text" data-toggle="tab" href="#panel7">Login</a>
                                 </p>
                             </div>

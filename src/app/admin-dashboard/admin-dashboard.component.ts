@@ -1,10 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AdminServices } from '../services/admin.service';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-dashboard',

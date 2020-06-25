@@ -63,7 +63,7 @@ firebase.initializeApp(environment.firebaseConfig);
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
-  { path: 'home/:location', component: HomeComponent },
+  { path: 'home/:location/:area', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Dregister', component: SignupDocComponent },
   { path: 'Diagnosis/:id', component: DiagnosisFormComponent },

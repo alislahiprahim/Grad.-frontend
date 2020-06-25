@@ -16,4 +16,7 @@ export class patientService {
     get_patient() {
         return this.myHttpClient.get(this.backendURL + 'account')
     }
+    treatment_Approvment(data) {
+        return this.myHttpClient.post(this.backendURL + 'Acceptance', data)
+    }
 }

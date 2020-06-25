@@ -54,7 +54,6 @@ export class NavComponent implements OnInit {
     } = this
 
     if (username && password && phone && gender && age) {
-      if (this.validateEmail(email)) {
 
         this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
           console.log(resp)
@@ -75,10 +74,6 @@ export class NavComponent implements OnInit {
           }
         })
 
-      }
-      else {
-        this.invalidMail = true
-      }
     }
     else {
       this.validError = true
@@ -91,7 +86,6 @@ export class NavComponent implements OnInit {
   login() {
     const { email, password } = this
     this.myAuthService.login({ email, password }).subscribe((resp: any) => {
-      debugger
       if (resp.token) {
         localStorage.setItem('token', resp.token)
         localStorage.setItem('type', resp.type)

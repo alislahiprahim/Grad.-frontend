@@ -48,7 +48,7 @@ export class SearchBarComponent implements OnInit {
 
   SearchDoc() {
 
-    this.myRouter.navigate(['home',this.location])
+    this.myRouter.navigate(['home', { Location:this.location,area: this.area }])
 
   }
 

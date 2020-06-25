@@ -12,8 +12,9 @@ export class HomeComponent implements OnInit {
   DataArr: any;
   filteredArray: any[];
   config: any;
-  searchText: any = ''
-  location: any = this.route.snapshot.queryParams.Location
+  searchText: any = '';
+  location: any = this.route.snapshot.queryParams.Location;
+  area: any = this.route.snapshot.queryParams.area;
 
   constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, public route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
     this.config = {
@@ -43,9 +44,11 @@ export class HomeComponent implements OnInit {
   getDoctors() {
     this.myDoctorService.getDoctors().subscribe((resp: any) => {
       this.DataArr = resp.data
-      if (this.location) {
+      debugger
+      if (this.location || this.area) {
+
         this.DataArr = this.DataArr.filter(doctor => {
-          return doctor.location.location == this.location
+          return doctor.location.location == this.location || doctor.location.area == this.area
         })
       }
       this.filteredArray = [...this.DataArr]
