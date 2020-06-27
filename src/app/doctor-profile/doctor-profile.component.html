@@ -3,7 +3,7 @@
         <div class="row  mx-5">
             <div class="col-md-4 doc-img ">
                 <div class="img ">
-                    <img class="img-fluid h-100 w-100 mb-2" style="height: 280px;" src= "DData.profileIMG">
+                    <img class="img-fluid mb-2" style="height: 280px;" src= "{{DData.profileIMG}}">
                 </div>
                 <div class="rating px-3 py-3 text-center">
                     <h3 style=" font-size: 1.5rem;color: #068efe;font-weight: 100;"> Dr / {{DData.username |titlecase}} Kamel Nohe
@@ -12,7 +12,7 @@
                     </ngb-rating>
                 </div>
             </div>
-            <div class="col-md-8 doc-about p-4">
+            <div class="col-md-8 doc-about ">
                 <div class="container descrip">
                     <div class="row ">
                         <h2 class="header"><i class="fa fa-exclamation" aria-hidden="true"></i>
@@ -20,7 +20,7 @@
 
 
                         <div class="col-md-12 py-3 parag">
-                            <p class="briefSummery">{{DData.briefSummery | titlecase | slice:0:200 }} <a
+                            <p class="briefSummery">{{DData.briefSummery | titlecase | slice:0:90 }} <a
                                     (click)="ReadMore()">
                                     <ng-container *ngIf="!readMore; else elseTemplate">
                                         <span style="color:#09c; padding-left:.5rem ; font-weight: 700">Read
@@ -37,9 +37,9 @@
                     </div>
                     <div class="row py-3">
 
-                        <h2 class="header"> <i class=" fas fa-map-marker-alt"></i>Location</h2>
+                        <h2 class="header"><i class=" fas fa-map-marker-alt" style="font-size: 30px;padding-right: 30px"></i>Location</h2>
                         <div class="col-md-12 py-2 parag">
-                            <p>{{DData.location.city |titlecase}} - {{DData.location.area|titlecase}} </p>
+                            <p>Location : {{DData.location.city |titlecase}} - {{DData.location.area|titlecase}} </p>
                         </div>
                     </div>
                     <br>
@@ -48,7 +48,7 @@
                         <ng-container *ngIf="this.myAuthService.getType()=='patient'; else elseTemplate2">
                             <div class="col-md-12">
                                 <button class="btn btn-danger px-5">
-                                    <a [routerLink]="[ '/Diagnosis',DData._id ]">Book</a></button>
+                                    <a [routerLink]="[ '/Diagnosis',DData._id ]"target="_blank">Book</a></button>
                             </div>
                         </ng-container>
                         <ng-template #elseTemplate2>
@@ -60,7 +60,8 @@
                 </div>
             </div>
         </div>
-        <div class="contanier reviews mx-5" style="background-color: transparent;">
+
+        <!-- <div class="contanier reviews mx-5" style="background-color: transparent;">
             <div class="col-md-12 contanier my-3">
                 <div class="row mx-5 contanier my-3 " *ngFor="let feed of DData.feedbacks" style="background-color: #fff; border: 1px solid gray; border-radius: 1rem;">
                     <div class="col-md-10 px-5 py-3 mx-0">
@@ -78,6 +79,6 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
     </div>
 </div>

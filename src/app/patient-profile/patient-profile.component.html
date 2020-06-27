@@ -31,13 +31,15 @@
                                             </div>
                                             <div class="col-12 py-3">
                                                 Start-date :
-                                                {{tp.treatmentDate.toDate.year}}/{{tp.treatmentDate.toDate.month}}/{{tp.treatmentDate.toDate.day}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Start-date :
                                                 {{tp.treatmentDate.fromDate.year}}/{{tp.treatmentDate.fromDate.month}}/{{tp.treatmentDate.fromDate.day}}
                                             </div>
-                                            <div class="col-12 py-3" *ngIf="tp.accept_flag=='false'||tp.accept_flag==null">
+                                            <div class="col-12 py-3">
+                                                End-date :
+                                                {{tp.treatmentDate.toDate.year}}/{{tp.treatmentDate.toDate.month}}/{{tp.treatmentDate.toDate.day}}
+
+                                            </div>
+                                            <div class="col-12 py-3"
+                                                *ngIf="tp.accept_flag=='false'||tp.accept_flag==null">
                                                 <button class="btn btn-success my-1 py-0 myDiv"
                                                     (click)="approveTreat(tp._id,'true')">Accept</button>
                                                 <button class="btn btn-danger my-1 py-0 myDiv"

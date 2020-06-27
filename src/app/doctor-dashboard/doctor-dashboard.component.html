@@ -15,9 +15,9 @@
                     <div class="row">
                         <div class="col-md-4 doc-img">
                             <div class="img">
-                                <img class="img-fluid" style="height: 300px;" src="{{this.img}}">
+                                <img class="img-fluid" style="height: 300px;" src="{{img}}">
                                 <div class="layer">
-                                    <app-upload-img ></app-upload-img>
+                                    <app-upload-img></app-upload-img>
                                 </div>
                             </div>
                             <div class="rating">
@@ -71,7 +71,7 @@
                                 {{ p.username }}
                             </td>
                             <td>{{ p.gender }}</td>
-                            <td>{{ p.Date  }}</td>
+                            <td>{{ p.CreatedDate|date  }}</td>
                             <td>
                                 <button mat-raised-button color=accent
                                     (click)="[openLg(content),getDiagnosis(p._id),geTreatment(p._id)]">
@@ -95,7 +95,7 @@
                                                                     <h2> Sending Date</h2>
                                                                 </div>
                                                             </div>
-                                                            {{this.Patient_DF.Date |date}}
+                                                            {{this.Patient_DF.CreatedDate |date}}
                                                         </mat-list-item>
                                                         <mat-divider></mat-divider>
                                                         <mat-list-item>

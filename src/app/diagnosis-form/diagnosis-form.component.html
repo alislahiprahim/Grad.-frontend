@@ -14,7 +14,7 @@
                 </div>
                 <div class="row px-5">
                     <div class="col-lg-12 col-md-12"
-                        *ngFor="let mp of ['apple','bannana','strewbary','watermelon','apple','bannana','strewbary','watermelon']">
+                        *ngFor="let mp of ['pediatrics','Operative','Crown_Bridges','RCT','Scalling','Ortho','Cosmetics','Check_Up']">
                         <input class="form-check-input" type="checkbox" value="{{mp}}"
                             (click)="getMainProblem($event)">{{mp}}
                     </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="row px-5">
                     <div class="col-lg-12 col-md-12 py-1"
-                        *ngFor="let mh of ['broccoli','cucumber','lettuce','pumpkin','tomato']">
+                        *ngFor="let mh of ['Heart_disease','Hepatitis','Diabetes','Blood_pressure','Bleeding_tendency','Allergy','Radiotheraby','Kindney_diseases','Pregnancy']">
                         <input class="form-check-input" type="checkbox" value="{{mh}}"
                             (click)="getMedicalHitory($event)">{{mh}}
                     </div>

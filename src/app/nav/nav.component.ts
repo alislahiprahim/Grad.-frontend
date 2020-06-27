@@ -60,6 +60,7 @@ export class NavComponent implements OnInit {
           if (resp.token) {
             localStorage.setItem('token', resp.token)
             localStorage.setItem('type', resp.type)
+            localStorage.setItem('type', resp.id)
             this.myrouter.navigate(['home']);
           }
           else if (resp.message = "error") {

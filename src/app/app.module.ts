@@ -57,6 +57,7 @@ import * as firebase from 'firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { SpinnnerComponent } from './spinnner/spinnner.component';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -91,6 +92,7 @@ const routes: Routes = [
     PatientProfileComponent,
     AdminDashboardComponent,
     UploadImgComponent,
+    SpinnnerComponent,
 
   ],
   imports: [
