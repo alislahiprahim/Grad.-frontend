@@ -3,9 +3,16 @@
             style="color: gold; font-weight: 600;">i</span>sm</a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu2">
+
+    <ul class="menu float-right" *ngIf="!myAuthService.isLoggedin()">
         <li>
-            <a class="my-btn" [routerLink]="[ '/home']">Home</a>
+            <a class="signup" data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
+        </li>
+    </ul>
+
+    <ul class="menu2 float-right mr-5">
+        <li>
+            <a class="my-btn" [routerLink]="[ '/']">Home</a>
         </li>
         <li>
             <a class="my-btn" [routerLink]="[ '/home']">Doctors</a>
@@ -17,15 +24,7 @@
             <a class="my-btn" [routerLink]="[ '/home']">About</a>
         </li>
     </ul>
-    <ul class="menu" *ngIf="!myAuthService.isLoggedin()">
-        <li>
-            <!-- <a class="signup" data-toggle="modal" (click)="frame2.show()">Sign Up
-            </a> -->
-            <a class="signup" data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
-        </li>
 
-
-    </ul>
     <ul style="float: right;" *ngIf="myAuthService.isLoggedin()">
         <li>
             <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
@@ -184,8 +183,8 @@
 
                             <div class="text-center form-sm mt-2">
                                 <mat-hint *ngIf="validError">*Pelease Fill All Inputs!</mat-hint>
-                                <button class="btn" (click)="[register()]">Sign up <i
-                                    data-dismiss="modal" class="fas fa-sign-in ml-1"></i></button>
+                                <button class="btn" (click)="[register()]">Sign up <i data-dismiss="modal"
+                                        class="fas fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>

@@ -4,10 +4,10 @@
 
         <ul class="row dropDown">
             <li class="li-1 col-md-3" [matMenuTriggerFor]="menu">
-                <span class='mySpan'>in this city</span>
-                <i class="myIcon fas fa-map-marker-alt"></i>
+                <span class='mySpan'>In This City</span>
+                <i class="myIcon fas fa-map-marker-alt" style="padding-top: .75rem;font-size: 1.5rem;"></i>
 
-                <span class="mySpan2"><span *ngIf="!selectedValue">Select City</span>{{selectedValue}} <i
+                <span class="mySpan2"><span *ngIf="!selectedValue">Select City</span>{{selectedValue |titlecase}} <i
                         class="fas fa-caret-down px-3"></i></span>
 
 
@@ -15,15 +15,15 @@
                     <div class="row">
                         <div class="col-6" style="padding: 5px;" *ngFor="let c of cities">
                             <button mat-flat-button
-                                (click)="[onSelectValue(c.name_en),getAreas(c.name_en)]">{{c.name_en}}</button>
+                                (click)="[onSelectValue(c.name_en),getAreas(c.name_en)]">{{c.name_en |titlecase}}</button>
                         </div>
                     </div>
                 </mat-menu>
             </li>
             <li class="col-md-3" [matMenuTriggerFor]="menu2">
-                <span class='mySpan'>in this area</span>
-                <i class="myIcon fas fa-map-marker-alt"></i>
-                <span class="mySpan2"><span *ngIf="!selectedValue2">choose area</span>{{selectedValue2}}<i
+                <span class='mySpan'>In This Area</span>
+                <i class="myIcon fas fa-map-marker-alt" style="padding-top: .75rem;font-size: 1.5rem;"></i>
+                <span class="mySpan2"><span *ngIf="!selectedValue2">Choose Area</span>{{selectedValue2}}<i
                         class="fas fa-caret-down px-3"></i></span>
 
                 <mat-menu #menu2="matMenu" class='myMenu2'>
@@ -35,15 +35,14 @@
                     </div>
                 </mat-menu>
             </li>
-            <li class="col-md-3">
-                <span class='mySpan'>or search by name</span>
-                <i class="myIcon fas fa-user-md"></i>
+            <li class="col-md-3 p-0" >
+                <span class='mySpan'>Search By Name</span>
+                <i class="myIcon fas fa-user-md" style="padding-top: 1rem;font-size: 1.5rem;"></i>
                 <input class="myInput" placeholder="Doctor Name">
-
             </li>
-            <li class="li-2 col-md-3" [routerLink]="['home']" [queryParams]="{Location:this.location,area:this.area}" style="">
-                <i class="fa fa-search px-4"></i>
-                <span style="font-weight: bold;">Search</span>
+            <li class="li-2 col-md-3" [routerLink]="['home']" [queryParams]="{Location:this.location,area:this.area}" style="font-weight: 100;font-size: 2rem;">
+                <i class="fas fa-search px-4"></i>
+                <span style="">Search</span>
             </li>
         </ul>
     </div>
@@ -55,7 +54,7 @@
     <div class="Searchbar2 container mx-auto">
         <ul class="row dropDown">
             <li class="li-1 col-md-12 " [matMenuTriggerFor]="menu">
-                <span class='mySpan'>in this city</span>
+                <span class='mySpan'>In This City</span>
                 <i class="myIcon fas fa-map-marker-alt"></i>
 
                 <span class="mySpan2 "><span *ngIf="!selectedValue">Select City</span>{{selectedValue}} <i
@@ -73,9 +72,9 @@
                 </mat-menu>
             </li>
             <li class="col-md-12" [matMenuTriggerFor]="menu2">
-                <span class='mySpan'>in this area</span>
+                <span class='mySpan'>In This Area</span>
                 <i class="myIcon fas fa-map-marker-alt"></i>
-                <span class="mySpan2"><span *ngIf="!selectedValue2">choose area</span>{{selectedValue2}}<i
+                <span class="mySpan2"><span *ngIf="!selectedValue2">Choose Area</span>{{selectedValue2}}<i
                         class="fas fa-caret-down" style="margin-left: 150px;padding-left: 140px; color:#aaa"></i></span>
 
                 <mat-menu #menu2="matMenu" class='myMenu2'>
@@ -88,7 +87,7 @@
                 </mat-menu>
             </li>
             <li class="col-md-12">
-                <span class='mySpan'>or search by name</span>
+                <span class='mySpan'>Search By Name</span>
                 <i class="myIcon fas fa-user-md"></i>
                 <input class="myInput" placeholder="Doctor Name">
 

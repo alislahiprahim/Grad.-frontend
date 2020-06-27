@@ -1,21 +1,25 @@
 footer {
     background-color: #022642;
-    padding: 50px 0 30px;
+    padding: 1rem 0rem;
 }
 .footer-heading {
     letter-spacing: 2px;
     font-size: 1.2rem;
     font-weight: bold;
+    
 }
 
-.footer-link a {
-    color: #fff;
-    line-height: 40px;
-    font-size: 14px;
-    transition: all 0.5s;
-    text-decoration: none;
-    &:hover {
-        font-weight: bold;
+.footer-link li {
+    padding: .25rem 0px;
+    a{
+        color: #fff;
+        line-height: 1rem;
+        font-size: 14px;
+        transition: all 0.5s;
+        text-decoration: none;
+        &:hover {
+            font-weight: bold;
+        }
     }
 
 }

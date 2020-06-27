@@ -280,15 +280,15 @@ body {
 
 .fa-arrow-alt-circle-up {
   position: fixed;
-  top: 80%;
-  left: 90%;
-  font-size: 30px;
-  font-weight: 200;
-  color: gold;
-  padding: 20px;
-  border-radius: 50%;
-  background-color: transparent;
+  bottom: 2rem;
+  right:2rem;
+  font-size: 3rem;
+  font-weight: 500;
+  color: gray;
+  background-color: #17344e;
   cursor: pointer;
+  border-radius: 50%;
+
 }
 
 @media (max-height: 600px) {

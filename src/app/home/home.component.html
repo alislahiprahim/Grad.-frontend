@@ -1,46 +1,52 @@
-<div class="" style="position: relative; top: 3.5rem;">
+<!-- <div class="" style="position: relative; top: 3.5rem;">
     <app-search-bar></app-search-bar>
-</div>
-<div class="container-fluid px-5" style="background-color: #195e83;">
+</div> -->
+<div class="container-fluid px-5 mt-5" style="background-color: #195e83;">
     <div class="row ">
-        <div class="col-lg-2 col-md-12  text-center  py-4"
-            style="background-color: #fff; height: 20rem;border-radius: 0; margin-top: 60px;box-shadow: 5px 5px 5px rgba(0,0,0,0.7);">
-            <div class="head">Filter</div>
-
-            <div class="searchbar text-center">
-                <div class="md-form">
-                    <input mdbInput type="text" class="form-control" (keyup)='handleFilter($event)'
-                        style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
-                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Doctor name</label>
-                </div>
-                <div class="md-form">
-                    <input mdbInput type="text" class="form-control"
-                        style="background-color:rgba(25, 94, 131 , .3) ;padding: .5rem;border-radius: 1rem;">
-                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</label>
-                </div>
-                <button mdbBtn style="border-radius: 25px; margin-left: 0;" color="primary" rounded="true"
-                    mdbWavesEffect>filter</button>
-
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredArray" [value]="option">
-                        <p>{{option.username}}</p>
-                    </mat-option>
-                </mat-autocomplete>
-            </div>
-        </div>
 
 
-        <div class="col-lg-10 col-md-12 col-sm-12">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="py-3 ">
                 <div class="row mx-auto">
-                    <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
+                    <!-- Filter -->
+                    <div class="col-lg-2 col-md-2 text-center my-5 filter">
+                        <div>
+                            <div class="head"><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Filter</div>
+                            <div class="searchbar text-center">
+                                <div class="md-form">
+                                    <input mdbInput type="text" class="form-control" (keyup)='handleFilter($event)'
+                                        style="background-color:rgba(25, 94, 131 , .1) ;padding: .5rem;border-radius: 1rem;">
+                                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dr-Name</label>
+                                </div>
+                                <div class="md-form">
+                                    <input mdbInput type="text" class="form-control"
+                                        style="background-color:rgba(25, 94, 131 , .1) ;padding: .5rem;border-radius: 1rem;">
+                                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</label>
+                                </div>
 
+                                <div class="md-form">
+                                    <input mdbInput type="text" class="form-control"
+                                        style="background-color:rgba(25, 94, 131 , .1) ;padding: .5rem;border-radius: 1rem;">
+                                    <label class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Area</label>
+                                </div>
+
+                                <mat-autocomplete #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredArray" [value]="option">
+                                        <p>{{option.username}}</p>
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-10 col-md-10  mx-auto">
                         <div class="py-4 px-0 mx-auto">
-                            <div class="row py-2 px-0 mx-auto">
-                                <div class="col-md-4 col-lg-3 col-sm-12 px-0 my-2"
+                            <div class="row py-2 px-0   ">
+                                <div class="col-md-4 col-lg-2 col-sm-6  my-4 px-4"
                                     *ngFor="let i of filteredArray | paginate: config">
 
-                                    <div class="DIVCARD" *ngIf="i.isApproved=='true'">
+                                    <div class="DIVCARD">
                                         <!------------------- HEADER OF THE CARD -------------------->
                                         <div class="divHEADER ">
                                             <img class="img-fluid" style="cursor: pointer;" src="{{i.profileIMG}}"
@@ -53,6 +59,8 @@
                                                 <h3 style="color:#2980b9">Dr.{{ i.username |titlecase}}</h3>
                                                 <!--TITRE -->
                                                 <p class="bodySentence">
+                                                   <ngb-rating [max]='5' [(rate)]=i.rate [readonly]="true"></ngb-rating>
+                                                   <br>
                                                     {{i.briefSummery |slice : 0:20}}
                                                     <!-- rate of doctor -->
                                                 </p>
@@ -74,12 +82,14 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container text-center my-0 py-0">
+    <div class="container text-center my-0 py-3">
         <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
         </pagination-controls>
     </div>

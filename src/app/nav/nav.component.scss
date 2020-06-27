@@ -37,22 +37,22 @@ a {
     padding: 0.5rem;
     color: #068efe;
     transition: all 0.3s ease-in;
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 100;
 }
 
-.my-btn {
+.menu2 li {
     &:hover {
-        border-bottom: 1px solid gold !important;
+        border-bottom: 2px solid gold !important;
         font-weight: 500;
     }
     &:focus {
-        border-bottom: 1px solid gold !important;
+        border-bottom: 2px solid gold !important;
         font-weight: 500;
     }
 }
 
-.header li a:hover,
+// .header li a:hover,
 .header .menu-btn:hover {
     background-color: #f4f4f4;
     overflow-y: visible;
@@ -184,8 +184,7 @@ a {
     }
 }
 
-.signup,
-.login {
+.signup{
     padding: 0.3rem !important;
     margin-top: 0.5rem;
     margin-right: 1rem;
@@ -198,17 +197,8 @@ a {
         color: #068efe !important ;
         border: 1px solid #068efe;
         font-weight: bold;
-    }
-}
-.login {
-    color: #068efe !important ;
-    font-weight: bold !important;
-    border: 1px solid #068efe;
-
-    &:hover {
-        color: #fff !important;
-        background-color: #068efe !important;
-        border: 1px solid #fff !important;
+        background-color: #fff;
+        box-sizing: inherit;
     }
 }
 
