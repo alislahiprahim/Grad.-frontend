@@ -54,7 +54,8 @@ ngb-rating{
 .bgimg {
     background: linear-gradient(rgba(1, 96, 178, 0.7), rgba(1, 96, 178, 0.7)),
       /* bottom, image */url(../../assets/images/1070305_Russel_04_0136.jpg);
-    background-size: 100%100%;
-    background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
   }
 
