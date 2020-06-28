@@ -1,146 +1,63 @@
-.searchbar {
- 
-    padding: 0px;
-    padding-bottom: 60px;
-    margin: 0;
-    height: 240px;
-}
-
-.DIVCARD {
-    width: 190px;
-    position: relative;
-    left: 05%;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
-    padding-bottom: 5px;
-}
-/*-----------------     HEADER   ----------------------- */
-.divHEADER {
-    width: 190px;   
-    height: 180px;
-    background-position: 20% 50%;
-    border-radius: 0 0 0 0;
-    transition: all 0.3s ease-in-out;
-}
-/* Archeology Icon and Date IN HEADER */
-.bannerBODY {
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-    text-align: left;
-    font-size: 11px;
-}
-/*Archeology Icon on the left*/
-.bannerBODY {
-    position: absolute;
-    top: -30px;
-    left: 0;
-    padding: 8px 16px;
-    line-height: 16px;
-}
-/* Date Icon on the right in Header */
-/*-----------------   MAIN BODY  ----------------------- */
-.mainBODY {
-    background-color: white;
-    border-radius: 0 0 1px 1px;
-    padding: 26px 26px 26px 26px;
-}
-/* Header of Body*/
-h1 {
-    color: #23282d;
-    letter-spacing: -0.5px;
-    font-size: 27px;
-    font-weight: bold;
-    margin-top: -5px;
-}
-.bodyHeader {
-    position: absolute;
-    left: 0;
-    padding: 20px;
-    padding-bottom: 0px;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
-/*-----------------     FOOTER   ----------------------- */
-.divFOOTER {
-    position: relative;
-    margin-top: 14px;
-    font-size: 14px;
-    color: #9fa5a8;
-}
-.icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 20px;
- }
-
-.BodyDescription {
-    opacity: 0;
-    color: #757b82;
-    line-height: 20px;
-    transition: all 0.1s ease-in-out;
-    margin-left: 15px;
-}
-/*---------------------------USING TRANSITION ------------------*/
-
-.DIVCARD:hover .divHEADER {
-    background-size: 470px 285px;
-    background-position: 10px 10px 0px;
-}
-
-.cardHeaderHidden {
-    height: 100%;
-    transition: all 0.3s ease-in-out;
-}
-.DIVCARD:hover .BodyDescription {
-    opacity: 10;
-    transition: all 0.5s ease-in-out;
-}
-.cardHeaderDay {
-    font-size: 18px;
-}
-.cardHeaderMonth {
-    font-size: 11px;
-}
-.DIVCARD:hover .bodyHeader {
-    margin-top: -85px;
-}
-
-input,label{
-    color: #2e9bf3;
-    font-size: 16px;
-    font-weight:100px;
-}
-
-.head{
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 600;
-   padding: 1rem 1rem;
-   border-top-left-radius: .5rem;
-   border-top-right-radius: .5rem;
-   background-color: #2980b9;
-
-}
-
-
-.filter{
-   position: sticky;
-   top:7rem;
-   left: 0px;
-    background-color: #fff; 
-    height: 20rem;
-    border-radius: .5rem;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.7);
-    display: table-cell;
-    vertical-align: top;
-    padding: 0rem 0rem 0rem 0rem ;
-    .searchbar{
-        padding: 0px 1rem;
-    }
-}
 
 ngb-rating{
     font-size: 1.5rem;
     color: gold;
 }
+a{
+    text-decoration: none;
+}
+
+.card-body {
+    .card-title{
+        color: #289cff;
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+   h4{
+       color: #289cff;
+       font-size: 1rem;
+       font-weight: bold;
+   }
+   .card-text{
+       height: 2.5rem;
+   }
+
+   button{
+       padding: 0.2rem 2rem;
+       font-weight: 200;
+       background-color: #289cff;
+       color: #fff;
+
+   }
+    
+}
+
+.card{
+    &:hover{
+        background-color: #f3f2f2;
+    }
+    cursor: grab;
+}
+
+.filter{
+    position: sticky;
+    top:21rem;
+    padding: 2rem 0px 2rem 2rem;
+    height: 20rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    ul li{
+        list-style-type: none;
+        padding-bottom:.3rem;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #a0a5aabd;
+    }
+    h2{
+        color: #289cff;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+}
+
