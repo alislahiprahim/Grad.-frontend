@@ -15,13 +15,13 @@
                     <div class="row">
                         <div class="col-md-4 doc-img">
                             <div class="img">
-                                <img class="img-fluid" style="height: 300px;" src="{{img}}">
+                                <img class="img-fluid" style="height: 300px;" src="{{img}}?">
                                 <div class="layer">
                                     <app-upload-img></app-upload-img>
                                 </div>
                             </div>
                             <div class="rating">
-                                <h3 style=" padding-top: 30px;">Name : {{this.username}} </h3>
+                                <h3 style=" padding-top: 30px;">Name : {{username}}? </h3>
                                 <h3>rating : <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
                                         aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i
                                         class="fa fa-star" aria-hidden="true"></i>
@@ -35,14 +35,14 @@
                                     </span>
                                     <h2>About Doctor</h2>
                                     <div class="col-md-12 py-3 parag">
-                                        <p>{{DData.briefSummery}}</p>
+                                        <p>{{DData?.briefSummery}}</p>
                                     </div>
                                 </div>
                                 <div class="row py-3">
                                     <i class="fas fa-map-marker-alt" style="color:#09c; font-size: 30px;"></i>
                                     <h2 style="padding-left: 10px;">About Doctor</h2>
                                     <div class="col-md-12 py-2 parag">
-                                        <p>{{DData.location.location}} : {{DData.location.area}} </p>
+                                        <p>{{DData?.location.location}} : {{DData?.location.area}} </p>
                                     </div>
                                 </div>
 
@@ -68,10 +68,10 @@
                     <tbody>
                         <tr *ngFor="let p of Patients; let i = index">
                             <td>
-                                {{ p.username }}
+                                {{ p?.username }}
                             </td>
-                            <td>{{ p.gender }}</td>
-                            <td>{{ p.CreatedDate|date  }}</td>
+                            <td>{{ p?.gender }}</td>
+                            <td>{{ p?.CreatedDate|date  }}</td>
                             <td>
                                 <button mat-raised-button color=accent
                                     (click)="[openLg(content),getDiagnosis(p._id),geTreatment(p._id)]">
@@ -95,7 +95,7 @@
                                                                     <h2> Sending Date</h2>
                                                                 </div>
                                                             </div>
-                                                            {{this.Patient_DF.CreatedDate |date}}
+                                                            {{Patient_DF?.CreatedDate |date}}
                                                         </mat-list-item>
                                                         <mat-divider></mat-divider>
                                                         <mat-list-item>
@@ -106,10 +106,10 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="co-12 mx-2 py-2">
-                                                                        {{this.Patient_DF.MainProblem.text_problem}}
+                                                                        {{Patient_DF?.MainProblem.text_problem}}
                                                                     </div>
                                                                     <div class="col-12 py-2"
-                                                                        *ngFor="let i of this.Patient_DF.MainProblem.problemsArr">
+                                                                        *ngFor="let i of Patient_DF?.MainProblem.problemsArr">
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -123,10 +123,10 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class='col-12  py-2'>
-                                                                        {{this.Patient_DF.medicalHistory.text_medical}}
+                                                                        {{Patient_DF?.medicalHistory.text_medical}}
                                                                     </div>
                                                                     <div class="col-12 py-2"
-                                                                        *ngFor="let i of this.Patient_DF.medicalHistory.medicalArr">
+                                                                        *ngFor="let i of Patient_DF?.medicalHistory.medicalArr">
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -140,7 +140,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-12 py-2"
-                                                                        *ngFor="let i of this.Patient_DF.doctorQuesAns">
+                                                                        *ngFor="let i of Patient_DF?.doctorQuesAns">
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -156,11 +156,11 @@
                                                                 <div class="row">
                                                                     <div class="col-12 py-2">
                                                                         Form:
-                                                                        {{this.Patient_DF.avilableDuration.fromDate.day|number}}/{{this.Patient_DF.avilableDuration.fromDate.month|number }}/{{this.Patient_DF.avilableDuration.fromDate.year }}
+                                                                        {{Patient_DF?.avilableDuration.fromDate.day|number}}/{{this.Patient_DF.avilableDuration.fromDate.month|number }}/{{this.Patient_DF.avilableDuration.fromDate.year }}
                                                                     </div>
                                                                     <div class="col-12 py-2">
                                                                         To:
-                                                                        {{this.Patient_DF.avilableDuration.toDate.day|number }}/{{this.Patient_DF.avilableDuration.toDate.month |number}}/{{this.Patient_DF.avilableDuration.toDate.year }}
+                                                                        {{Patient_DF?.avilableDuration.toDate.day|number }}/{{this.Patient_DF.avilableDuration.toDate.month |number}}/{{this.Patient_DF.avilableDuration.toDate.year }}
 
                                                                     </div>
                                                                 </div>

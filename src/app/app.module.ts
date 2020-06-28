@@ -58,6 +58,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SpinnnerComponent } from './spinnner/spinnner.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -107,6 +109,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatSliderModule,
     MatButtonModule,
     MatDividerModule,
     MatTableModule,
@@ -117,6 +120,7 @@ const routes: Routes = [
     NgxPaginationModule,
     MatGridListModule,
     MatInputModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatExpansionModule,
     ReactiveFormsModule,

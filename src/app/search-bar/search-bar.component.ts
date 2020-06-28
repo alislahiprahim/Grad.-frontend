@@ -29,22 +29,13 @@ export class SearchBarComponent implements OnInit {
     this.cities = this.myCitiesService.getGovernoratesWithSubregions()
 
   }
-  getAreas(city_name) {
-    this.areas = this.myCitiesService.getSubregionsByname(city_name)
+  getAreas(event) {
+    this.location = event.target.value
+    this.areas = this.myCitiesService.getSubregionsByname(this.location)
   }
 
-  onSelectValue(val) {
 
-    this.selectedValue = val
-    this.location = this.selectedValue
-  }
-
-  onSelectValue2(val) {
-
-    this.selectedValue2 = val
-    this.area = this.selectedValue2
-  }
-
+ 
 
   SearchDoc() {
 

@@ -9,9 +9,9 @@ import { NotificationsService } from './services/notifications.service';
 export class AppComponent {
 
   constructor(private myelementRef: ElementRef) { }
-
+  value='Doctourism.com@gmail.com'
   ngAfterViewInit(): void {
-    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f3f7f3'
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#fff'
   }
 
 

@@ -1,23 +1,40 @@
 body {
     margin: 0;
     font-family: Helvetica, sans-serif;
-    background-color: #f4f4f4;
+    background-color: transparent;
     text-align: center;
 }
 
 a {
-    color: #000;
+    color: #fff;
 }
 
 /* header */
 
 .header {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 332;
+    color: #fff;
+}
+
+.header2 {
     background-color: #fff;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 332;
+    color:#289cff;
+    a{
+        color:#289cff;
+    };
+    .logo{
+    color:#289cff;
+    }
 }
+
 
 .header ul {
     margin: 0;
@@ -32,27 +49,27 @@ a {
 
 .my-btn {
     border: none;
-    background-color: #fff;
+    background-color: transparent;
     color: #000;
     padding: 0.5rem;
-    color: #068efe;
+    color: #fff;
     transition: all 0.3s ease-in;
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 100;
 }
 
-.my-btn {
+.menu2 li {
     &:hover {
-        border-bottom: 1px solid gold !important;
+        border-bottom: 2px solid gold !important;
         font-weight: 500;
     }
     &:focus {
-        border-bottom: 1px solid gold !important;
+        border-bottom: 2px solid gold !important;
         font-weight: 500;
     }
 }
 
-.header li a:hover,
+// .header li a:hover,
 .header .menu-btn:hover {
     background-color: #f4f4f4;
     overflow-y: visible;
@@ -66,7 +83,6 @@ a {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-decoration: none;
-    color: #068efe;
 }
 
 /* menu */
@@ -177,38 +193,28 @@ a {
 @media (max-width: 765px) {
     .header ul {
         overflow: hidden;
-        background-color: #fff;
+        background-color: transparent;
     }
     .header .menu {
-        background-color: #fff;
+        background-color: transparent;
     }
 }
 
-.signup,
-.login {
+.signup{
     padding: 0.3rem !important;
     margin-top: 0.5rem;
     margin-right: 1rem;
     border-radius: 1rem;
 }
 .signup {
-    color: #fff !important;
+    color: transparent !important;
     background-color: #068efe;
     &:hover {
         color: #068efe !important ;
         border: 1px solid #068efe;
         font-weight: bold;
-    }
-}
-.login {
-    color: #068efe !important ;
-    font-weight: bold !important;
-    border: 1px solid #068efe;
-
-    &:hover {
-        color: #fff !important;
-        background-color: #068efe !important;
-        border: 1px solid #fff !important;
+        background-color: transparent;
+        box-sizing: inherit;
     }
 }
 
@@ -243,7 +249,7 @@ a.mat-menu-trigger.my-btn3 {
 .nav-item{
     width: 50%;
     text-align: center;
-    color: #fff;
+    color: transparent;
     font-size: 1.3rem;
     font-weight: 100;
     a{
@@ -254,13 +260,13 @@ a.mat-menu-trigger.my-btn3 {
 }
 
 .nav-tabs .nav-link.active{
-    color: #fff;
-    /* background-color: #fff; */
+    color: transparent;
+    /* background-color: transparent; */
     background-color: #2a4f6e;
 }
 .nav-tabs .nav-link{
-    color: #fff;
-    /* background-color: #fff; */
+    color: transparent;
+    /* background-color: transparent; */
     background-color: #068efe;
 }
 .modal-content{
@@ -275,7 +281,7 @@ a.mat-menu-trigger.my-btn3 {
 
 .modal-footer .btn{
     background-color: #068efe!important;
-    color: #fff!important;
+    color: transparent!important;
     font-weight: 100;
     padding: .5rem;
     border: 0px solid red!important;
@@ -283,7 +289,7 @@ a.mat-menu-trigger.my-btn3 {
 }
 .modal-body .btn{
     background-color: #068efe!important;
-    color: #fff!important;
+    color: transparent!important;
     font-weight: 100;
     padding: .5rem;
     border: 0px solid red!important;

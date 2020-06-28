@@ -1,12 +1,12 @@
-<div style="background-color: #068efe; width: 100%;">
+<div style=" width: 100%;">
     <div class="container py-3 mt-5 px-0 ">
         <div class="row  mx-5">
             <div class="col-md-4 doc-img ">
                 <div class="img ">
-                    <img class="img-fluid mb-2" style="height: 280px;" src= "{{DData.profileIMG}}">
+                    <img class="img-fluid mb-2" style="height: 280px;" src= "{{DData?.profileIMG}}">
                 </div>
                 <div class="rating px-3 py-3 text-center">
-                    <h3 style=" font-size: 1.5rem;color: #068efe;font-weight: 100;"> Dr / {{DData.username |titlecase}} Kamel Nohe
+                    <h3 style=" font-size: 1.5rem;color: #068efe;font-weight: 100;"> Dr / {{DData?.username |titlecase}} Kamel Nohe
                     </h3>
                         <ngb-rating class=" rate" [readonly]="true" [max]="5" [(rate)]=DData.rate>
                     </ngb-rating>
@@ -20,14 +20,14 @@
 
 
                         <div class="col-md-12 py-3 parag">
-                            <p class="briefSummery">{{DData.briefSummery | titlecase | slice:0:90 }} <a
+                            <p class="briefSummery">{{DData?.briefSummery | titlecase | slice:0:90 }} <a
                                     (click)="ReadMore()">
                                     <ng-container *ngIf="!readMore; else elseTemplate">
                                         <span style="color:#09c; padding-left:.5rem ; font-weight: 700">Read
                                             more...</span>
                                     </ng-container>
                                     <ng-template #elseTemplate>
-                                        <span>{{DData.briefSummery|slice:0:300}}</span> <span
+                                        <span>{{DData?.briefSummery|slice:0:300}}</span> <span
                                             style="color:#09c; padding-left:.5rem ; font-weight: 700;">Read
                                             less...</span>
 
@@ -39,7 +39,7 @@
 
                         <h2 class="header"><i class=" fas fa-map-marker-alt" style="font-size: 30px;padding-right: 30px"></i>Location</h2>
                         <div class="col-md-12 py-2 parag">
-                            <p>Location : {{DData.location.city |titlecase}} - {{DData.location.area|titlecase}} </p>
+                            <p>Location : {{DData?.location.location |titlecase}} - {{DData?.location.area|titlecase}} </p>
                         </div>
                     </div>
                     <br>
@@ -60,25 +60,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="contanier reviews mx-5" style="background-color: transparent;">
-            <div class="col-md-12 contanier my-3">
-                <div class="row mx-5 contanier my-3 " *ngFor="let feed of DData.feedbacks" style="background-color: #fff; border: 1px solid gray; border-radius: 1rem;">
-                    <div class="col-md-10 px-5 py-3 mx-0">
-                        <ngb-rating [max]='5' [(rate)]=feed.rate [readonly]="true"></ngb-rating>
-                        <h2>Overall Rating : </h2>
-                        <div class="parag2">
-                            <p style="font-style: italic;">"&nbsp;{{feed.comment |lowercase }}&nbsp;"</p>
-                        </div>
-                        <p class="by">{{feed.PName |titlecase}} <br>{{feed.data |date }}</p>
-                    </div>
-                    <div class="col-md-2 m-auto">
-                        <span
-                            style=" padding:20px;background-color:#09c;color:#fff;border-radius: 5px; font-size: 1rem; font-weight: bold;">{{feed.rate}}</span>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
     </div>
 </div>
+
+<section style="height:500px; width:100%"></section>

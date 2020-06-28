@@ -21,7 +21,7 @@ export class DoctorProfileComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
-    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#195e83'
+    this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#fff'
   }
   ngOnDestroy(): void {
     this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f3f7f3'

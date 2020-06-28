@@ -1,11 +1,35 @@
-<header class="header">
-    <a class="logo" [routerLink]="[ '/' ]"><span style="color: gold;"><i class="fab fa-dyalog"></i></span>octour<span
+<header class="header" [ngClass]="{'header2': isShow}">
+    <a class="logo px-5 mx-5" [routerLink]="[ '/' ]"><span style="color: gold;"><i class="fab fa-dyalog"></i></span>octour<span
             style="color: gold; font-weight: 600;">i</span>sm</a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu2">
+
+    <ul class="menu float-right" *ngIf="!myAuthService.isLoggedin()">
         <li>
-            <a class="my-btn" [routerLink]="[ '/home']">Home</a>
+            <a class="signup" data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
+        </li>
+    </ul>
+
+
+    <ul class="float-right " *ngIf="myAuthService.isLoggedin()">
+        <li >
+            <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <mat-menu #menu="matMenu">
+                <a style="color: #000;" class="item" mat-menu-item (click)="myAccount()">Profile</a>
+                <a style="color: #000;" class="item" mat-menu-item (click)="myAccount()">Diagnosis Forms</a>
+                <a style="color: #000;" class="item" mat-menu-item (click)="myAccount()">Treatment Plans</a>
+                <div style="height: 2px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
+                <a style="color: #000;" class="item" mat-menu-item>English</a>
+                <a style="color: #000;" class="item" mat-menu-item>Help & Support</a>
+                <div style=" height: 3px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
+                <a style="color: #000;" class="item" mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</a>
+            </mat-menu>
+        </li>
+    </ul>
+
+    <ul class="menu2 float-right px-5 mx-5">
+        <li>
+            <a class="my-btn" [routerLink]="[ '/']">Home</a>
         </li>
         <li>
             <a class="my-btn" [routerLink]="[ '/home']">Doctors</a>
@@ -15,31 +39,6 @@
         </li>
         <li>
             <a class="my-btn" [routerLink]="[ '/home']">About</a>
-        </li>
-    </ul>
-    <ul class="menu" *ngIf="!myAuthService.isLoggedin()">
-        <li>
-            <!-- <a class="signup" data-toggle="modal" (click)="frame2.show()">Sign Up
-            </a> -->
-            <a class="signup" data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
-        </li>
-
-
-    </ul>
-    <ul style="float: right;" *ngIf="myAuthService.isLoggedin()">
-        <li>
-            <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
-            <mat-menu #menu="matMenu">
-                <a class="item" mat-menu-item (click)="myAccount()">Profile</a>
-                <a class="item" mat-menu-item (click)="myAccount()">Diagnosis Forms</a>
-                <a class="item" mat-menu-item (click)="myAccount()">Treatment Plans</a>
-                <div style="height: 2px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
-                <a class="item" mat-menu-item>Doctors</a>
-                <a class="item" mat-menu-item>English</a>
-                <a class="item" mat-menu-item>Help & Support</a>
-                <div style=" height: 3px;width:75%; background-color:rgb(218, 218, 218);margin: auto;"></div>
-                <a class="item" mat-menu-item (click)="myAuthService.logout()" [routerLink]="['/']">Logout</a>
-            </mat-menu>
         </li>
     </ul>
 
@@ -184,8 +183,8 @@
 
                             <div class="text-center form-sm mt-2">
                                 <mat-hint *ngIf="validError">*Pelease Fill All Inputs!</mat-hint>
-                                <button class="btn" (click)="[register()]">Sign up <i
-                                    data-dismiss="modal" class="fas fa-sign-in ml-1"></i></button>
+                                <button class="btn" (click)="[register()]">Sign up <i data-dismiss="modal"
+                                        class="fas fa-sign-in ml-1"></i></button>
                             </div>
 
                         </div>
