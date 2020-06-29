@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router'
 import { DoctorService } from '../services/doctor.service';
+import { CitiesService } from '../services/cities.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,8 +17,9 @@ export class HomeComponent implements OnInit {
   searchText: any = '';
   location: any = this.route.snapshot.queryParams.Location;
   area: any = this.route.snapshot.queryParams.area;
-
-  constructor(private myelementRef: ElementRef, private myHttpClient: HttpClient, public route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
+  cities: any;
+  areas: any
+  constructor(private myelementRef: ElementRef, private myCitiesService: CitiesService, public route: ActivatedRoute, private router: Router, private myDoctorService: DoctorService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 9,
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit {
     if (this.DataArr) { } else {
       this.getDoctors()
     }
+    this.getCities()
   }
 
 
@@ -65,4 +69,22 @@ export class HomeComponent implements OnInit {
   pageChange(newPage: number) {
     this.router.navigate(['home'], { queryParams: { page: newPage } });
   }
+
+
+
+
+  getCities() {
+    this.cities = this.myCitiesService.getGovernoratesWithSubregions()
+
+  }
+  getAreas(event) {
+    if (event.target.value == 'all') {
+      this.location = ''
+      this.area = ''
+    } else {
+      this.location = event.target.value
+      this.areas = this.myCitiesService.getSubregionsByname(this.location)
+    }
+  }
+
 }

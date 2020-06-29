@@ -3,10 +3,13 @@ ngb-rating{
     font-size: 1.5rem;
     color: gold;
 }
-a{
-    text-decoration: none;
-}
 
+.card{
+    &:hover{
+        background-color: #f3f2f2;
+        cursor: grab;
+    }
+}
 .card-body {
     .card-title{
         color: #289cff;
@@ -14,12 +17,12 @@ a{
         font-weight: 200;
     }
    h4{
-       color: #289cff;
+       color: #289bff77;
        font-size: 1rem;
        font-weight: bold;
    }
    .card-text{
-       height: 2.5rem;
+       height: 1.5rem;
    }
 
    button{
@@ -32,16 +35,9 @@ a{
     
 }
 
-.card{
-    &:hover{
-        background-color: #f3f2f2;
-    }
-    cursor: grab;
-}
-
 .filter{
     position: sticky;
-    top:21rem;
+    top:5rem;
     padding: 2rem 0px 2rem 2rem;
     height: 20rem;
     background-color: #fff;
@@ -61,3 +57,16 @@ a{
 
 }
 
+.bgimg {
+    background: linear-gradient(rgba(1, 96, 178, 0.7), rgba(1, 96, 178, 0.7)),
+      /* bottom, image */url(../../assets/images/1070305_Russel_04_0136.jpg);
+    background-size: 100%100%;
+    background-repeat: no-repeat;
+  }
+
+.col-xl-9 a{
+    text-decoration: none;
+}
+.card .location{
+    color: #289cff;
+}

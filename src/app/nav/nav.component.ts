@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
@@ -9,6 +9,9 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  isShow: boolean;
+  topPosToStartShowing = 300;
+
   options = [
     { value: '1', label: 'Option 1' },
     { value: '2', label: 'Option 2' },
@@ -60,6 +63,7 @@ export class NavComponent implements OnInit {
           if (resp.token) {
             localStorage.setItem('token', resp.token)
             localStorage.setItem('type', resp.type)
+            localStorage.setItem('type', resp.id)
             this.myrouter.navigate(['home']);
           }
           else if (resp.message = "error") {
@@ -128,6 +132,24 @@ export class NavComponent implements OnInit {
     }
   }
 
+
+
+  @HostListener('window:scroll')
+  checkScroll() {
+
+    // window의 scroll top
+    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
+
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    console.log('[scroll]', scrollPosition);
+
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
 
 
 

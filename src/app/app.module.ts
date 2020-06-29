@@ -57,6 +57,10 @@ import * as firebase from 'firebase';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { SpinnnerComponent } from './spinnner/spinnner.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatRadioModule} from '@angular/material/radio';
+import { TravelAgentSignUpComponent } from './travel-agent-sign-up/travel-agent-sign-up.component';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -66,6 +70,7 @@ const routes: Routes = [
   { path: 'home/:location/:area', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Dregister', component: SignupDocComponent },
+  { path: 'TravelAgent/SignUp', component: TravelAgentSignUpComponent },
   { path: 'Diagnosis/:id', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
@@ -91,6 +96,8 @@ const routes: Routes = [
     PatientProfileComponent,
     AdminDashboardComponent,
     UploadImgComponent,
+    SpinnnerComponent,
+    TravelAgentSignUpComponent,
 
   ],
   imports: [
@@ -105,6 +112,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatSliderModule,
     MatButtonModule,
     MatDividerModule,
     MatTableModule,
@@ -115,6 +123,7 @@ const routes: Routes = [
     NgxPaginationModule,
     MatGridListModule,
     MatInputModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatExpansionModule,
     ReactiveFormsModule,
