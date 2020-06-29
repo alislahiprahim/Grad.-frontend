@@ -35,11 +35,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   constructor(private config: NgbDatepickerConfig, calendar: NgbCalendar, public myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, private modalService: NgbModal) {
 
-    this.config.maxDate = { year: 2020, month: 7, day: 30 };
-    this.config.minDate = { year: 2020, month: 6, day: 9 };
-
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    
   }
 
   ngOnInit(): void {
@@ -62,7 +58,6 @@ export class DoctorDashboardComponent implements OnInit {
   getAllDiagnosis() {
     this.myDoctorService.getAllDiagnosis().subscribe((resp: any) => {
       this.Diagnosis_Form = resp.data
-      debugger
     })
   }
 
@@ -75,6 +70,10 @@ export class DoctorDashboardComponent implements OnInit {
 
   getDiagnosis(pid) {
     this.Patient_DF = this.Diagnosis_Form.find(df => {
+      
+      this.config.maxDate = { year: df.avilableDuration.toDate.year, month:  df.avilableDuration.toDate.month, day:  df.avilableDuration.toDate.day };
+      this.config.minDate = { year: df.avilableDuration.fromDate.year, month:  df.avilableDuration.fromDate.month, day:  df.avilableDuration.fromDate.day };
+
       return df.patientID._id == pid
     })
   }

@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="rating">
-                                <h3 style=" padding-top: 30px;">Name : {{username}}? </h3>
+                                <h3 style=" padding-top: 30px;">Name : {{username}} </h3>
                                 <h3>rating : <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
                                         aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i
                                         class="fa fa-star" aria-hidden="true"></i>
@@ -309,12 +309,10 @@
                                             </div>
                                             <div class="col-12 py-3">
                                                 Start-date :
-                                                {{tp.treatmentDate.toDate.year}}/{{tp.treatmentDate.toDate.month}}/{{tp.treatmentDate.toDate.day}}
-                                            </div>
+                                                {{tp.treatmentDate.toDate|slice:0:10}}</div>
                                             <div class="col-12 py-3">
                                                 End-date :
-                                                {{tp.treatmentDate.fromDate.year}}/{{tp.treatmentDate.fromDate.month}}/{{tp.treatmentDate.fromDate.day}}
-                                            </div>
+                                                {{tp.treatmentDate.fromDate|slice:0:10}}</div>
 
                                         </div>
                                     </div>
