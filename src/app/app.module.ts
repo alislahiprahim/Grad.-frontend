@@ -29,7 +29,7 @@ import { DoctorService } from './services/doctor.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { NotificationsService } from './services/notifications.service';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalModule, TooltipModule, PopoverModule, ChartsModule, CheckboxModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
+import { ModalModule, TooltipModule, PopoverModule, ChartsModule, CheckboxModule, InputsModule, IconsModule, CardsModule, CarouselModule } from 'angular-bootstrap-md'
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DiagnosisFormComponent } from './diagnosis-form/diagnosis-form.component';
@@ -58,9 +58,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { SpinnnerComponent } from './spinnner/spinnner.component';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatRadioModule } from '@angular/material/radio';
 import { TravelAgentSignUpComponent } from './travel-agent-sign-up/travel-agent-sign-up.component';
+import { TourProgramsComponent } from './tour-programs/tour-programs.component';
+import { ProgramProfileComponent } from './program-profile/program-profile.component';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -75,6 +77,8 @@ const routes: Routes = [
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
+  { path: 'programstour', component: TourProgramsComponent },
+  { path: 'programprofile', component: ProgramProfileComponent },
   { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent },
 
@@ -98,6 +102,8 @@ const routes: Routes = [
     UploadImgComponent,
     SpinnnerComponent,
     TravelAgentSignUpComponent,
+    TourProgramsComponent,
+    ProgramProfileComponent,
 
   ],
   imports: [
@@ -115,6 +121,7 @@ const routes: Routes = [
     MatSliderModule,
     MatButtonModule,
     MatDividerModule,
+    CarouselModule,
     MatTableModule,
     HttpClientModule,
     MatSelectModule,

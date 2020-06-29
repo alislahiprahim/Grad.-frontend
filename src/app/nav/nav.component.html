@@ -4,9 +4,9 @@
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 
-    <ul class="menu float-right" *ngIf="!myAuthService.isLoggedin()">
+    <ul class="menu float-right my-1" *ngIf="!myAuthService.isLoggedin()">
         <li>
-            <a class="signup"  data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
+            <a class="signup my-1" style="color:#fff"  data-toggle="modal" data-target="#modalLRForm">Register / Login</a>
         </li>
     </ul>
 
@@ -60,12 +60,12 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs md-tabs tabs-2 light-blue" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i
+                        <a class="nav-link active" style="color:#fff" data-toggle="tab" href="#panel7" role="tab"><i
                                 class="fas fa-user mr-2"></i>
                             Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i
+                        <a class="nav-link" data-toggle="tab" style="color:#fff" href="#panel8" role="tab"><i
                                 class="fas fa-user-plus mr-2"></i>
                             Register</a>
                     </li>
@@ -95,17 +95,17 @@
                                     password</label>
                             </div>
                             <div class="text-center mt-2">
-                                <button class="btn btn-info" (click)="login()" data-dismiss="modal">Log in <i
+                                <button class="btn btn-info" style="color:#fff" (click)="login()" data-dismiss="modal">Log in <i
                                         class="fas fa-sign-in ml-1"></i></button>
                             </div>
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-center text-md-right mt-1">
-                                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                                <p>Not a member? <a href="#" style="color:#fff" class="blue-text">Sign Up</a></p>
+                                <p>Forgot <a href="#" style="color:#fff" class="blue-text">Password?</a></p>
                             </div>
-                            <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                            <button type="button" style="color:#fff" class="btn btn-outline-info waves-effect ml-auto"
                                 data-dismiss="modal">Close</button>
                         </div>
 
@@ -184,7 +184,7 @@
 
                             <div class="text-center form-sm mt-2">
                                 <mat-hint *ngIf="validError">*Pelease Fill All Inputs!</mat-hint>
-                                <button class="btn" (click)="[register()]">Sign up <i data-dismiss="modal"
+                                <button class="btn" style="color:#fff" (click)="[register()]">Sign up <i data-dismiss="modal"
                                         class="fas fa-sign-in ml-1"></i></button>
                             </div>
 
@@ -193,11 +193,11 @@
                         <div class="modal-footer">
                             <div class="options text-right">
                                 <p class="pt-1">Already have an account?
-                                    <a class="blue-text" data-toggle="tab" href="#panel7">Login</a>
+                                    <a class="blue-text" data-toggle="tab" style="color:#fff" href="#panel7">Login</a>
                                 </p>
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                                data-dismiss="modal">Close</button>
+                                data-dismiss="modal" style="color:#fff">Close</button>
                         </div>
                     </div>
                     <!--/.Panel 8-->
@@ -208,131 +208,3 @@
         <!--/.Content-->
     </div>
 </div>
-<!--Modal: Login / Register Form-->
-
-
-
-
-
-
-
-
-<!-- sign up -->
-
-
-<!-- 
-<div mdbModal #frame2="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="border-radius: 1rem;">
-            <div class="modal-header text-center"
-                style="background-color: #068efe;border-top-left-radius: 1rem;border-top-right-radius: 1rem;">
-                <h4 class="modal-title w-100 font-weight-bold"
-                    style="font-size: 2rem; padding-top: .5rem; color: white;">Sign up</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame2.hide()">
-                    <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body  mx-5">
-                <mdb-icon fas icon="user" class="prefix " style="color: #068efe;"></mdb-icon>
-                <mat-form-field >
-                    <mat-label>Enter Username</mat-label>
-                    <input matInput placeholder="username" [(ngModel)]="username">
-                </mat-form-field>
-                <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field >
-                    <mat-label>Your Email</mat-label>
-                    <input matInput placeholder="Email" [(ngModel)]="email">
-                </mat-form-field>
-
-                <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field>
-                    <mat-label>Your Password</mat-label>
-                    <input matInput placeholder="password" [(ngModel)]="password">
-                </mat-form-field>
-                <i class="fas fa-venus-mars prefix" style="color: #068efe;"></i>
-                <mat-form-field>
-                    <mat-label>Gender</mat-label>
-                    <mat-select [(ngModel)]="gender" formControlName="genderCtrl" >
-                        <mat-option *ngFor="let g of ['male','female']" [value]='g'>
-                            {{g | titlecase}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mdb-icon fas icon="phone-alt" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field >
-                    <mat-label>Your Phone</mat-label>
-                    <input matInput placeholder="phone" [(ngModel)]="phone">
-                </mat-form-field>
-
-
-                <mdb-icon far icon="calendar-check" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field >
-                    <mat-label>Your Age</mat-label>
-                    <input matInput placeholder="age" [(ngModel)]="age">
-                </mat-form-field>
-
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn class=""
-                    style="background-color: #f7f7f78a; font-size: medium;color: #068efe; width: 100%; border-radius: 2rem;"
-                    mdbWavesEffect (click)="[register(),frame2.hide()]">Signup</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- /sign up -->
-
-
-<!-- login -->
-
-
-<!-- <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center" style="background-color: #068eff;">
-                <h4 class="modal-title w-100 font-weight-bold"
-                    style="font-size: 2rem; padding-top: .5rem;color: white;">Sign in</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
-                    <span aria-hidden="true" style="color: #fff; font-size: 2rem;">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body mx-3">
-                <mdb-icon fas icon="envelope" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Your Email</mat-label>
-                    <input matInput placeholder="email" [(ngModel)]="email">
-                </mat-form-field>
-                <mdb-icon fas icon="lock" class="prefix" style="color: #068efe;"></mdb-icon>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Your Password</mat-label>
-                    <input matInput placeholder="password" [(ngModel)]="password">
-                </mat-form-field>
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="http://localhost:4200/password/forget" style="font-size: 1rem ; color: #63b7ff;">Forgot
-                            password?</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button mdbBtn class="waves-light"
-                    style="background-color: #068efe; font-size: medium;color: white; width: 100%;" mdbWavesEffect
-                    (click)="[login(),frame.hide()]">Login</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-<!-- /login -->

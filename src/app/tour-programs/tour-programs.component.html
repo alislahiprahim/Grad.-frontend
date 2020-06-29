@@ -1,0 +1,60 @@
+<div class="container-fluid mx-0 px-0">
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img class="w-100 d-block" src="https://mdbootstrap.com/img/Photos/Slides/img%20(18).jpg"
+                    alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 d-block" src="https://mdbootstrap.com/img/Photos/Slides/img%20(19).jpg"
+                    alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="w-100 d-block" src="https://mdbootstrap.com/img/Photos/Slides/img%20(20).jpg"
+                    alt="Third slide">
+            </div>
+        </div>
+    </div>
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
+
+<div class="container mx-auto my-5">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="container my-1">
+                <!-- catigory -->
+            </div>
+        </div>
+        <div class="col-lg-10 ">
+            <div class="container my-1">
+                <div class="row">
+                    <div *ngFor="let i of arr" class="cardd col-lg-4 col-md-6 col-sm-12 my-2 mx-0">
+                        <div class="row card-img mx-0" [routerLink]="[ '/programprofile']">
+                            <img class="img-fluid" src="../../assets/images/image1.jpg">
+                        </div>
+                        <div class="row card-body mx-0">
+                            <div class="description ">
+                                <p>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY, DAHSHUR AND SAKKARA PYRAMIDS </p>
+                            </div>
+                            <div class="rate ">
+                                <i class="far fa-star" style="color:gold"></i>
+                                <i class="far fa-star" style="color:gold"></i>
+                                <i class="far fa-star" style="color:gold"></i>
+                                <i class="far fa-star" style="color:gold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

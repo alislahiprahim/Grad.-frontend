@@ -10,7 +10,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class NavComponent implements OnInit {
   isShow: boolean;
-  topPosToStartShowing = 300;
+  topPosToStartShowing = 50;
 
   options = [
     { value: '1', label: 'Option 1' },

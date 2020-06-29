@@ -5,8 +5,8 @@
                 <h1>Welcome To DocTourism</h1>
                 <h1>online Reservation for medical tourism</h1>
             </div>
-            <div style="position: relative; top:85%">
-                <div class="container py-4 mx-auto"
+            <div style="position: relative; top:80%">
+                <div class="container py-3 mx-auto"
                     style="background-color: #fff;box-shadow:1px 3px 5px rgba(196, 196, 196, 0.712);border-radius: 5px;">
                     <div class="row mx-auto">
                         <div class="col-lg-3 ">
@@ -17,7 +17,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="col-lg-3 ">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label> Choose Area </label>
                                 <select [(ngModel)]="area" class="form-control">
@@ -100,20 +100,19 @@
 
         </div>
 
-
         <div class="col-xl-9">
             <a *ngFor="let i of filteredArray | paginate: config"  [routerLink]="['/Dprofile',i._id]">
-                <div class="card my-3" style="max-width: 50rem;max-height: 13rem;">
+                <div class="card my-2" style="max-width: 50rem;max-height: 11rem;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{i.profileIMG}}" class="card-img" style="height: 12.8rem;" alt="Doctor Image">
+                            <img src="{{i.profileIMG}}" class="card-img" style="height: 10.8rem;" alt="Doctor Image">
                         </div>
                         <div class="col-md-8">
-                            <div class="card-body">
-                                <h1 class="card-title">{{i.username | titlecase}}</h1>
+                            <div class="card-body py-2">
+                                <h1 class="card-title my-0">{{i.username | titlecase}}</h1>
                                 <h4>{{i.title | titlecase}}</h4>
-                                <p class="card-text">{{i.briefSummery |slice: 0:50}} .... <a [routerLink]="['/Dprofile',i._id]"> Read More</a></p>
-                                <p class="location">{{i.location.city |titlecase}} - {{i.location.area |titlecase}}</p>
+                                <p class="card-text my-0">{{i.briefSummery |slice: 0:50}} .... <a [routerLink]="['/Dprofile',i._id]"> Read More</a></p>
+                                <p class="location my-0">{{i.location.city |titlecase}} - {{i.location.area |titlecase}}</p>
                                 <ngb-rating [max]='5' [(rate)]=i.rate [readonly]="true"></ngb-rating>
                             </div>
                         </div>
