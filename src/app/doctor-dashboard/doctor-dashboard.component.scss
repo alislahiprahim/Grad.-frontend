@@ -100,3 +100,71 @@
 .img:hover>.layer {
   opacity: 1;
 }
+
+mat-tab-group{
+
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+  /* bottom, image */url('../../assets/images/background\ doctor\ dashboard.jpg');
+  background-size: contain;
+  background-repeat: repeat;
+}
+.container-fluid {
+  
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+  /* bottom, image */url('../../assets/images/background\ doctor\ dashboard.jpg');
+  background-size: contain;
+  background-repeat: repeat;
+}
+.mat-typography{
+  
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+  /* bottom, image */url('../../assets/images/background\ doctor\ dashboard.jpg');
+  background-size: contain;
+  background-repeat: repeat;
+}
+
+.doc-img {
+  padding: 2rem 0px;
+  h3{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  ngb-rating{
+    color: gold;
+    font-size: 1.5rem;
+  }
+}
+
+.doc-about{
+  padding: 2rem 0px;
+  h2{
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: .5rem;
+    border-bottom: 2px #289cff solid;
+  }
+  .parag p{
+    font-size: 1rem ;
+    font-weight: 200;
+    color: rgba(0, 0, 0, 0.575);
+    font-style: oblique;
+  }
+}
+#profile{
+  background-color: #fff;
+  // border: 1px solid #015fb28c  !important;
+  // border-top:0px solid #015fb28c  !important;
+  box-shadow:1px 10px 25px rgba(0, 0, 0, 0.541) !important;
+}
+
+table{
+  th{
+    font-weight: bold!important;
+  }
+  td{
+    font-size: 1rem!important;
+    font-weight: 200!important;
+
+  }
+}

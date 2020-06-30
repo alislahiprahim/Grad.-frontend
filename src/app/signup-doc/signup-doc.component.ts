@@ -81,7 +81,7 @@ export class SignupDocComponent implements OnInit {
         setTimeout(() => {
           this.modalService.dismissAll()
         }, 3000);
-        this.myRouter.navigate(['/home']  )
+        this.myRouter.navigate(['/']  )
       }
       else {
         this.errorData = true

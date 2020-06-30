@@ -49,6 +49,7 @@ export class AdminDashboardComponent implements OnInit {
 
   listDoctors() {
     this.myAdminServices.listDoctors().subscribe((resp: any) => {
+      debugger
       if (resp.message == 'success') {
         console.log(resp)
         this.Doctors = resp.data.doctors

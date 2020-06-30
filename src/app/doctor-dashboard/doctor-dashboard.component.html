@@ -1,62 +1,125 @@
-<div class="container-fluid py-5 ">
+<div class="container-fluid">
     <div class="row float-right ">
         <div class="col-12 float-right my-1">
             <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
                 (click)="[getAllDiagnosis(),getAllTreatmentPlan(),getDoctor()]">
                 <i class="fas fa-sync"></i>
             </a>
+            <!-- drob Down menu -->
+            <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <mat-menu #menu="matMenu">
+                <a style="color: #000;" class="item" mat-menu-item (click)="myAuthService.logout()"
+                    [routerLink]="['/']">Logout</a>
+            </mat-menu>
+
+            <!-- /drob down menu -->
+
+
+
         </div>
     </div>
     <div class="clearfix"></div>
-    <mat-tab-group dynamicHeight>
+    <mat-tab-group animationDuration="1000ms" mat-align-tabs="center">
         <mat-tab label="My Profile">
             <div class="example-large-box mat-elevation-z4">
-                <div class="container py-5">
+                <div class="container py-5" id="profile">
                     <div class="row">
-                        <div class="col-md-4 doc-img">
-                            <div class="img">
-                                <img class="img-fluid" style="height: 300px;" src="{{img}}?">
+                        <div class="col-md-4 doc-img m-auto text-center">
+                            <div class="img ">
+                                <img class="img-fluid" style="height: 20rem; width: 15rem;" src={{DData.profileIMG}}>
                                 <div class="layer">
                                     <app-upload-img></app-upload-img>
                                 </div>
                             </div>
                             <div class="rating">
-                                <h3 style=" padding-top: 30px;">Name : {{username}} </h3>
-                                <h3>rating : <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
-                                        aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i
-                                        class="fa fa-star" aria-hidden="true"></i>
-                                </h3>
+                                <h3 style="padding-top: .5rem;">Dr / {{DData.username |titlecase}}</h3>
+                                <ngb-rating [max]='5' [(rate)]='DData.rate' [readonly]="true"></ngb-rating>
                             </div>
                         </div>
                         <div class="col-md-8 doc-about">
                             <div class="container descrip">
-                                <div class="row py-3">
-                                    <span style="color:#09c; font-size: 35px; font-weight: 800;padding: 10px;"> i
-                                    </span>
-                                    <h2>About Doctor</h2>
+                                <div class="row py-2">
+                                    <h2> Summery </h2>
                                     <div class="col-md-12 py-3 parag">
-                                        <p>{{DData?.briefSummery}}</p>
+                                        <p>{{DData.briefSummery}}</p>
                                     </div>
                                 </div>
-                                <div class="row py-3">
-                                    <i class="fas fa-map-marker-alt" style="color:#09c; font-size: 30px;"></i>
-                                    <h2 style="padding-left: 10px;">About Doctor</h2>
-                                    <div class="col-md-12 py-2 parag">
-                                        <p>{{DData?.location.location}} : {{DData?.location.area}} </p>
+                                <div class="row py-2">
+                                    <div class="col-lg-4">
+                                        <h2>Location</h2>
+                                        <div class="col-md-12 py-2 parag">
+                                            <p>{{DData?.location.location |titlecase}} -
+                                                {{DData?.location.area |titlecase}}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-lg-4">
+                                        <h2> Phone </h2>
+                                        <div class="col-md-12 py-3 parag">
+                                            <p>{{DData.phone |number}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <h2> Title </h2>
+                                        <div class="col-md-12 py-3 parag">
+                                            <p>{{DData.title |titlecase}}</p>
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-lg-4">
+                                        <h2>Email</h2>
+                                        <div class="col-md-12 py-2 parag">
+                                            <p>{{DData?.email}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <h2>Location</h2>
+                                        <div class="col-md-12 py-2 parag">
+                                            <p>{{DData?.password |slice :0:10}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class=" btn btn-success float-right m-4">Edit</button>
+                        </div>
+                    </div>
+                    <!--Start Of FeedBacks -->
+                    <div class="row">
+                        <div class="container col-lg-12">
+                            <div class="row" *ngFor="let item of DData.feedbacks" style="padding: .5rem; ">
+                                <div class="col-lg-9 py-3 "
+                                    style="background-color: #fff; height: 10rem;border: 1px solid #289cff;  border-right: 0px;border-bottom-left-radius:.5rem ;border-top-left-radius:.5rem ;">
+                                    <ngb-rating [max]='5' [(rate)]='item.rate' [readonly]="true"
+                                        style="font-size: 2rem; color: gold;"></ngb-rating>
+                                    <h2 style="font-size: 1rem;font-weight: bold; color: #289bff80;">OverAll Rating</h2>
+                                    <p style="font-size: 1rem; font-weight: 100; font-style: oblique;">
+                                        "{{item.comment}}"</p>
+                                    <p style="font-weight: bold; font-size: .8rem; color: rgba(0, 0, 0, 0.486);">
+                                        {{item.PName |titlecase}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{item.data|date}}</p>
+                                </div>
+                                <div class="col-lg-3 m-auto"
+                                    style=" height: 10rem;border: 1px solid #289cff; border-left: 0px;border-bottom-right-radius:.5rem ;border-top-right-radius:.5rem ;">
+                                    <p class="mt-5"
+                                        style="padding: 1rem; border: 3px solid #289cff; border-radius: 10px; background-color: #fff; color: #289cff; font-size: 1.5rem; margin: auto; text-align: center;width: 3rem;font-weight: bold;">
+                                        {{item.rate}}</p>
+
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!--End of FeedBack -->
                 </div>
             </div>
+
+
         </mat-tab>
-
         <mat-tab class="mx-4" label="Diagnosis Forms">
-            <ng-container *ngIf="Patients==null; else elseTemplate">
+            <ng-container *ngIf="Patients; else elseTemplate">
 
-                <table class="table table-striped py-4" style="color: #000;">
+                <table class="table table-striped py-4 text-center">
                     <thead>
                         <tr>
                             <th scope="col">Patient Name</th>
@@ -68,9 +131,9 @@
                     <tbody>
                         <tr *ngFor="let p of Patients; let i = index">
                             <td>
-                                {{ p?.username }}
+                                {{ p?.username |titlecase}}
                             </td>
-                            <td>{{ p?.gender }}</td>
+                            <td>{{ p?.gender |titlecase}}</td>
                             <td>{{ p?.CreatedDate|date  }}</td>
                             <td>
                                 <button mat-raised-button color=accent
@@ -281,14 +344,14 @@
             </ng-container>
             <ng-template #elseTemplate>
                 <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 100;color: #09c;">No Diagnosis Form Recrived Yet!</h3>
+                    <h3 style="font-size: 1.5rem; font-weight: bold;color: #09c;">No Diagnosis Form Recrived Yet!</h3>
                     <img width="300px" height="300px"
                         src="../../assets/images/29f6efab-7025-4a82-aa35-331dbfafac28.jpg">
                 </div>
             </ng-template>
         </mat-tab>
         <mat-tab class="mx-4" label="Treatment Plans">
-            <ng-container *ngIf="Patients==null; else elseTemplate2">
+            <ng-container *ngIf="Patients; else elseTemplate2">
                 <div class="example-large-box mat-elevation-z4">
                     <mat-list *ngFor="let tp of treatmentPlan;let i of index">
                         <mat-list-item>
@@ -309,10 +372,10 @@
                                             </div>
                                             <div class="col-12 py-3">
                                                 Start-date :
-                                                {{tp.treatmentDate.toDate|slice:0:10}}</div>
+                                                {{tp.treatmentDate.toDate |date}}</div>
                                             <div class="col-12 py-3">
                                                 End-date :
-                                                {{tp.treatmentDate.fromDate|slice:0:10}}</div>
+                                                {{tp.treatmentDate.fromDate |date}}</div>
 
                                         </div>
                                     </div>
@@ -327,7 +390,7 @@
             </ng-container>
             <ng-template #elseTemplate2>
                 <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 100;color: #09c;">No Treatment Plans Created Yet!</h3>
+                    <h3 style="font-size: 1.5rem; font-weight: bold;color: #09c;">No Treatment Plans Created Yet!</h3>
                     <img width="300px" height="300px"
                         src="../../assets/images/1bb8d3ea-e39c-49b7-90ee-ba900c5634f8.jpg">
                 </div>
