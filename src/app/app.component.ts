@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { NotificationsService } from './services/notifications.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { NotificationsService } from './services/notifications.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private myelementRef: ElementRef) { }
+  constructor(private myelementRef: ElementRef,public myAuthService:AuthService) { }
   value = 'Doctourism.com@gmail.com'
   ngAfterViewInit(): void {
     this.myelementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#fff'

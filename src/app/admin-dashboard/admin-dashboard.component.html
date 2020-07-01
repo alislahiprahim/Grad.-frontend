@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-6">
                         <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
-                            (click)="listDoctors()">
+                            (click)="listDoctorsandAgents()">
                             <i class="fas fa-sync"></i>
                         </a>
                     </div>
@@ -101,7 +101,81 @@
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Second">
+        <mat-tab label="Travel-agent">
+
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-6">
+                        <h2 class="mx-2 py-2" style="color:#068efe;"> My Trave agents</h2>
+                    </div>
+                    <div class="col-6">
+                        <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
+                            (click)="listDoctorsandAgents()">
+                            <i class="fas fa-sync"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container col-12">
+                        <mat-list *ngFor="let t of travelAgents;let i of index">
+                            <mat-list-item>
+                                <mat-accordion>
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    {{t.companyName }}
+                                                </mat-panel-title>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    Approving Status: {{t.isApproved}}
+                                                </mat-panel-title>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    CreatedDate: {{t.CreatedDate|date}}
+                                                </mat-panel-title>
+                                            </div>
+                                        </mat-expansion-panel-header>
+                                        <div class="container">
+                                            <div class="">
+                                                <div class="row ">
+                                                    <div class="col-3">name:</div>
+                                                    <div class="col-3">{{t.companyName}}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">email:</div>
+                                                    <div class="col-3">{{t.email}}</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">location:</div>
+                                                    <div class="col-3"> {{t.location.location}}:{{t.location.area}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">phone: </div>
+                                                    <div class="col-3"> {{t.phone}} </div>
+                                                </div>
+                                                <div class="col-12" *ngIf="t.isApproved=='false'||t.isApproved==null">
+                                                    <button class="btn btn-success my-1 py-0 myDiv"
+                                                        (click)="approveTravel(t._id,'true')">Accept</button>
+                                                    <button class="btn btn-danger my-1 py-0 myDiv"
+                                                        (click)="approveTravel(t._id,'false')">Reject</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </mat-list>
+
+                    </div>
+                </div>
+            </div>
         </mat-tab>
 
     </mat-tab-group>

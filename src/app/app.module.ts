@@ -63,6 +63,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { TravelAgentSignUpComponent } from './travel-agent-sign-up/travel-agent-sign-up.component';
 import { TourProgramsComponent } from './tour-programs/tour-programs.component';
 import { ProgramProfileComponent } from './program-profile/program-profile.component';
+import { TravelDashboardComponent } from './travel-dashboard/travel-dashboard.component';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
+  { path: 'Tdashboard/:id', component:TravelDashboardComponent },
   { path: 'programstour', component: TourProgramsComponent },
   { path: 'programprofile', component: ProgramProfileComponent },
   { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
@@ -104,6 +106,7 @@ const routes: Routes = [
     TravelAgentSignUpComponent,
     TourProgramsComponent,
     ProgramProfileComponent,
+    TravelDashboardComponent,
 
   ],
   imports: [

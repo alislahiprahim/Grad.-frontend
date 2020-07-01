@@ -58,25 +58,25 @@ export class NavComponent implements OnInit {
 
     if (username && password && phone && gender && age) {
 
-        this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
-          console.log(resp)
-          if (resp.token) {
-            localStorage.setItem('token', resp.token)
-            localStorage.setItem('type', resp.type)
-            localStorage.setItem('type', resp.id)
-            this.myrouter.navigate(['home']);
-          }
-          else if (resp.message = "error") {
-            this.validError = true
-          }
-          else if (resp.message = "user already registered") {
-            this.alreadyRegester = true
-          }
-          else {
-            console.log("A7A")
+      this.myAuthService.P_register({ username, password, email, phone, gender, age }).subscribe((resp: any) => {
+        console.log(resp)
+        if (resp.token) {
+          localStorage.setItem('token', resp.token)
+          localStorage.setItem('type', resp.type)
+          localStorage.setItem('type', resp.id)
+          this.myrouter.navigate(['home']);
+        }
+        else if (resp.message = "error") {
+          this.validError = true
+        }
+        else if (resp.message = "user already registered") {
+          this.alreadyRegester = true
+        }
+        else {
+          console.log("A7A")
 
-          }
-        })
+        }
+      })
 
     }
     else {
@@ -102,7 +102,7 @@ export class NavComponent implements OnInit {
 
         }
         else if (resp.type == 'travelAgent') {
-          this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
+          this.myrouter.navigate(['Tdashboard', localStorage.getItem('id')]);
           this.id = resp.id
         }
         else if (resp.type == 'admin') {
@@ -125,7 +125,7 @@ export class NavComponent implements OnInit {
       this.myrouter.navigate(['dashboard', localStorage.getItem('id')]);
     }
     if (localStorage.getItem('type') == 'travelAgent') {
-      //this.myrouter.navigate(['dashboard', this.id]);
+      this.myrouter.navigate(['Tdashboard', this.id]);
     }
     if (localStorage.getItem('type') == 'admin') {
       this.myrouter.navigate(['admin']);
@@ -142,7 +142,6 @@ export class NavComponent implements OnInit {
 
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    console.log('[scroll]', scrollPosition);
 
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;

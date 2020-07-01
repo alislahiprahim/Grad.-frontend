@@ -11,16 +11,16 @@
 
 
 <div class="form-signUp">
-    <form>
+    
         <div class="form-group">
             <label for="inputAddress">Company Name</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Jane Doe">
+            <input type="text" class="form-control" id="inputAddress" [(ngModel)]="companyName" placeholder="Jane Doe">
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6 col-sm-12">
                 <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4">
+                <input type="email" [(ngModel)]="email" class="form-control" id="inputEmail4">
             </div>
 
             <div class="form-group col-md-6 col-sm-12">
@@ -33,15 +33,15 @@
                             <mat-icon *ngIf="!hide">visibility</mat-icon>
                         </button>
                     </div>
-                    <input [type]="hide ? 'password' : 'text'" class="form-control" id="inputPassword"
-                        placeholder="Password">
+                    <input [type]="hide ? 'password' : 'text'" [(ngModel)]="password" class="form-control"
+                        id="inputPassword" placeholder="Password">
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6 col-sm-12">
                 <label> Choose City </label>
-                <select class="form-control" (change)='getAreas($event)'>
+                <select class="form-control" [(ngModel)]="location" (change)='getAreas($event)'>
                     <option selected>All</option>
                     <option *ngFor="let c of cities" value={{c.name_en}}>{{c.name_en |titlecase}}
                     </option>
@@ -57,10 +57,10 @@
             </div>
             <div class="form-group">
                 <label for="inputAddress1">Phone Number</label>
-                <input type="tel" class="form-control" id="inputAddress1" placeholder="354 - 3432 - 2343">
+                <input type="tel" class="form-control" id="inputAddress1" [(ngModel)]="phone"
+                    placeholder="354 - 3432 - 2343">
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
+        <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
 </div>

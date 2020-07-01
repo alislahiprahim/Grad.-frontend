@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   backendURL = 'http://localhost:8085/patient/';
+  IsHidden: Boolean
 
-  constructor(private myHttpClient: HttpClient ,private myRouter:Router) { }
+  constructor(private myHttpClient: HttpClient, private myRouter: Router) { }
 
   P_register(data) {
     return this.myHttpClient.post(this.backendURL + 'signUp', data)
@@ -24,6 +25,9 @@ export class AuthService {
   }
 
   isLoggedin() {
+    if (localStorage.getItem('type') == 'admin' || localStorage.getItem('type') == 'doctor' || localStorage.getItem('type') == 'travelAgent') {
+      this.IsHidden = true
+    }
     return !!localStorage.getItem('token');
   }
 
