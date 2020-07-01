@@ -104,10 +104,10 @@
             <a *ngFor="let i of filteredArray | paginate: config"  [routerLink]="['/Dprofile',i._id]">
                 <div class="card my-2" style="max-width: 50rem;max-height: 11rem;">
                     <div class="row no-gutters">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <img src="{{i.profileIMG}}" class="card-img" style="height: 10.8rem;" alt="Doctor Image">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             <div class="card-body py-2">
                                 <h1 class="card-title my-0">{{i.username | titlecase}}</h1>
                                 <h4>{{i.title | titlecase}}</h4>
