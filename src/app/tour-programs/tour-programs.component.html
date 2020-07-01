@@ -26,47 +26,47 @@
     </a> -->
     <!--/.Controls -->
 </div>
-
-<div class="container-fluid mx-auto my-2">
-    <div class="row">
-        <div class="col-lg-3 my-3 mx-4 px-0 py-0" >
-            <div class="col-12 mx-auto" *ngFor="let i of arr" >
-                <img class="category px-0 " src="../../assets/images/image3.jpg">
-            </div>
-        </div>
-        <div class="col-lg-8 my-3 mx-auto" style="background-color: #fff;border: 1px solid #cecece;">
-            <div class="container my-1 ">
-                <div class="row">
-                    <h1 class='mx-4' style="font-weight: bold;">Tours and Tickets by Sun Pyramids Tours</h1>
+<div style="margin :2rem 12rem">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-lg-4 my-3 pr-4 py-0">
+                <div class="col-12 mx-0" *ngFor="let i of arr">
+                    <img class="category px-0 " src="../../assets/images/image3.jpg">
                 </div>
-                <div class="row">
-                    <div *ngFor="let i of arr" class="cardd row mx-0">
-                        <div class="col-3 mx-auto " [routerLink]="[ '/programprofile']">
-                            <img class="img-fluid2" src="../../assets/images/image1.jpg">
-                        </div>
-                        <div class="col-7 card-body mx-0 px-0 ">
-                            <div class="description ">
-                                <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY,DAHSHUR AND<br> SAKKARA PYRAMIDS </h1>
-                                <p>This private tour is ideal for travelers looking to add a twist to their Cairo
-                                    sightseeing without the effort of research or transport planning.</p>
+            </div>
+            <div class="col-lg-8 my-3 mx-0 " style="background-color: #fff;border: 1px solid #cecece;">
+                <div class="container my-1 ">
+                    <div class="row">
+                        <h1 class='mx-4' style="font-weight: bold;">Tours and Tickets by Sun Pyramids Tours</h1>
+                    </div>
+                    <div class="row">
+                        <div *ngFor="let i of arr" class="cardd row mx-0">
+                            <div class="col-3 mx-auto " [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid2" src="../../assets/images/image1.jpg">
                             </div>
-                            <div class="rate ">
-                                <i class="far fa-star" style="color:gold"></i>
-                                <i class="far fa-star" style="color:gold"></i>
-                                <i class="far fa-star" style="color:gold"></i>
-                                <i class="far fa-star" style="color:gold"></i>
+                            <div class="col-7 card-body mx-0 px-0 ">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY,DAHSHUR AND<br> SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate ">
+                                    <i class="far fa-star" style="color:gold"></i>
+                                    <i class="far fa-star" style="color:gold"></i>
+                                    <i class="far fa-star" style="color:gold"></i>
+                                    <i class="far fa-star" style="color:gold"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-2 mx-auto my-5 text-center">
-                            <span class="my-0 py-0" style="color:#555;font-weight: lighter;">from</span>
-                            <h3 class="my-0 py-0" style="color:gold">EGP 4,510,09</h3>
-                            <button class="my-1 py-1 px-2"
-                                style="background-color: gold;color:#000;font-size: 14px;border-radius: 3px; border: none;">More
-                                info</button>
+                            <div class="col-2 mx-auto my-5 text-center">
+                                <span class="my-0 py-0" style="color:#555;font-weight: lighter;">from</span>
+                                <h3 class="my-0 py-0" style="color:gold">EGP 4,510,09</h3>
+                                <button class="my-1 py-1 px-2"
+                                    style="background-color: gold;color:#000;font-size: 14px;border-radius: 3px; border: none;">More
+                                    info</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>

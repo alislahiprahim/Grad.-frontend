@@ -1,5 +1,5 @@
 <div class="container-fluid w-100 h-100">
-    <mat-tab-group style="height: 100%; width:100%">
+    <mat-tab-group mat-align-tabs="center" style="height: 100%; width:100% ; color: #289cff;">
         <mat-tab label="Dashboard">
             <h2 class="mx-2 py-2" style="color:#068efe;"> Admin Dashboard</h2>
             <div class="row">
@@ -17,7 +17,7 @@
             <div class="container py-4">
                 <div class="row">
                     <div class="col-6">
-                        <h2 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h2>
+                        <h1 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h1>
                     </div>
                     <div class="col-6">
                         <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
@@ -27,86 +27,106 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container col-12">
+                    <div class="container  col-12 w-100">
                         <mat-list *ngFor="let d of Doctors;let i of index">
                             <mat-list-item>
                                 <mat-accordion>
                                     <mat-expansion-panel>
                                         <mat-expansion-panel-header>
-                                            <div class="col-lg-3 col-md-6">
+                                            <div class="col-lg-3 col-md-6 ">
                                                 <mat-panel-title>
-                                                    {{d.username }}
+                                                    <strong>{{d.username |titlecase}}</strong>
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-3 col-md-6">
+                                            <div class="col-lg-3 col-md-6 " *ngIf="d.activeChecked == 'true'">
                                                 <mat-panel-title>
-                                                    status :{{d.activeChecked}}
+                                                    <strong style="color: green;"><i
+                                                            class="fas fa-dot-circle"></i>&nbsp;&nbsp;&nbsp;
+                                                        Online</strong>
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-3 col-md-6">
-                                                <mat-panel-title>
-                                                    Approving Status: {{d.isApproved}}
-                                                </mat-panel-title>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6">
-                                                <mat-panel-title>
-                                                    CreatedDate: {{d.CreatedDate|date}}
-                                                </mat-panel-title>
-                                            </div>
-                                        </mat-expansion-panel-header>
-                                        <div class="container">
-                                            <div class="">
-                                                <div class="row ">
-                                                    <div class="col-3">name:</div>
-                                                    <div class="col-3">{{d.username}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">email:</div>
-                                                    <div class="col-3">{{d.email}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">location:</div>
-                                                    <div class="col-3"> {{d.location.location}}:{{d.location.area}}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">gender:</div>
-                                                    <div class="col-3"> {{d.gender}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">title: </div>
-                                                    <div class="col-3"> {{d.title}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">phone: </div>
-                                                    <div class="col-3"> {{d.phone}} </div>
-                                                </div>
-                                                <div class="col-12" *ngIf="d.isApproved=='false'||d.isApproved==null">
-                                                    <button class="btn btn-success my-1 py-0 myDiv"
-                                                        (click)="approveDoc(d._id,'true')">Accept</button>
-                                                    <button class="btn btn-danger my-1 py-0 myDiv"
-                                                        (click)="approveDoc(d._id,'false')">Reject</button>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                            <div class="col-lg-3 col-md-6 " *ngIf="d.activeChecked == 'false'">
+                                                <mat-panel-title>
+                                                    <strong style="color: red;"><i
+                                                            class="fas fa-dot-circle"></i>&nbsp;&nbsp;&nbsp;Offline</strong>
+                                                </mat-panel-title>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-6" *ngIf="d.isApproved == 'true'">
+                                                <mat-panel-title>
+                                                    <strong>Approving Status :</strong>&nbsp;&nbsp;<p
+                                                        style="color: #fff;background-color: green; padding: 3px 1rem;border-radius: 5px;">
+                                                        {{d.isApproved |titlecase}}</p>
+                                                </mat-panel-title>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-6" *ngIf="d.isApproved == 'false'">
+                                                <mat-panel-title>
+                                                    <strong>Approving Status :</strong>&nbsp;&nbsp;<p
+                                                        style="color: #fff;background-color: red; padding: 3px 1rem;border-radius: 5px;">
+                                                        {{d.isApproved |titlecase}}</p>
+                                                </mat-panel-title>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    &nbsp;&nbsp;&nbsp; {{d.CreatedDate |date}}
+                                                </mat-panel-title>
+                                            </div>
+
+                                        </mat-expansion-panel-header>
+                                        <table class="text-center w-100 table table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <td>{{d.username |titlecase}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <td>{{d.email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Location</th>
+                                                    <td>{{d.location.location|titlecase}} -
+                                                        {{d.location.area|titlecase}} </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gender</th>
+                                                    <td>{{d.gender|titlecase}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <td>{{d.title |titlecase}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Phone Number</th>
+                                                    <td>{{d.phone}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot *ngIf="d.isApproved=='false'||d.isApproved==null">
+                                                <tr>
+                                                    <td><button class="btn btn-success my-1 p-2 myDiv"
+                                                            (click)="approveDoc(d._id,'true')">Accept</button></td>
+                                                    <td><button class="btn btn-danger my-1 p-2 myDiv"
+                                                            (click)="approveDoc(d._id,'false')">Reject</button></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </mat-expansion-panel>
                                 </mat-accordion>
-
                             </mat-list-item>
-                            <mat-divider></mat-divider>
                         </mat-list>
 
                     </div>
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Travel-agent">
-
+        <mat-tab label="Travel Agents">
             <div class="container py-4">
                 <div class="row">
                     <div class="col-6">
-                        <h2 class="mx-2 py-2" style="color:#068efe;"> My Trave agents</h2>
+                        <h1 class="mx-2 py-2" style="color:#068efe;"> My Doctors</h1>
                     </div>
                     <div class="col-6">
                         <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
@@ -116,67 +136,98 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container col-12">
+                    <div class="container  col-12 w-100">
                         <mat-list *ngFor="let t of travelAgents;let i of index">
                             <mat-list-item>
                                 <mat-accordion>
                                     <mat-expansion-panel>
                                         <mat-expansion-panel-header>
-                                            <div class="col-lg-3 col-md-6">
+                                            <div class="col-lg-3 col-md-6 ">
                                                 <mat-panel-title>
-                                                    {{t.companyName }}
+                                                    <strong>{{t.companyName|titlecase}}</strong>
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-3 col-md-6">
+                                            <!-- <div class="col-lg-3 col-md-6 " *ngIf="t.activeChecked == 'true'">
                                                 <mat-panel-title>
-                                                    Approving Status: {{t.isApproved}}
+                                                    <strong style="color: green;"><i
+                                                            class="fas fa-dot-circle"></i>&nbsp;&nbsp;&nbsp;
+                                                        Online</strong>
                                                 </mat-panel-title>
                                             </div>
-                                            <div class="col-lg-3 col-md-6">
-                                                <mat-panel-title>
-                                                    CreatedDate: {{t.CreatedDate|date}}
-                                                </mat-panel-title>
-                                            </div>
-                                        </mat-expansion-panel-header>
-                                        <div class="container">
-                                            <div class="">
-                                                <div class="row ">
-                                                    <div class="col-3">name:</div>
-                                                    <div class="col-3">{{t.companyName}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">email:</div>
-                                                    <div class="col-3">{{t.email}}</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">location:</div>
-                                                    <div class="col-3"> {{t.location.location}}:{{t.location.area}}
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-3">phone: </div>
-                                                    <div class="col-3"> {{t.phone}} </div>
-                                                </div>
-                                                <div class="col-12" *ngIf="t.isApproved=='false'||t.isApproved==null">
-                                                    <button class="btn btn-success my-1 py-0 myDiv"
-                                                        (click)="approveTravel(t._id,'true')">Accept</button>
-                                                    <button class="btn btn-danger my-1 py-0 myDiv"
-                                                        (click)="approveTravel(t._id,'false')">Reject</button>
-                                                </div>
-                                            </div>
-                                        </div>
 
+                                            <div class="col-lg-3 col-md-6 " *ngIf="d.activeChecked == 'false'">
+                                                <mat-panel-title>
+                                                    <strong style="color: red;"><i
+                                                            class="fas fa-dot-circle"></i>&nbsp;&nbsp;&nbsp;Offline</strong>
+                                                </mat-panel-title>
+                                            </div> -->
+
+                                            <div class="col-lg-3 col-md-6" *ngIf="t.isApproved == 'true'">
+                                                <mat-panel-title>
+                                                    <strong>Approving Status :</strong>&nbsp;&nbsp;<p
+                                                        style="color: #fff;background-color: green; padding: 3px 1rem;border-radius: 5px;">
+                                                        {{t.isApproved |titlecase}}</p>
+                                                </mat-panel-title>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-6" *ngIf="t.isApproved == 'false'">
+                                                <mat-panel-title>
+                                                    <strong>Approving Status :</strong>&nbsp;&nbsp;<p
+                                                        style="color: #fff;background-color: red; padding: 3px 1rem;border-radius: 5px;">
+                                                        {{t.isApproved |titlecase}}</p>
+                                                </mat-panel-title>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-6">
+                                                <mat-panel-title>
+                                                    &nbsp;&nbsp;&nbsp; {{t.CreatedDate |date}}
+                                                </mat-panel-title>
+                                            </div>
+
+                                        </mat-expansion-panel-header>
+                                        <table class="text-center w-100 table table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <td>{{t.companyName |titlecase}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <td>{{t.email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Location</th>
+                                                    <td>{{t.location.location|titlecase}} -
+                                                        {{t.location.area|titlecase}} </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <td>{{t.title |titlecase}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Phone Number</th>
+                                                    <td>{{t.phone}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot *ngIf="t.isApproved=='false'||t.isApproved==null">
+                                                <tr>
+                                                    <td><button class="btn btn-success my-1 p-2 myDiv"
+                                                            (click)="approveTravel(t._id,'true')">Accept</button></td>
+                                                    <td><button class="btn btn-danger my-1 p-2 myDiv"
+                                                            (click)="approveTravel(t._id,'false')">Reject</button></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
                                     </mat-expansion-panel>
                                 </mat-accordion>
-
                             </mat-list-item>
-                            <mat-divider></mat-divider>
                         </mat-list>
 
                     </div>
                 </div>
             </div>
         </mat-tab>
+
 
     </mat-tab-group>
 </div>

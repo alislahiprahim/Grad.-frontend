@@ -3,6 +3,7 @@ import { DoctorService } from '../services/doctor.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -24,16 +25,24 @@ export class DoctorDashboardComponent implements OnInit {
   DData: any;
   Patients: any = null;
   Diagnosis_Form: any
+
   public img: any;
   public username: any;
   public gender: any;
+  public briefSummery : any;
+  public rate : any ;
+  public title : any ;
+  public location : any ;
+
+
+
   cost: any;
   description: any;
   treatmentPlan: any;
   Patient_TP: any;
   Patient_DF: any;
 
-  constructor(private config: NgbDatepickerConfig, calendar: NgbCalendar, public myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, private modalService: NgbModal) {
+  constructor(public myAuthService: AuthService ,private config: NgbDatepickerConfig, calendar: NgbCalendar, public myDoctorService: DoctorService, private myActivatedRoute: ActivatedRoute, private modalService: NgbModal) {
 
     
   }
@@ -48,9 +57,9 @@ export class DoctorDashboardComponent implements OnInit {
     this.myDoctorService.getDoctorProfile({ Did: this.Did }).subscribe((resp: any) => {
 
       this.DData = resp.data
+      debugger
       this.Patients = this.DData.patients
-      this.img = this.DData.profileIMG
-      this.username = this.DData.username
+     
     })
 
   }
@@ -63,6 +72,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   getAllTreatmentPlan() {
     this.myDoctorService.getTreatment().subscribe((resp: any) => {
+      debugger
       this.treatmentPlan = resp.data
     })
   }

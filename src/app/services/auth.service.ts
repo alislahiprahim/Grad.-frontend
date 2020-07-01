@@ -33,6 +33,7 @@ export class AuthService {
 
 
   logout() {
+    this.IsHidden = false
     localStorage.removeItem('type')
     localStorage.removeItem('id')
     this.myRouter.navigate([''])
