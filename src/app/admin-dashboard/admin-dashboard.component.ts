@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AdminServices } from '../services/admin.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -41,7 +42,7 @@ export class AdminDashboardComponent implements OnInit {
   public chartHovered(e: any): void { }
 
 
-  constructor(public myAdminServices: AdminServices, private _snackBar: MatSnackBar) { }
+  constructor(public myAdminServices: AdminServices, private _snackBar: MatSnackBar,public myAuthService: AuthService) { }
 
   ngOnInit(): void {
     if (this.Doctors) { } else { this.listDoctors() }

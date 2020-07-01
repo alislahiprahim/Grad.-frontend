@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { NotificationsService } from './services/notifications.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
