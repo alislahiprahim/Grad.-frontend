@@ -1,69 +1,216 @@
-<!-- <div class="container-fluid py-5 ">
-    <div class="row float-right ">
-        <div class="col-12 float-right my-1">
-            <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none' (click)="[]">
-                <i class="fas fa-sync"></i>
-            </a>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <mat-tab-group dynamicHeight>
-        <mat-tab label="Add Programs">
-        </mat-tab>
-        <mat-tab class="mx-4" label="My programs"> -->
-            <!-- <ng-container *ngIf="Patients==null; else elseTemplate2">
-                <div class="example-large-box mat-elevation-z4">
-                    <mat-list *ngFor="let tp of treatmentPlan;let i of index">
-                        <mat-list-item>
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            {{tp.patientID.username }}
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-12 py-3">
-                                                description : {{tp.description}}
+<div style="height: 2rem;"> </div>
+<div id="content" class="py-4" style="position: fixed;top: 2rem; left: 0px; width: 100%;">
+    <div id="main-content">
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong style="font-size: 1.25rem; font-weight: 400;"><i
+                            class="fas fa-plus-square"></i>&nbsp;&nbsp;&nbsp;
+                        Add Program</strong>
+                </ng-template>
+                <div class="text-center addProgram"
+                    style="width: 100%;height: 50rem; max-height: 45rem;overflow-y: scroll;">
+                    <h1 class="m-3 mb-5">New Program</h1>
+                    <div class="container px-5" style="padding: 2rem; border: 2px solid #289cff ; border-radius: 2rem;">
+                        <mat-horizontal-stepper #stepper [linear]="true" class="formSignUp my-5">
+                             <mat-step [stepControl]="firstFormGroup" [editable]="true">
+                                <form [formGroup]="firstFormGroup">
+                                    <ng-template matStepLabel>Program Detailes</ng-template>
+                                    <mat-form-field  class="example-full-width">
+                                        <mat-label>Title</mat-label>
+                                        <input matInput formControlName="titleCtrl" placeholder="Program Title"
+                                            type="text" required>
+                                    </mat-form-field>
+                                    <mat-form-field  class="example-full-width">
+                                        <mat-label>Category</mat-label>
+                                        <mat-select formControlName="categoryCtrl" placeholder="Program Category"
+                                            required>
+                                            <mat-option
+                                                *ngFor="let g of ['Sea Tours','Culture Tours','Romantic','Nile Tours','Adventure Tours','Fishing','Honey Moon', 'Religious Tours' , 'Surfing']"
+                                                [value]='g'>
+                                                {{g | titlecase}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Cost of 1 Adult Gest</mat-label>
+                                        <input matInput formControlName="adultCtrl" placeholder="Adults" type="number"
+                                            required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Cost of 1 Children Gest</mat-label>
+                                        <input matInput formControlName="childrenCtrl" placeholder="Children"
+                                            type="number" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Days</mat-label>
+                                        <input matInput formControlName="daysCtrl" placeholder="Number of days"
+                                            type="number" required>
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>City</mat-label>
+                                        <mat-select formControlName="locationCtrl" required>
+                                            <mat-option *ngFor="let c of cities" [value]="c.name_en">
+                                                {{c.name_en | titlecase}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <div class="mt-5">
+                                        <button class="btn btn-success" mat-button matStepperNext>Next</button>
+                                    </div>
+                                </form>
+                            </mat-step> 
+                            <mat-step [stepControl]="dynamicForm">
+                                <ng-template matStepLabel><span class="head">Add Questions</span>
+                                </ng-template>
+                                <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+                                    <div class="card m-3">
+                                        <div class="card-body">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label>Number Of Itinerary Titles</label>
+                                                    <select formControlName="itineraryNumber" class="form-control"
+                                                        (change)="onChangeQuestions($event)"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.itineraryNumber.errors }">
+                                                        <option value=""></option>
+                                                        <option
+                                                            *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
+                                                            {{i}}</option>
+                                                    </select>
+                                                    <div *ngIf="submitted && f.itineraryNumber.errors"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="f.itineraryNumber.errors.required">Number of tickets
+                                                            is required</div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-12 py-3">
-                                                Cost : {{tp.cost|currency}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Start-date :
-                                                {{tp.treatmentDate.toDate|slice:0:10}}</div>
-                                            <div class="col-12 py-3">
-                                                End-date :
-                                                {{tp.treatmentDate.fromDate|slice:0:10}}</div>
+                                        </div>
+                                        <div *ngFor="let question of q.controls; let i = index"
+                                            class="list-group list-group-flush my-2"  style="border: 2px #289cff solid;">
+                                            <div class="list-group-item">
+                                                <div [formGroup]="question" class="form-row">
+                                                    <div class="form-group col-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <mat-label>Day Title</mat-label>
+                                                            <input matInput type="text" formControlName="question"
+                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.question.errors }">
+                                                        </mat-form-field>
+                                                        <div *ngIf="submitted && question.controls.question.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="question.controls.question.errors.required">
+                                                                question is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="form-group col-12">
+                                                        <mat-form-field class="example-full-width">
+                                                            <mat-label>Day Description</mat-label>
+                                                            <textarea matInput [rows]="10" [cols]="200" type="text"
+                                                                formControlName="question"
+                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.question.errors }"
+                                                                style="width: 100%;"></textarea>
+                                                        </mat-form-field>
+                                                        <div *ngIf="submitted && question.controls.question.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="question.controls.question.errors.required">
+                                                                question is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center button">
+                                            <button class="btn btn-info" mat-button matStepperPrevious>Previous</button>
+
+                                            <button class="mr-1 btn btn-danger" mat-flat-button color=danger
+                                                type="reset" (click)="onReset()">Reset</button>
+                                            <button class="btn btn-primary" matStepperNext mat-button>Next</button>
                                         </div>
                                     </div>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="secondFormGroup" [editable]="true">
+                                <form [formGroup]="secondFormGroup">
+                                    <ng-template matStepLabel>Include & Exclude</ng-template>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-chip-list #chipList1 aria-label="Fruit selection">
+                                            <mat-chip *ngFor="let item of includes" [selectable]="selectable"
+                                                [removable]="removable" (removed)="remove(item)">
+                                                {{item.name}}
+                                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+                                            <input matInput placeholder="Encludes ....." [matChipInputFor]="chipList1"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
+                                                formControlName="includeCtrl">
+                                        </mat-chip-list>
+                                    </mat-form-field>
 
-                                </mat-expansion-panel>
-                            </mat-accordion>
 
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                    </mat-list>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-chip-list #chipList2 aria-label="Fruit selection">
+                                            <mat-chip *ngFor="let item of excludes" [selectable]="Exselectable"
+                                                [removable]="Exremovable" (removed)="Exremove(item)">
+                                                {{item.name}}
+                                                <mat-icon matChipRemove *ngIf="Exremovable">cancel</mat-icon>
+                                            </mat-chip>
+                                            <input matInput placeholder="Excludes ....." [matChipInputFor]="chipList2"
+                                                [matChipInputSeparatorKeyCodes]="ExseparatorKeysCodes"
+                                                [matChipInputAddOnBlur]="EXaddOnBlur"
+                                                (matChipInputTokenEnd)="Exadd($event)" formControlName="excludeCtrl">
+                                        </mat-chip-list>
+                                    </mat-form-field>
+
+                                    <div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button class="btn btn-success">Add</button>
+                                    </div>
+                                </form>
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </div>
+
+
                 </div>
-            </ng-container> -->
-            <!-- <ng-template #elseTemplate2>
-                <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 100;color: #09c;">No Treatment Plans Created Yet!</h3>
-                    <img width="300px" height="300px"
-                        src="../../assets/images/1bb8d3ea-e39c-49b7-90ee-ba900c5634f8.jpg">
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong style="font-size: 1.25rem; font-weight: 400;"> <i
+                            class="fas fa-database"></i>&nbsp;&nbsp;&nbsp;
+                        Programs</strong>
+                </ng-template>
+
+                <div class="text-center" style="width: 100%;background-color:red;height: 50rem; max-height: 45rem;">
+                    <h1>New Program</h1>
+
                 </div>
-            </ng-template>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong style="font-size: 1.25rem; font-weight: 400;"> <i
+                            class="fas fa-people-arrows"></i>&nbsp;&nbsp;&nbsp;
+                        Visitors</strong>
+                </ng-template>
+                <div class="text-center" style="width: 100%;background-color:red;height: 50rem; max-height: 45rem;">
+                    <h1>New Program</h1>
 
-        </mat-tab>
-    </mat-tab-group>
-</div> -->
+                </div>
+            </mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
+            <mat-tab label="" disabled></mat-tab>
 
-
-
-
-<tabset class="tabs-left">
-    <tab heading="Vertical A">Vertical content A</tab>
-    <tab heading="Vertical B">Vertical content B</tab>
-</tabset>
+        </mat-tab-group>
+    </div>
+</div>

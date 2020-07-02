@@ -13,15 +13,25 @@ export class AuthGuard implements CanActivate {
 
     canActivate(): boolean {
         if (this.myAuthService.isLoggedin()) {
-            if (localStorage.getItem('type') == 'admin')
+            if (localStorage.getItem('type') == 'patient') {
                 return true
-            else {
-                this.myRouter.navigate(['/home'])
+            }
+            if (localStorage.getItem('type') == 'admin') {
+                this.myRouter.navigate(['/admin'])
                 return false
             }
+            if (localStorage.getItem('type') == 'doctor') {
+                this.myRouter.navigate(['/dashboard', localStorage.getItem('id')])
+                return false
+            }
+            if (localStorage.getItem('type') == 'travelAgent') {
+                this.myRouter.navigate(['/Tdashboard', localStorage.getItem('id')])
+                return false
+            }
+
         } else {
             this.myRouter.navigate(['/home'])
-            return false
+            return true
         }
     }
 
