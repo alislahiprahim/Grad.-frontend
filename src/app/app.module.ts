@@ -70,18 +70,18 @@ firebase.initializeApp(environment.firebaseConfig);
 
 const routes: Routes = [
   { path: '', component: WelecomeComponent },
-  { path: 'home/:location/:area', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home/:location/:area', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'Dregister', component: SignupDocComponent },
   { path: 'TravelAgent/SignUp', component: TravelAgentSignUpComponent },
   { path: 'Diagnosis/:id', component: DiagnosisFormComponent },
   { path: 'Dprofile/:id', component: DoctorProfileComponent },
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
-  { path: 'Tdashboard/:id', component:TravelDashboardComponent },
-  { path: 'programstour', component: TourProgramsComponent },
-  { path: 'programprofile', component: ProgramProfileComponent },
-  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'Tdashboard/:id', component: TravelDashboardComponent },
+  { path: 'programstour', component: TourProgramsComponent, canActivate: [AuthGuard] },
+  { path: 'programprofile', component: ProgramProfileComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminDashboardComponent, },
   { path: '**', component: PageNotFoundComponent },
 
 ];

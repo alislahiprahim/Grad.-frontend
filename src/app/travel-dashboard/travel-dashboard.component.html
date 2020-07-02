@@ -1,61 +1,18 @@
-<div class="container-fluid py-5 ">
-    <div class="row float-right ">
-        <div class="col-12 float-right my-1">
-            <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none' (click)="[]">
-                <i class="fas fa-sync"></i>
-            </a>
-        </div>
+<div class="container">
+    <div id="content">
+      <div id="main-content">
+        <mat-tab-group>
+          <mat-tab label="add program">
+            Tab One Content
+          </mat-tab>
+          <mat-tab label="veiw programs">
+            Tab Two Content
+          </mat-tab>
+          <mat-tab label="view visitors">
+            Tab Two Content
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </div>
-    <div class="clearfix"></div>
-    <mat-tab-group dynamicHeight>
-        <mat-tab label="Add Programs">
-        </mat-tab>
-        <mat-tab class="mx-4" label="My programs">
-            <!-- <ng-container *ngIf="Patients==null; else elseTemplate2">
-                <div class="example-large-box mat-elevation-z4">
-                    <mat-list *ngFor="let tp of treatmentPlan;let i of index">
-                        <mat-list-item>
-                            <mat-accordion>
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            {{tp.patientID.username }}
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-12 py-3">
-                                                description : {{tp.description}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Cost : {{tp.cost|currency}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Start-date :
-                                                {{tp.treatmentDate.toDate|slice:0:10}}</div>
-                                            <div class="col-12 py-3">
-                                                End-date :
-                                                {{tp.treatmentDate.fromDate|slice:0:10}}</div>
-
-                                        </div>
-                                    </div>
-
-                                </mat-expansion-panel>
-                            </mat-accordion>
-
-                        </mat-list-item>
-                        <mat-divider></mat-divider>
-                    </mat-list>
-                </div>
-            </ng-container> -->
-            <ng-template #elseTemplate2>
-                <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
-                    <h3 style="font-size: 1.5rem; font-weight: 100;color: #09c;">No Treatment Plans Created Yet!</h3>
-                    <img width="300px" height="300px"
-                        src="../../assets/images/1bb8d3ea-e39c-49b7-90ee-ba900c5634f8.jpg">
-                </div>
-            </ng-template>
-
-        </mat-tab>
-    </mat-tab-group>
-</div>
+  </div>
+  
