@@ -19,7 +19,6 @@ export class WelecomeComponent implements OnInit {
   getScreenSize(event?) {
     this.scrHeight = window.innerHeight + "px";
     this.scrWidth = window.innerWidth + "px";
-    console.log(this.scrHeight, this.scrWidth);
   }
 
   @HostListener('window:scroll')

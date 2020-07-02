@@ -111,7 +111,7 @@
                             <div class="card-body py-2">
                                 <h1 class="card-title my-0">{{i.username | titlecase}}</h1>
                                 <h4>{{i.title | titlecase}}</h4>
-                                <p class="card-text my-0">{{i.briefSummery |slice: 0:40}} .... <a [routerLink]="['/Dprofile',i._id]"> Read More</a></p>
+                                <p class="card-text my-0">{{i.briefSummery |slice: 0:35}} .. <a [routerLink]="['/Dprofile',i._id]"> Read More</a></p>
                                 <p class="location my-0">{{i.location.location |titlecase}} - {{i.location.area |titlecase}}</p>
                                 <ngb-rating [max]='5' [(rate)]=i.rate [readonly]="true"></ngb-rating>
                             </div>

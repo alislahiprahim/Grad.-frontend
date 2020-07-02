@@ -13,6 +13,8 @@ export class AdminDashboardComponent implements OnInit {
 
 
   Doctors: any
+  travelAgents: any
+
   public chartType: string = 'line';
 
   public chartDatasets: Array<any> = [
@@ -45,15 +47,16 @@ export class AdminDashboardComponent implements OnInit {
   constructor(public myAdminServices: AdminServices, private _snackBar: MatSnackBar,public myAuthService: AuthService) { }
 
   ngOnInit(): void {
-    if (this.Doctors) { } else { this.listDoctors() }
+    if (this.Doctors) { } else { this.listDoctorsandAgents() }
   }
 
-  listDoctors() {
+  listDoctorsandAgents() {
     this.myAdminServices.listDoctors().subscribe((resp: any) => {
       debugger
       if (resp.message == 'success') {
         console.log(resp)
         this.Doctors = resp.data.doctors
+        this.travelAgents = resp.data.travelAgents
       }
       else {
         alert('response error')
@@ -67,10 +70,24 @@ export class AdminDashboardComponent implements OnInit {
       if (resp.message == 'success') {
         if (flag == 'true') {
           this.openSnackBar('Approvement', 'Done')
-          this.listDoctors()
+          this.listDoctorsandAgents()
         } else {
           this.openSnackBar('DisApprovement', 'Done')
-          this.listDoctors()
+          this.listDoctorsandAgents()
+        }
+      }
+    });
+  }
+
+  approveTravel(Tid, flag) {
+    this.myAdminServices.approveDoc({ ID: Tid, approveFlag: flag }).subscribe((resp: any) => {
+      if (resp.message == 'success') {
+        if (flag == 'true') {
+          this.openSnackBar('Approvement', 'Done')
+          this.listDoctorsandAgents()
+        } else {
+          this.openSnackBar('DisApprovement', 'Done')
+          this.listDoctorsandAgents()
         }
       }
     });

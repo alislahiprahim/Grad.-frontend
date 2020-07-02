@@ -5,14 +5,6 @@
                 (click)="[getAllDiagnosis(),getAllTreatmentPlan(),getDoctor()]">
                 <i class="fas fa-sync"></i>
             </a>
-            <!-- drob Down menu -->
-            <a class="my-btn3" [matMenuTriggerFor]="menu"><i class="fa fa-user" aria-hidden="true"></i></a>
-            <mat-menu #menu="matMenu">
-                <a style="color: #000;" class="item" mat-menu-item (click)="myAuthService.logout()"
-                    [routerLink]="['/']">Logout</a>
-            </mat-menu>
-
-            <!-- /drob down menu -->
 
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CitiesService } from '../services/cities.service';
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router';
+import { travelAgentService } from '../services/travel-agent.service';
 
 @Component({
   selector: 'app-travel-agent-sign-up',
@@ -9,11 +10,18 @@ import { Router, ActivatedRoute } from '@angular/router'
 })
 export class TravelAgentSignUpComponent implements OnInit {
 
-  location: any = this.route.snapshot.queryParams.location;
-  area: any = this.route.snapshot.queryParams.area;
+  location: any;
+  area: any;
   cities: any;
-  areas: any
-  constructor(private myCitiesService: CitiesService, private router: Router, public route: ActivatedRoute) { }
+  areas: any;
+  companyName: any
+  password: any
+  email: any
+  phone: any
+
+  Error = false
+  invalidMail = false
+  constructor(private myCitiesService: CitiesService, private router: Router, public route: ActivatedRoute, private mytravelAgentService: travelAgentService) { }
 
   ngOnInit(): void {
     this.getCities()
@@ -32,6 +40,38 @@ export class TravelAgentSignUpComponent implements OnInit {
     } else {
       this.location = event.target.value
       this.areas = this.myCitiesService.getSubregionsByname(this.location)
+    }
+  }
+
+
+  register() {
+    if (this.companyName && this.location && this.email && this.area && this.password && this.phone) {
+      this.Error = false
+      this.mytravelAgentService.signUp({
+        companyName: this.companyName,
+        password: this.password,
+        email: this.email,
+        phone: this.phone,
+        location: { location: this.location, area: this.area }
+      }).subscribe((resp: any) => {
+        if(resp.message == "user already registered"){
+          this.Error = false
+          this.invalidMail = true
+        }
+        else if(resp.message == "success"){
+          this.router.navigate['/']
+        }
+        else{
+          this.invalidMail = false
+
+          this.Error = true
+        }
+      })
+    }
+    else {
+      this.invalidMail = false
+
+      this.Error = true
     }
   }
 
