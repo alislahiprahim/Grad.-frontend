@@ -25,4 +25,7 @@ export class travelAgentService {
     deleteProgram(programID) {
         return this.myHttpClient.post(this.backendURL + 'deleteProgram', programID)
     }
+    AddProgram(data) {
+        return this.myHttpClient.post(this.backendURL + 'AddProgram', data)
+    }
 }

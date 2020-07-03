@@ -75,8 +75,8 @@ export class TravelDashboardComponent implements OnInit {
     if (this.q.length < itineraryNumber) {
       for (let i = this.q.length; i < itineraryNumber; i++) {
         this.q.push(this.formBuilder.group({
-          question: ['', Validators.required],
-          type: ['', Validators.required]
+          description: ['', Validators.required],
+          title: ['', Validators.required]
         }));
       }
     } else {
@@ -108,9 +108,6 @@ export class TravelDashboardComponent implements OnInit {
     this.submitted = false;
     this.q.reset();
   }
-
-
-
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //// Included
@@ -183,12 +180,29 @@ export class TravelDashboardComponent implements OnInit {
     }
   }
 
-
-
-  // Cities
-
   getCities() {
     this.cities = this.myCitiesService.getGovernoratesWithSubregions()
 
   }
+
+
+  AddProgram() {
+
+    this.mytravelAgentService.addProgram({
+      title: this.firstFormGroup.value.titleCtrl,
+      catygory: this.firstFormGroup.value.categoryCtrl,
+      numberOfDays: this.firstFormGroup.value.daysCtrl,
+      location: this.firstFormGroup.value.locationCtrl,
+      itinerary: this.Itinerary,
+      included: this.includes,
+      excluded: this.excludes,
+      cost: { adultCost: this.firstFormGroup.value.adultCtrl, childrenCost: this.firstFormGroup.value.childrenCtrl },
+
+    }).subscribe((resp: any) => {
+      console.log(resp)
+    })
+
+
+  }
+
 }
