@@ -1,4 +1,4 @@
-<div style="height: 2rem;"> </div>
+<div style="height: 2rem;"></div>
 <div id="content" class="py-4" style="position: fixed;top: 2rem; left: 0px; width: 100%;">
     <div id="main-content">
         <mat-tab-group mat-align-tabs="center">
@@ -8,10 +8,9 @@
                             class="fas fa-plus-square"></i>&nbsp;&nbsp;&nbsp;
                         Add Program</strong>
                 </ng-template>
-                <div class="text-center addProgram"
+                <div class="text-center addProgram mt-5"
                     style="width: 100%;height: 50rem; max-height: 45rem;overflow-y: scroll;">
-                    <h1 class="m-3 mb-5">New Program</h1>
-                    <div class="container px-5" style="padding: 2rem; border: 2px solid #289cff ; border-radius: 2rem;">
+                    <div class="container px-5" style="padding: 1rem; border: 2px solid #289cff ; border-radius: 2rem;">
                         <mat-horizontal-stepper #stepper [linear]="true" class="formSignUp my-5">
                             <mat-step [stepControl]="firstFormGroup" [editable]="true">
                                 <form [formGroup]="firstFormGroup">
@@ -183,11 +182,9 @@
                         Programs</strong>
                 </ng-template>
 
-                <div class=" container text-center"
-                    style="width: 100%;background-color:red;height: 50rem; max-height: 45rem;">
-                    <h1>New Program</h1>
-                    <div>
-                        <div class="cardd row mx-0 text-left">
+                <div class=" container text-center" style="width: 100%;">
+                    <div class="mb-3" style="max-height: 40rem;overflow-y: scroll;">
+                        <div class="cardd row mx-0 my-3 text-left">
                             <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
                                 <img class="img-fluid" src="../../assets/images/image1.jpg">
                             </div>
@@ -205,45 +202,599 @@
                                     <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
                                 </div>
 
-                                <div class="rate float-right" style="color: gold;font-size: 1.5rem;">
-                                    <button class="btn btn-danger">Delete</button>
-                                    <button class="btn btn-danger" data-toggle="modal"
-                                        data-target="#staticBackdrop">Veiw</button>
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
                                 </div>
 
                             </div>
 
                             <ng-template #content let-modal>
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
                                     <button type="button" class="close" aria-label="Close"
                                         (click)="modal.dismiss('Cross click')">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="dateOfBirth">Date of birth</label>
-                                            <div class="input-group">
-                                                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd"
-                                                    name="dp" ngbDatepicker #dp="ngbDatepicker">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-outline-secondary calendar"
-                                                        (click)="dp.toggle()" type="button"></button>
-                                                </div>
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
                                             </div>
                                         </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-dark"
-                                        (click)="modal.close('Save click')">Save</button>
                                 </div>
                             </ng-template>
 
-                            <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo
-                                modal</button>
+
+                            <hr>
+
+                            <pre>{{ closeResult }}</pre>
+
+
+                        </div>
+                        <div class="cardd row mx-0 my-3 text-left">
+                            <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid" src="../../assets/images/image1.jpg">
+                            </div>
+                            <div class="col-9 card-body mx-0 p-0 px-4 pt-2">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY DAHSHUR AND SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their
+                                        Cairo
+                                        sightseeing without the effort of research or transport planningThis private
+                                        tour is
+                                        ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate float-left" style="color: gold;font-size: 1.5rem;">
+                                    <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
+                                </div>
+
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
+                                </div>
+
+                            </div>
+
+                            <ng-template #content let-modal>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+
+
+                            <hr>
+
+                            <pre>{{ closeResult }}</pre>
+
+
+                        </div>
+                        <div class="cardd row mx-0 my-3 text-left">
+                            <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid" src="../../assets/images/image1.jpg">
+                            </div>
+                            <div class="col-9 card-body mx-0 p-0 px-4 pt-2">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY DAHSHUR AND SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their
+                                        Cairo
+                                        sightseeing without the effort of research or transport planningThis private
+                                        tour is
+                                        ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate float-left" style="color: gold;font-size: 1.5rem;">
+                                    <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
+                                </div>
+
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
+                                </div>
+
+                            </div>
+
+                            <ng-template #content let-modal>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+
+
+                            <hr>
+
+                            <pre>{{ closeResult }}</pre>
+
+
+                        </div>
+                        <div class="cardd row mx-0 my-3 text-left">
+                            <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid" src="../../assets/images/image1.jpg">
+                            </div>
+                            <div class="col-9 card-body mx-0 p-0 px-4 pt-2">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY DAHSHUR AND SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their
+                                        Cairo
+                                        sightseeing without the effort of research or transport planningThis private
+                                        tour is
+                                        ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate float-left" style="color: gold;font-size: 1.5rem;">
+                                    <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
+                                </div>
+
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
+                                </div>
+
+                            </div>
+
+                            <ng-template #content let-modal>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+
+
+                            <hr>
+
+                            <pre>{{ closeResult }}</pre>
+
+
+                        </div>
+                        <div class="cardd row mx-0 my-3 text-left">
+                            <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid" src="../../assets/images/image1.jpg">
+                            </div>
+                            <div class="col-9 card-body mx-0 p-0 px-4 pt-2">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY DAHSHUR AND SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their
+                                        Cairo
+                                        sightseeing without the effort of research or transport planningThis private
+                                        tour is
+                                        ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate float-left" style="color: gold;font-size: 1.5rem;">
+                                    <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
+                                </div>
+
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
+                                </div>
+
+                            </div>
+
+                            <ng-template #content let-modal>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+
+
+                            <hr>
+
+                            <pre>{{ closeResult }}</pre>
+
+
+                        </div>
+                        <div class="cardd row mx-0 my-3 text-left">
+                            <div class="col-3 mx-auto p-0" [routerLink]="[ '/programprofile']">
+                                <img class="img-fluid" src="../../assets/images/image1.jpg">
+                            </div>
+                            <div class="col-9 card-body mx-0 p-0 px-4 pt-2">
+                                <div class="description ">
+                                    <h1>DAY TOUR TO GIZA PYRAMIDS, MEMPHIS CITY DAHSHUR AND SAKKARA PYRAMIDS </h1>
+                                    <p>This private tour is ideal for travelers looking to add a twist to their
+                                        Cairo
+                                        sightseeing without the effort of research or transport planningThis private
+                                        tour is
+                                        ideal for travelers looking to add a twist to their Cairo
+                                        sightseeing without the effort of research or transport planning.</p>
+                                </div>
+                                <div class="rate float-left" style="color: gold;font-size: 1.5rem;">
+                                    <ngb-rating [max]='5' rate='3' [readonly]="true"></ngb-rating>
+                                </div>
+
+                                <div class="rate float-right">
+                                    <button class="btn py-1 px-3 btn-danger">Delete</button>
+                                    <button class="btn py-1 px-3 btn-success" (click)="open(content)">View</button>
+                                </div>
+
+                            </div>
+
+                            <ng-template #content let-modal>
+                                <div class="modal-header mt-5">
+                                    <h1 class="modal-title" id="modal-basic-title"
+                                        style="font-size: 1.75rem; color: #289cff; font-weight: 400;">Program Details
+                                    </h1>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="px-4">
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <img [src]="programList.IMG" alt="">
+                                            </div>
+                                            <div class="form-group col pl-3">
+                                                <h1>Program Title</h1>
+                                                <p>{{programList.title |titlecase}}</p>
+                                                <h1>Program Duration</h1>
+                                                <p>{{programList.numberOfDays |number}} Day </p>
+                                                <h1>Program Catygory</h1>
+                                                <p>{{programList.catygory |titlecase}}</p>
+                                                <h1>One Adult</h1>
+                                                <p>{{programList.cost.Adults |currency}}</p>
+                                                <h1> One Cheildren</h1>
+                                                <p>{{programList.cost.Children |currency}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <h1 class="form-group col-md-12 text-center">ITinerary</h1>
+                                        </div>
+                                        <div class="form-row">
+                                            <table class="table table-bordered table-striped">
+                                                <tbody>
+                                                    <tr *ngFor="let item of programList.itinerary">
+                                                        <td class=""><strong>{{item.dayTitle |titlecase}}</strong></td>
+                                                        <td class="">{{item.dayDescription}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">InCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.included">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="form-group col">
+                                                <h1 class="form-group col-md-12 text-center">ExCludes</h1>
+                                                <table class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let item of programList.excluded">
+                                                            <td><strong>{{item |titlecase}}</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </ng-template>
+
 
                             <hr>
 

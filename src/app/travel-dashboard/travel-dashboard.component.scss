@@ -168,7 +168,7 @@
 //////// card Program
 
 .cardd {
-    background-color: #fff;
+    background-color: #f3f2f2;
     color: #289cff;
     font-size: 20px;
     font-weight: 300;
@@ -214,3 +214,17 @@
     height: 170px;
 }
 
+.modal-body{
+    h1{
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #289cff;
+    }
+    p{
+        font-size: 1rem;
+        font-weight: 200;
+        font-style: oblique;
+        color: rgba(128, 128, 128, 1);
+
+    }
+}
