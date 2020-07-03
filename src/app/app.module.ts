@@ -65,6 +65,9 @@ import { TourProgramsComponent } from './tour-programs/tour-programs.component';
 import { ProgramProfileComponent } from './program-profile/program-profile.component';
 import { TravelDashboardComponent } from './travel-dashboard/travel-dashboard.component';
 import { MatChipsModule } from "@angular/material/chips";
+import { DropzoneDirective } from './dropzone.directive';
+import { UploaderComponent } from './uploader/uploader.component';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -107,6 +110,9 @@ const routes: Routes = [
     TourProgramsComponent,
     ProgramProfileComponent,
     TravelDashboardComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent,
 
   ],
   imports: [

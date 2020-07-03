@@ -8,11 +8,11 @@
                             class="fas fa-plus-square"></i>&nbsp;&nbsp;&nbsp;
                         Add Program</strong>
                 </ng-template>
-                <div class="text-center addProgram mt-5"
+                <div class="text-center addProgram container my-4"
                     style="width: 100%;height: 50rem; max-height: 45rem;overflow-y: scroll;">
                     <div class="container px-5" style="padding: 1rem; border: 2px solid #289cff ; border-radius: 2rem;">
                         <mat-horizontal-stepper #stepper [linear]="true" class="formSignUp my-5">
-                            <mat-step [stepControl]="firstFormGroup" [editable]="true">
+                            <mat-step [stepControl]="firstFormGroup" [editable]="false">
                                 <form [formGroup]="firstFormGroup">
                                     <ng-template matStepLabel>Program Detailes</ng-template>
                                     <mat-form-field class="example-full-width">
@@ -59,7 +59,7 @@
                                     </div>
                                 </form>
                             </mat-step>
-                            <mat-step [stepControl]="dynamicForm">
+                            <mat-step [stepControl]="dynamicForm" [editable]="false">
                                 <ng-template matStepLabel><span class="head">Add Questions</span>
                                 </ng-template>
                                 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
@@ -91,12 +91,12 @@
                                                     <div class="form-group col-12">
                                                         <mat-form-field class="example-full-width" style="width: 100%;">
                                                             <mat-label>Day Title</mat-label>
-                                                            <input matInput type="text" formControlName="question"
-                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.question.errors }">
+                                                            <input matInput type="text" formControlName="title"
+                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.title.errors }">
                                                         </mat-form-field>
-                                                        <div *ngIf="submitted && question.controls.question.errors"
+                                                        <div *ngIf="submitted && question.controls.title.errors"
                                                             class="invalid-feedback">
-                                                            <div *ngIf="question.controls.question.errors.required">
+                                                            <div *ngIf="question.controls.title.errors.required">
                                                                 question is required
                                                             </div>
                                                         </div>
@@ -106,13 +106,13 @@
                                                         <mat-form-field class="example-full-width" style="width: 100%;">
                                                             <mat-label>Day Description</mat-label>
                                                             <textarea matInput [rows]="10" [cols]="200" type="text"
-                                                                formControlName="question"
-                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.question.errors }"
+                                                                formControlName="description"
+                                                                [ngClass]="{ 'is-invalid': submitted && question.controls.description.errors }"
                                                                 style="width: 100%;"></textarea>
                                                         </mat-form-field>
-                                                        <div *ngIf="submitted && question.controls.question.errors"
+                                                        <div *ngIf="submitted && question.controls.description.errors"
                                                             class="invalid-feedback">
-                                                            <div *ngIf="question.controls.question.errors.required">
+                                                            <div *ngIf="question.controls.description.errors.required">
                                                                 question is required
                                                             </div>
                                                         </div>
@@ -131,7 +131,7 @@
                                     </div>
                                 </form>
                             </mat-step>
-                            <mat-step [stepControl]="secondFormGroup" [editable]="true">
+                            <mat-step [stepControl]="secondFormGroup" [editable]="false">
                                 <form [formGroup]="secondFormGroup">
                                     <ng-template matStepLabel>Include & Exclude</ng-template>
                                     <mat-form-field class="example-full-width" style="width: 100%;">
@@ -164,10 +164,16 @@
                                     </mat-form-field>
 
                                     <div>
+                                        <mat-error *ngIf="showError">Missed Data</mat-error>
                                         <button mat-button matStepperPrevious>Back</button>
-                                        <button class="btn btn-success">Add</button>
+                                        <button class="btn btn-success" (click)="AddProgram()">Add</button>
+                                        <button mat-button matStepperNext *ngIf="hideNextBtn">Next</button>
+
                                     </div>
                                 </form>
+                            </mat-step>
+                            <mat-step>
+                                <uploader [programID]='programID'></uploader>
                             </mat-step>
                         </mat-horizontal-stepper>
                     </div>
@@ -815,7 +821,6 @@
                 </ng-template>
                 <div class="text-center" style="width: 100%;background-color:red;height: 50rem; max-height: 45rem;">
                     <h1>New Program</h1>
-
                 </div>
             </mat-tab>
             <mat-tab label="" disabled></mat-tab>
