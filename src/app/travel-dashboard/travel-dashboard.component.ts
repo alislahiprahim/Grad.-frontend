@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CitiesService } from '../services/cities.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 export interface Included {
   name: string;
@@ -19,6 +20,7 @@ export interface Excluded {
   styleUrls: ['./travel-dashboard.component.scss']
 })
 export class TravelDashboardComponent implements OnInit {
+  programID: any
 
   Tdata: any
   dynamicForm: FormGroup;
@@ -27,7 +29,7 @@ export class TravelDashboardComponent implements OnInit {
   cities: any;
 
 
-  constructor(private mytravelAgentService: travelAgentService, public formBuilder: FormBuilder, private myCitiesService: CitiesService) { }
+  constructor(private mytravelAgentService: travelAgentService, public formBuilder: FormBuilder, private myCitiesService: CitiesService, private modalService: NgbModal) { }
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   ngOnInit(): void {
@@ -50,6 +52,7 @@ export class TravelDashboardComponent implements OnInit {
       itineraryNumber: ['', Validators.required],
       itineraryList: new FormArray([])
     });
+
     this.getCities();
 
   }
@@ -199,10 +202,23 @@ export class TravelDashboardComponent implements OnInit {
       cost: { adultCost: this.firstFormGroup.value.adultCtrl, childrenCost: this.firstFormGroup.value.childrenCtrl },
 
     }).subscribe((resp: any) => {
-      console.log(resp)
+      this.programID = resp.data._id
     })
 
 
   }
+
+
+  // Start Modal Configration 
+  closeResult = '';
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    });
+  }
+
+
+  // End Modal Configration 
 
 }

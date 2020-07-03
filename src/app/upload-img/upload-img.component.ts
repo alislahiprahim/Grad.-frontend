@@ -22,7 +22,6 @@ export class UploadImgComponent implements OnInit {
   
       const file = event.target.files[0];
       this.images = file;
-  
       this.currentUpload = new UploadModelModule(this.images);
       console.log('1', this.currentUpload)
   
