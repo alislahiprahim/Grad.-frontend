@@ -1,8 +1,8 @@
+<div style="height: 50px;"></div>
 <div class="container-fluid">
     <div class="row float-right ">
         <div class="col-12 float-right my-1">
-            <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none'
-                (click)="[getAllDiagnosis(),getAllTreatmentPlan(),getDoctor()]">
+            <a class='float-right' mat-stroked-button color=primary style='padding:0px 30px ;border:none' (click)="[getAllDiagnosis(),getAllTreatmentPlan(),getDoctor()]">
                 <i class="fas fa-sync"></i>
             </a>
 
@@ -40,15 +40,14 @@
                                     <div class="col-lg-4">
                                         <h2>Location</h2>
                                         <div class="col-md-12 py-2 parag">
-                                            <p>{{DData?.location.location |titlecase}} -
-                                                {{DData?.location.area |titlecase}}
+                                            <p>{{DData?.location.location |titlecase}} - {{DData?.location.area |titlecase}}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <h2> Phone </h2>
                                         <div class="col-md-12 py-3 parag">
-                                            <p>{{DData.phone |number}}</p>
+                                            <p>{{DData.phone }}</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -60,17 +59,17 @@
 
                                 </div>
                                 <div class="row py-2">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <h2>Email</h2>
                                         <div class="col-md-12 py-2 parag">
                                             <p>{{DData?.email}}</p>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <h2>Location</h2>
+                                    <div class="col-lg-6">
+                                        <h2>Active Status</h2>
                                         <div class="col-md-12 py-2 parag">
-                                            <p>{{DData?.password |slice :0:10}}</p>
+                                            <mat-slide-toggle>Online</mat-slide-toggle>
                                         </div>
                                     </div>
                                 </div>
@@ -82,20 +81,16 @@
                     <div class="row">
                         <div class="container col-lg-12">
                             <div class="row" *ngFor="let item of DData.feedbacks" style="padding: .5rem; ">
-                                <div class="col-lg-9 py-3 "
-                                    style="background-color: #fff; height: 10rem;border: 1px solid #289cff;  border-right: 0px;border-bottom-left-radius:.5rem ;border-top-left-radius:.5rem ;">
-                                    <ngb-rating [max]='5' [(rate)]='item.rate' [readonly]="true"
-                                        style="font-size: 2rem; color: gold;"></ngb-rating>
+                                <div class="col-lg-9 py-3 " style="background-color: #fff; height: 10rem;border: 1px solid #289cff;  border-right: 0px;border-bottom-left-radius:.5rem ;border-top-left-radius:.5rem ;">
+                                    <ngb-rating [max]='5' [(rate)]='item.rate' [readonly]="true" style="font-size: 2rem; color: gold;"></ngb-rating>
                                     <h2 style="font-size: 1rem;font-weight: bold; color: #289bff80;">OverAll Rating</h2>
                                     <p style="font-size: 1rem; font-weight: 100; font-style: oblique;">
                                         "{{item.comment}}"</p>
                                     <p style="font-weight: bold; font-size: .8rem; color: rgba(0, 0, 0, 0.486);">
                                         {{item.PName |titlecase}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{item.data|date}}</p>
                                 </div>
-                                <div class="col-lg-3 m-auto"
-                                    style=" height: 10rem;border: 1px solid #289cff; border-left: 0px;border-bottom-right-radius:.5rem ;border-top-right-radius:.5rem ;">
-                                    <p class="mt-5"
-                                        style="padding: 1rem; border: 3px solid #289cff; border-radius: 10px; background-color: #fff; color: #289cff; font-size: 1.5rem; margin: auto; text-align: center;width: 3rem;font-weight: bold;">
+                                <div class="col-lg-3 m-auto" style=" height: 10rem;border: 1px solid #289cff; border-left: 0px;border-bottom-right-radius:.5rem ;border-top-right-radius:.5rem ;">
+                                    <p class="mt-5" style="padding: 1rem; border: 3px solid #289cff; border-radius: 10px; background-color: #fff; color: #289cff; font-size: 1.5rem; margin: auto; text-align: center;width: 3rem;font-weight: bold;">
                                         {{item.rate}}</p>
 
                                 </div>
@@ -126,10 +121,9 @@
                                 {{ p?.username |titlecase}}
                             </td>
                             <td>{{ p?.gender |titlecase}}</td>
-                            <td>{{ p?.CreatedDate|date  }}</td>
+                            <td>{{ p?.CreatedDate|date }}</td>
                             <td>
-                                <button mat-raised-button color=accent
-                                    (click)="[openLg(content),getDiagnosis(p._id),geTreatment(p._id)]">
+                                <button mat-raised-button color=accent (click)="[openLg(content),getDiagnosis(p._id),geTreatment(p._id)]">
                                     Show
                                 </button>
 
@@ -163,8 +157,7 @@
                                                                     <div class="co-12 mx-2 py-2">
                                                                         {{Patient_DF?.MainProblem.text_problem}}
                                                                     </div>
-                                                                    <div class="col-12 py-2"
-                                                                        *ngFor="let i of Patient_DF?.MainProblem.problemsArr">
+                                                                    <div class="col-12 py-2" *ngFor="let i of Patient_DF?.MainProblem.problemsArr">
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -180,8 +173,7 @@
                                                                     <div class='col-12  py-2'>
                                                                         {{Patient_DF?.medicalHistory.text_medical}}
                                                                     </div>
-                                                                    <div class="col-12 py-2"
-                                                                        *ngFor="let i of Patient_DF?.medicalHistory.medicalArr">
+                                                                    <div class="col-12 py-2" *ngFor="let i of Patient_DF?.medicalHistory.medicalArr">
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -194,8 +186,8 @@
                                                                     <h2> Related Questions</h2>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-12 py-2"
-                                                                        *ngFor="let i of Patient_DF?.doctorQuesAns">
+                                                                    <div class="col-12 py-2" *ngFor="let i of Patient_DF?.doctorQuesAns">
+
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -210,12 +202,10 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-12 py-2">
-                                                                        Form:
-                                                                        {{Patient_DF?.avilableDuration.fromDate.day|number}}/{{this.Patient_DF.avilableDuration.fromDate.month|number }}/{{this.Patient_DF.avilableDuration.fromDate.year }}
+                                                                        Form: {{Patient_DF?.avilableDuration.fromDate.day|number}}/{{this.Patient_DF.avilableDuration.fromDate.month|number }}/{{this.Patient_DF.avilableDuration.fromDate.year }}
                                                                     </div>
                                                                     <div class="col-12 py-2">
-                                                                        To:
-                                                                        {{Patient_DF?.avilableDuration.toDate.day|number }}/{{this.Patient_DF.avilableDuration.toDate.month |number}}/{{this.Patient_DF.avilableDuration.toDate.year }}
+                                                                        To: {{Patient_DF?.avilableDuration.toDate.day|number }}/{{this.Patient_DF.avilableDuration.toDate.month |number}}/{{this.Patient_DF.avilableDuration.toDate.year }}
 
                                                                     </div>
                                                                 </div>
@@ -231,34 +221,26 @@
                                                             <h2 style="color: #09c;"> Treatment Plan</h2>
                                                         </div>
                                                         <div class="row">
-                                                            <ng-container
-                                                                *ngIf="!checkTreatment(p._id); else elseTemplate">
+                                                            <ng-container *ngIf="!checkTreatment(p._id); else elseTemplate">
                                                                 <div class="col-12">
                                                                     <div class="example-boundary">
-                                                                        <div class="example-box"
-                                                                            cdkDragBoundary=".example-boundary" cdkDrag>
+                                                                        <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
                                                                             <div class="container py-2">
                                                                                 <div class="row">
                                                                                     <div class="col-12 py-2">
-                                                                                        <mat-form-field
-                                                                                            class="example-full-width">
+                                                                                        <mat-form-field class="example-full-width">
                                                                                             <mat-label>Full Description
                                                                                             </mat-label>
-                                                                                            <textarea matInput
-                                                                                                [(ngModel)]="description"
-                                                                                                placeholder="treatment plan description"></textarea>
+                                                                                            <textarea matInput [(ngModel)]="description" placeholder="treatment plan description"></textarea>
                                                                                         </mat-form-field>
 
                                                                                     </div>
 
                                                                                     <div class="col-12 py-2">
-                                                                                        <mat-form-field
-                                                                                            class="example-full-width">
+                                                                                        <mat-form-field class="example-full-width">
                                                                                             <mat-label>Initial Cost
                                                                                             </mat-label>
-                                                                                            <input matInput
-                                                                                                placeholder="cost.."
-                                                                                                [(ngModel)]="cost">
+                                                                                            <input matInput placeholder="cost.." [(ngModel)]="cost">
                                                                                         </mat-form-field>
                                                                                     </div>
                                                                                 </div>
@@ -266,23 +248,12 @@
                                                                                     <div class="col-12 py-2">
                                                                                         <h2>Appointment Date</h2>
                                                                                     </div>
-                                                                                    <div
-                                                                                        class="col-12 overflow-hidden mx-0">
-                                                                                        <ngb-datepicker #dp
-                                                                                            (dateSelect)="onDateSelection($event)"
-                                                                                            [displayMonths]="2"
-                                                                                            [dayTemplate]="t"
-                                                                                            outsideDays="hidden">
+                                                                                    <div class="col-12 overflow-hidden mx-0">
+                                                                                        <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
                                                                                         </ngb-datepicker>
 
-                                                                                        <ng-template #t let-date
-                                                                                            let-focused="focused">
-                                                                                            <span class="custom-day"
-                                                                                                [class.focused]="focused"
-                                                                                                [class.range]="isRange(date)"
-                                                                                                [class.faded]="isHovered(date) || isInside(date)"
-                                                                                                (mouseenter)="hoveredDate = date"
-                                                                                                (mouseleave)="hoveredDate = null">
+                                                                                        <ng-template #t let-date let-focused="focused">
+                                                                                            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
                                                                                                 {{ date.day }}
                                                                                             </span>
                                                                                         </ng-template>
@@ -290,21 +261,15 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row py-2">
-                                                                                    <ng-container
-                                                                                        *ngIf="!checkTreatment(p._id); else elseTemplate">
+                                                                                    <ng-container *ngIf="!checkTreatment(p._id); else elseTemplate">
                                                                                         <div class="col-12 py-2">
-                                                                                            <button mat-raised-button
-                                                                                                (click)="sendTreatmentPlan(p._id)"
-                                                                                                color="accent"
-                                                                                                class='px-5'>Create</button>
+                                                                                            <button mat-raised-button (click)="sendTreatmentPlan(p._id)" color="accent" class='px-5'>Create</button>
 
                                                                                         </div>
                                                                                     </ng-container>
                                                                                     <ng-template #elseTemplate>
                                                                                         <div class="col-12 py-2">
-                                                                                            <button mat-raised-button
-                                                                                                disabled color="accent"
-                                                                                                class='px-5'>Done</button>
+                                                                                            <button mat-raised-button disabled color="accent" class='px-5'>Done</button>
                                                                                         </div>
                                                                                     </ng-template>
 
@@ -337,8 +302,7 @@
             <ng-template #elseTemplate>
                 <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
                     <h3 style="font-size: 1.5rem; font-weight: bold;color: #09c;">No Diagnosis Form Recrived Yet!</h3>
-                    <img width="300px" height="300px"
-                        src="../../assets/images/29f6efab-7025-4a82-aa35-331dbfafac28.jpg">
+                    <img width="300px" height="300px" src="../../assets/images/29f6efab-7025-4a82-aa35-331dbfafac28.jpg">
                 </div>
             </ng-template>
         </mat-tab>
@@ -351,26 +315,30 @@
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header>
                                         <mat-panel-title>
-                                            {{tp.patientID.username }}
+                                            {{tp.patientID.username|titlecase}}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-12 py-3">
-                                                description : {{tp.description}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Cost : {{tp.cost|currency}}
-                                            </div>
-                                            <div class="col-12 py-3">
-                                                Start-date :
-                                                {{tp.treatmentDate.toDate.day}} / {{tp.treatmentDate.toDate.month}} / {{tp.treatmentDate.toDate.year}}</div>
-                                            <div class="col-12 py-3">
-                                                End-date :
-                                                {{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</div>
-
-                                        </div>
-                                    </div>
+                                
+                                    <table class="table table-striped py-4 text-center">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Cost</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">End Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    {{tp.description}}
+                                                </td>
+                                                <td>{{tp.cost|currency}}</td>
+                                                <td>{{tp.treatmentDate.toDate.day}} / {{tp.treatmentDate.toDate.month}} / {{tp.treatmentDate.toDate.year}}</td>
+                                                <td>{{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
                                 </mat-expansion-panel>
                             </mat-accordion>
@@ -383,8 +351,7 @@
             <ng-template #elseTemplate2>
                 <div class="mx-auto my-5" style="width: 30rem;text-align: center;">
                     <h3 style="font-size: 1.5rem; font-weight: bold;color: #09c;">No Treatment Plans Created Yet!</h3>
-                    <img width="300px" height="300px"
-                        src="../../assets/images/1bb8d3ea-e39c-49b7-90ee-ba900c5634f8.jpg">
+                    <img width="300px" height="300px" src="../../assets/images/1bb8d3ea-e39c-49b7-90ee-ba900c5634f8.jpg">
                 </div>
             </ng-template>
 

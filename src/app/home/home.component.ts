@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit {
         this.DataArr = this.DataArr.filter(doctor => {
           return doctor.location.location == this.location || doctor.location.area == this.area
         })
+      }else if(this.location=='all'){
+        this.filteredArray = resp.data
       }
       this.filteredArray = [...this.DataArr]
 

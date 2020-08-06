@@ -55,13 +55,14 @@ export class TravelDashboardComponent implements OnInit {
     ],
     "title": "Wadi Rum & Petra Two Days Tour From Amman",
     "catygory": "Sea Tours ",
-    "numberOfDays":"5",
-    "cost" : {
-      "Adults" : "232",
-      "Children" :"321"
+    "numberOfDays": "5",
+    "cost": {
+      "Adults": "232",
+      "Children": "321"
     },
     "IMG": "https://media-cdn.tripadvisor.com/media/photo-s/09/6b/09/05/khasab-sea-tours-day.jpg"
   }
+  allPrograms: any;
 
 
   constructor(private mytravelAgentService: travelAgentService, public formBuilder: FormBuilder, private myCitiesService: CitiesService, private modalService: NgbModal) { }
@@ -89,12 +90,14 @@ export class TravelDashboardComponent implements OnInit {
     });
 
     this.getCities();
-
+    this.getAccount();
   }
 
   getAccount() {
     this.mytravelAgentService.getAccount().subscribe((resp: any) => {
       this.Tdata = resp.data
+      this.allPrograms = this.Tdata.tourismPrograms
+      console.log(this.Tdata,'=====',this.allPrograms)
     })
   }
 
@@ -237,17 +240,17 @@ export class TravelDashboardComponent implements OnInit {
       cost: { adultCost: this.firstFormGroup.value.adultCtrl, childrenCost: this.firstFormGroup.value.childrenCtrl },
 
     }).subscribe((resp: any) => {
-      if(resp.message == "success"){
+      if (resp.message == "success") {
         this.showError = false
         this.programID = resp.data._id
         this.hideNextBtn = true
       }
-      else{
+      else {
         this.hideNextBtn = false
         this.showError = true
       }
-      
-      
+
+
     })
 
 
@@ -258,7 +261,7 @@ export class TravelDashboardComponent implements OnInit {
   closeResult = '';
 
   open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' , size : 'xl' ,scrollable : true , backdrop :true}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', scrollable: true, backdrop: true }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     });
   }

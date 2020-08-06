@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CitiesService } from '../services/cities.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { travelAgentService } from '../services/travel-agent.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-travel-agent-sign-up',
@@ -21,7 +22,7 @@ export class TravelAgentSignUpComponent implements OnInit {
 
   Error = false
   invalidMail = false
-  constructor(private myCitiesService: CitiesService, private router: Router, public route: ActivatedRoute, private mytravelAgentService: travelAgentService) { }
+  constructor(private modalService: NgbModal,private myCitiesService: CitiesService, private router: Router, public route: ActivatedRoute, private mytravelAgentService: travelAgentService) { }
 
   ngOnInit(): void {
     this.getCities()
@@ -44,7 +45,7 @@ export class TravelAgentSignUpComponent implements OnInit {
   }
 
 
-  register() {
+  register(content) {
     if (this.companyName && this.location && this.email && this.area && this.password && this.phone) {
       this.Error = false
       this.mytravelAgentService.signUp({
@@ -59,7 +60,11 @@ export class TravelAgentSignUpComponent implements OnInit {
           this.invalidMail = true
         }
         else if(resp.message == "success"){
-          this.router.navigate['/']
+          this.openLg(content)
+           setTimeout(() => {
+            this.modalService.dismissAll()
+          }, 3000);
+          this.router.navigate(['/']  )
         }
         else{
           this.invalidMail = false
@@ -73,6 +78,13 @@ export class TravelAgentSignUpComponent implements OnInit {
 
       this.Error = true
     }
+  }
+
+
+  
+
+  openLg(content) {
+    this.modalService.open(content);
   }
 
 }

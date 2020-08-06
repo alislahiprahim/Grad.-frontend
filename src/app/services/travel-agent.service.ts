@@ -28,4 +28,12 @@ export class travelAgentService {
     AddProgram(data) {
         return this.myHttpClient.post(this.backendURL + 'AddProgram', data)
     }
+
+    getAllprograms() {
+        return this.myHttpClient.get(this.backendURL + 'AllPrograms');
+    }
+
+    getprogram(programID) {
+        return this.myHttpClient.post(this.backendURL + 'getprogram', programID);
+    }
 }

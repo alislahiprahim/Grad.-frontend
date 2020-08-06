@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { travelAgentService } from '../services/travel-agent.service';
+travelAgentService
 @Component({
   selector: 'app-program-profile',
   templateUrl: './program-profile.component.html',
@@ -7,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramProfileComponent implements OnInit {
 
+  prog_id = this.myActivatedRoute.snapshot.paramMap.get('id')
+
   adult: Number = 1
   children: Number = 0
   i = 1
   j = 1
-  constructor() { }
+  programData: any;
+
+  constructor(private myActivatedRoute: ActivatedRoute, private mytravelAgentService: travelAgentService) { }
 
   ngOnInit(): void {
+    this.getProgram()
   }
 
   plus(event) {
@@ -47,5 +54,13 @@ export class ProgramProfileComponent implements OnInit {
     }
 
   }
+
+  getProgram() {
+    this.mytravelAgentService.getprogram({ programID: this.prog_id }).subscribe((resp: any) => {
+      this.programData = resp.data
+    })
+  }
+
+
 
 }

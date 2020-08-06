@@ -1,11 +1,11 @@
 <div class="contianer-fluid bg-img">
 
     <h1 class="mx-5 px-5"
-        style="white-space:pre-line; font-size:45px;font-weight:700; color:#fff;position:relative;top:80%">Day Tour To
-        Giza Pyramids With Camel Ride And</h1>
-    <h1 class="mx-5 px-5"
+        style="white-space:pre-line; font-size:45px;font-weight:700; color:#fff;position:relative;top:80%">
+        {{programData.title}}</h1>
+    <!-- <h1 class="mx-5 px-5"
         style="white-space:pre-line; font-size:45px;font-weight:700; color:#fff;position:relative;top:81%">Egyptian
-        Museum In Cairo</h1>
+        Museum In Cairo</h1> -->
 
 </div>
 
@@ -65,39 +65,78 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="row">
-                        <h2>Day Tour To Giza Pyramids With Camel Ride And Egyptian Museum In Cairo</h2>
+                        <h2>{{programData.title}}<span style="color:Gold"> Starting from {{programData.cost.childrenCost|currency}}</span></h2>
+                        
                     </div>
-                    <div class="row">
-                        <p>
-                            Enjoy a day tour to Giza Pyramids with Camel Ride and Egyptian Museum in Cairo which
-                            includes Over 250,000 genuine artifacts and an exhibit dedicated to Tutankhamen collection
-                            of treasure.
-                        </p>
-                    </div>
-                    <div class="row">
-                        <h3>Itinerary: </h3>
-                    </div>
-                    <div class="row">
-                        <p>Sun Pyramids Tours representative will pick you up from your hotel to enjoy an excursion to
-                            The Pyramids of Cheops,Chephren and Mykerinus and ride a camel from 20 to 30 minutes around
-                            the pyramids. Then proceed to visit the Great Sphinx, which dates from the time of Chephren;
-                            the tour also includes a visit to the Valley Temple, which belongs to the pyramid of
-                            chefren. Then Move to visit the Egyptian Museum, which features artifacts from the Pharaonic
-                            period. The museum displays a rare collection of 5000 years of art which is considered the
-                            largest most precious collection of Egyptian art in the world. Over 250,000 genuine
-                            artifacts are presented, including an exhibit dedicated to Tutankhamen collection of
-                            treasure, gold and jewelry which was enclosed in his tomb for over 3,500 years before it was
-                            discovered in the 1920 s when his tomb was discovered. Back to hotel after your trip .</p>
+                    
+
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-2">
+                    <h2 style="color:Gold">Itinerary</h2>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row" *ngFor="let item of programData.itinerary">
+                        <strong>
+                            <h3>{{item.title}}</h3>
+                        </strong>
+                        <p>{{item.description}}</p>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-2">
+                    <h2 style="color:Gold">Included</h2>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row" *ngFor="let item of programData.included">
+                        <strong>{{item.name}}</strong>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-2">
+                    <h2 style="color:Gold">Excluded</h2>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row" *ngFor="let item of programData.excluded">
+                        <strong>{{item.name}}</strong>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--  
+                    <div class="row">
+                        <h1>Included: </h1>
+                    </div>
+                    <div class="row" *ngFor="let item of programData.included">
+                        <strong>{{item.name}}</strong>
+
+                    </div>
+                    <div class="row">
+                        <h1>Excluded: </h1>
+                    </div>
+                    <div class="row" *ngFor="let item of programData.excluded">
+                        <strong>{{item.name}}</strong>
+
+                    </div> -->
         </div>
         <div class="col-lg-1 col-md-1"></div>
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="container box bg-primary">
-                <div class="box-head text-center py-1 bg-danger w-100">
-                    <h3>-Booking-</h3>
-                </div>
+            <div class="container-fluid" style="background-color: #f0f0f0; border-radius: 1rem; padding: 1rem">
+                    <h3 style="text-align:center; color:#0160b2;font-size: 1.5rem;">Booking</h3>
                 <div class="container">
                     <div class="row ">
                         <mat-form-field appearance="fill">
@@ -108,21 +147,24 @@
                         </mat-form-field>
                     </div>
                     <div class="row">
-                        <div class="col-12"><label>Adults</label></div>
-                        <button class="btn-count my-0 mx-0" (click)="minus('a')"><i class="fas fa-minus"></i></button>
-                        <input class='count  my-0 mx-0' [(ngModel)]="adult">
-                        <button class="btn-count my-0 mx-0" (click)="plus('a')"><i class="fas fa-plus"></i></button>
-                        <div class="col-12"> <label>Children</label></div>
+                        <p style="font-size: 1rem; font-weight: 200; color: #000; margin-right: 3.3rem;">Adult</p>
+                        <button class="btn-count my-0 mx-0  " (click)="minus('a')"><i class="fas fa-minus"></i></button>
+                        <input class='count  my-0 mx-0 ' [(ngModel)]="adult">
+                        <button class="btn-count my-0 mx-0  " (click)="plus('a')"><i class="fas fa-plus"></i></button>
+                        <p style="font-size: 1rem; font-weight: 200; color: #000; margin-right: 2rem;">Children</p>
                         <button class="btn-count my-0 mx-0" (click)="minus('c')"><i class="fas fa-minus"></i></button>
                         <input class='count my-0 mx-0' [(ngModel)]="children">
                         <button class="btn-count my-0 mx-0" (click)="plus('c')"><i class="fas fa-plus"></i></button>
                     </div>
                     <div class="row py-3">
-                        <div class="col-6">adult</div>
-                        <div class="col-6">{{adult}}</div>
-                        <div class="col-6">children</div>
-                        <div class="col-6">{{children}}</div>
+                        <div class="col-6 text-center" style="font-size: 1rem; font-weight: 200; color: #000;">Adult
+                        </div>
+                        <div class="col-6 text-center">{{adult}}</div>
+                        <div class="col-6 text-center" style="font-size: 1rem; font-weight: 200; color: #000;">Children
+                        </div>
+                        <div class="col-6 text-center">{{children}}</div>
                     </div>
+                    <button class="btn text-center" style="background-color: #f0f1f1; color: #0160b2 ;margin-left: 3rem;">Booking</button>
                 </div>
             </div>
         </div>

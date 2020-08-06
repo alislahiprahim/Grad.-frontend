@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { patientService } from '../services/patient.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnapshotAction } from '@angular/fire/database';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-profile',
@@ -12,7 +12,7 @@ export class PatientProfileComponent implements OnInit {
 
   treatmentPlans: any
 
-  constructor(public mypatientService: patientService, private _snackBar: MatSnackBar) { }
+  constructor(public mypatientService: patientService, private _snackBar: MatSnackBar,private myRouter:Router) { }
 
   ngOnInit(): void {
     this.get_patient()
@@ -31,6 +31,12 @@ export class PatientProfileComponent implements OnInit {
         if (flag == 'true') {
           this.openSnackBar('Approvement', 'Done')
           this.get_patient()
+          setTimeout(()=>{
+            this.openSnackBar('Directing to tourism programs','...')
+          },500)
+          setTimeout(()=>{
+            this.myRouter.navigate(['/programstour'])
+          },1000)
         } else {
           this.openSnackBar('DisApprovement', 'Done')
           this.get_patient()

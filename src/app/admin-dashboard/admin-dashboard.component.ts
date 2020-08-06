@@ -18,10 +18,10 @@ export class AdminDashboardComponent implements OnInit {
   public chartType: string = 'line';
 
   public chartDatasets: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: ' Doctors' },
-    { data: [28, 48, 40, 19, 86, 27, 100], label: ' Patients' }
+    { data: [ 59, 80, 81, 56, 55, 40], label: ' Doctors' },
+    { data: [ 48, 40, 19, 86, 27, 100], label: ' Patients' }
   ];
-  public chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June'];
 
   public chartColors: Array<any> = [
     {
