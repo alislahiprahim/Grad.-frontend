@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { travelAgentService } from '../services/travel-agent.service';
-travelAgentService
+
 @Component({
   selector: 'app-program-profile',
   templateUrl: './program-profile.component.html',

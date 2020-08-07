@@ -29,40 +29,9 @@ export class TravelDashboardComponent implements OnInit {
   Itinerary
   cities: any;
 
-  programList = {
-    "itinerary": [
-      {
-        "dayTitle": "Day 1: Amman – Wadi Rum",
-        "dayDescription": "We start from Amman -Arriving Wadi Rum at noon , on the first day we’ll visit, Kazali canyon, little bridge and the sand dunes.hiking up Um Froth rock bridge, a visit to Lawrence’s house, have a light lunch,,Then we’ll hike to our campsite – A Bedouin camp."
-      },
-      {
-        "dayTitle": "Day 2: Wadi Rum – Petra – Amman",
-        "dayDescription": "On the second day we’ll start early in the morning moving to the kingdom to Petra. The Nabatean red, Rose City of Petra that is considered one of the wonders of the world. and head back to Amman"
-      }
-    ],
-    "included": [
-      "Wadi Rum & Petra Two Full Days Tour from Amman.",
-      "English speaking Driver.",
-      "An Sedan Car or H1 Van is used with AC including gas .",
-      "Water, 3 Hours Jeep Tour at Rum Valley & one night sleep at a Bedouin camp including dinner & breakfast.",
-      "Home / Hotel Pick-up and drop-of"
-    ],
-    "excluded": [
-      "Entry Fees.",
-      "Local Site tour quid .",
-      "travel Insurance and other meals are not included.",
-      "local tour guides and other meals are not included."
-    ],
-    "title": "Wadi Rum & Petra Two Days Tour From Amman",
-    "catygory": "Sea Tours ",
-    "numberOfDays": "5",
-    "cost": {
-      "Adults": "232",
-      "Children": "321"
-    },
-    "IMG": "https://media-cdn.tripadvisor.com/media/photo-s/09/6b/09/05/khasab-sea-tours-day.jpg"
-  }
   allPrograms: any;
+  allVisitors: any;
+
 
 
   constructor(private mytravelAgentService: travelAgentService, public formBuilder: FormBuilder, private myCitiesService: CitiesService, private modalService: NgbModal) { }
@@ -96,7 +65,10 @@ export class TravelDashboardComponent implements OnInit {
   getAccount() {
     this.mytravelAgentService.getAccount().subscribe((resp: any) => {
       this.Tdata = resp.data
+      debugger
       this.allPrograms = this.Tdata.tourismPrograms
+      this.allVisitors = this.Tdata.patientsID
+      debugger
       console.log(this.Tdata,'=====',this.allPrograms)
     })
   }
@@ -228,7 +200,6 @@ export class TravelDashboardComponent implements OnInit {
 
 
   AddProgram() {
-
     this.mytravelAgentService.addProgram({
       title: this.firstFormGroup.value.titleCtrl,
       catygory: this.firstFormGroup.value.categoryCtrl,
@@ -249,13 +220,12 @@ export class TravelDashboardComponent implements OnInit {
         this.hideNextBtn = false
         this.showError = true
       }
-
-
     })
-
-
   }
 
+  DeleteProgram(){
+    this.mytravelAgentService.deleteProgram({})
+  }
 
   // Start Modal Configration 
   closeResult = '';

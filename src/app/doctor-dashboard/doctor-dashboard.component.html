@@ -47,7 +47,7 @@
                                     <div class="col-lg-4">
                                         <h2> Phone </h2>
                                         <div class="col-md-12 py-3 parag">
-                                            <p>{{DData.phone }}</p>
+                                            <p>{{DData.phone |number}}</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -59,17 +59,17 @@
 
                                 </div>
                                 <div class="row py-2">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <h2>Email</h2>
                                         <div class="col-md-12 py-2 parag">
                                             <p>{{DData?.email}}</p>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <h2>Active Status</h2>
+                                    <div class="col-lg-4">
+                                        <h2>Location</h2>
                                         <div class="col-md-12 py-2 parag">
-                                            <mat-slide-toggle>Online</mat-slide-toggle>
+                                            <p>{{DData?.password |slice :0:10}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,6 @@
         </mat-tab>
         <mat-tab class="mx-4" label="Diagnosis Forms">
             <ng-container *ngIf="Patients; else elseTemplate">
-
                 <table class="table table-striped py-4 text-center">
                     <thead>
                         <tr>
@@ -187,7 +186,6 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-12 py-2" *ngFor="let i of Patient_DF?.doctorQuesAns">
-
                                                                         {{i}}
                                                                     </div>
                                                                 </div>
@@ -315,30 +313,24 @@
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header>
                                         <mat-panel-title>
-                                            {{tp.patientID.username|titlecase}}
+                                            {{tp.patientID.username }}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
-                                
-                                    <table class="table table-striped py-4 text-center">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Cost</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">End Date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    {{tp.description}}
-                                                </td>
-                                                <td>{{tp.cost|currency}}</td>
-                                                <td>{{tp.treatmentDate.toDate.day}} / {{tp.treatmentDate.toDate.month}} / {{tp.treatmentDate.toDate.year}}</td>
-                                                <td>{{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 py-3">
+                                                description : {{tp.description}}
+                                            </div>
+                                            <div class="col-12 py-3">
+                                                Cost : {{tp.cost|currency}}
+                                            </div>
+                                            <div class="col-12 py-3">
+                                                Start-date : {{tp.treatmentDate.toDate.day}} / {{tp.treatmentDate.toDate.month}} / {{tp.treatmentDate.toDate.year}}</div>
+                                            <div class="col-12 py-3">
+                                                End-date : {{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</div>
+
+                                        </div>
+                                    </div>
 
                                 </mat-expansion-panel>
                             </mat-accordion>

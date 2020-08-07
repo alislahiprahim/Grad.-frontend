@@ -106,7 +106,7 @@ export class DoctorDashboardComponent implements OnInit {
 
   sendTreatmentPlan(Pid) {
 
-    this.myDoctorService.createTreatmentPlan({ description: this.description, cost: this.cost, treatmentDate: { toDate: this.toDate, fromDate: this.fromDate }, patientID: Pid }).subscribe((resp: any) => {
+    this.myDoctorService.createTreatmentPlan({ description: this.description, cost: this.cost, treatmentDate: { toDate: this.toDate, fromDate: this.fromDate }, patientID: Pid ,location:this.DData.location}).subscribe((resp: any) => {
       console.log(resp.data)
       if (resp.message == 'success') {
 

@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 export class PatientProfileComponent implements OnInit {
 
   treatmentPlans: any
+  diagnosis_form: any;
 
-  constructor(public mypatientService: patientService, private _snackBar: MatSnackBar,private myRouter:Router) { }
+  constructor(public mypatientService: patientService, private _snackBar: MatSnackBar, private myRouter: Router) { }
 
   ngOnInit(): void {
     this.get_patient()
@@ -22,6 +23,7 @@ export class PatientProfileComponent implements OnInit {
     this.mypatientService.get_patient().subscribe((resp: any) => {
       debugger
       this.treatmentPlans = resp.data
+      this.diagnosis_form = resp.patient.diagnosisForm
     })
   }
 
@@ -31,12 +33,12 @@ export class PatientProfileComponent implements OnInit {
         if (flag == 'true') {
           this.openSnackBar('Approvement', 'Done')
           this.get_patient()
-          setTimeout(()=>{
-            this.openSnackBar('Directing to tourism programs','...')
-          },500)
-          setTimeout(()=>{
-            this.myRouter.navigate(['/programstour'])
-          },1000)
+          setTimeout(() => {
+            this.openSnackBar('Directing to tourism programs', '...')
+          }, 500)
+          setTimeout(() => {
+            this.myRouter.navigate(['/programstour', resp.data.location.location])
+          }, 1000)
         } else {
           this.openSnackBar('DisApprovement', 'Done')
           this.get_patient()

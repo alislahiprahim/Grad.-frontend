@@ -68,7 +68,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './uploader/uploader.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+
 firebase.initializeApp(environment.firebaseConfig);
 
 const routes: Routes = [
@@ -82,6 +82,7 @@ const routes: Routes = [
   { path: 'dashboard/:id', component: DoctorDashboardComponent },
   { path: 'Pdashboard/:id', component: PatientProfileComponent },
   { path: 'Tdashboard/:id', component: TravelDashboardComponent },
+  { path: 'programstour/:location', component: TourProgramsComponent, canActivate: [AuthGuard] },
   { path: 'programstour', component: TourProgramsComponent, canActivate: [AuthGuard] },
   { path: 'programprofile/:id', component: ProgramProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminDashboardComponent, },
@@ -163,7 +164,6 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    MatSlideToggleModule
   ],
 
 
