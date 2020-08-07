@@ -38,7 +38,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.DataArr) { } else {
+    if (this.DataArr) {
+       
+     } else {
+        
       this.getDoctors()
     }
     this.getCities()
@@ -48,16 +51,21 @@ export class HomeComponent implements OnInit {
   getDoctors() {
     this.myDoctorService.getDoctors().subscribe((resp: any) => {
       this.DataArr = resp.data
-      debugger
+       
       if (this.location || this.area) {
 
         this.DataArr = this.DataArr.filter(doctor => {
+           
           return doctor.location.location == this.location || doctor.location.area == this.area
         })
       }else if(this.location=='all'){
+        
         this.filteredArray = resp.data
+         
       }
+      
       this.filteredArray = [...this.DataArr]
+       
 
     })
   }

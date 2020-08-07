@@ -73,14 +73,14 @@
                                     </form>
                                 </mat-step>
                                 <mat-step [stepControl]="dynamicForm" [editable]="false">
-                                    <ng-template matStepLabel><span class="head">Add Questions</span>
+                                    <ng-template matStepLabel><span class="head">Itinerary</span>
                                     </ng-template>
                                     <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
                                         <div class="card m-3">
                                             <div class="card-body">
                                                 <div class="form-row">
                                                     <div class="form-group">
-                                                        <label>Number Of Itinerary Titles</label>
+                                                        <label>Number Of  Titles</label>
                                                         <select formControlName="itineraryNumber" class="form-control"
                                                             (change)="onChangeQuestions($event)"
                                                             [ngClass]="{ 'is-invalid': submitted && f.itineraryNumber.errors }">

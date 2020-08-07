@@ -67,6 +67,7 @@ export class AdminDashboardComponent implements OnInit {
   approveDoc(Did, flag) {
 
     this.myAdminServices.approveDoc({ ID: Did, approveFlag: flag }).subscribe((resp: any) => {
+      debugger
       if (resp.message == 'success') {
         if (flag == 'true') {
           this.openSnackBar('Approvement', 'Done')
@@ -81,6 +82,7 @@ export class AdminDashboardComponent implements OnInit {
 
   approveTravel(Tid, flag) {
     this.myAdminServices.approveDoc({ ID: Tid, approveFlag: flag }).subscribe((resp: any) => {
+      debugger
       if (resp.message == 'success') {
         if (flag == 'true') {
           this.openSnackBar('Approvement', 'Done')

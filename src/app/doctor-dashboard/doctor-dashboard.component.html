@@ -313,11 +313,11 @@
                                 <mat-expansion-panel>
                                     <mat-expansion-panel-header>
                                         <mat-panel-title>
-                                            {{tp.patientID.username }}
+                                            {{tp.patientID.username |titlecase}}
                                         </mat-panel-title>
                                     </mat-expansion-panel-header>
-                                    <div class="container">
-                                        <div class="row">
+                                    <div class="container-fluid">
+                                        <!-- <div class="row">
                                             <div class="col-12 py-3">
                                                 description : {{tp.description}}
                                             </div>
@@ -329,7 +329,28 @@
                                             <div class="col-12 py-3">
                                                 End-date : {{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</div>
 
-                                        </div>
+                                        </div> -->
+                                        <table class="table table-bordered table-striped text-center w-100">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Cost</th>
+                                                    <th scope="col"> Start Date</th>
+                                                    <th scope="col">End Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        {{ tp?.description |lowercase}}
+                                                    </td>
+                                                    <td>{{ tp?.cost |currency}}</td>
+                                                    <td>{{tp.treatmentDate.toDate.day}} / {{tp.treatmentDate.toDate.month}} / {{tp.treatmentDate.toDate.year}}</td>
+                                                    <td>{{tp.treatmentDate.fromDate.day}} / {{tp.treatmentDate.fromDate.month}} / {{tp.treatmentDate.fromDate.year}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- dfmvdlkgbmgdkbgbfgjbfgjbgjbgfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj -->
                                     </div>
 
                                 </mat-expansion-panel>
